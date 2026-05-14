@@ -1,0 +1,464 @@
+{
+  "products": [
+    {
+      "short_name": "Retire Smooth",
+      "key":        "retire_smooth",
+      "name": {
+        "th": "PiggyWise - 📋 Retire Smooth (สายออมยาวเพื่อการเกษียณ)",
+        "en": "PiggyWise - 📋 Retire Smooth (Long-term savings for retirement)"
+      },
+      "link": {
+        "th": "https://docs.google.com/spreadsheets/d/1-GrZKy3uouwdh0YXqJQp1TcnG4wqY06zYj21wnuDD7w/copy",
+        "en": "[PRODUCT_LINK_RETIRE_SMOOTH_EN]"
+      }
+    },
+    {
+      "short_name": "Hybrid Wealth",
+      "key":        "hybrid_wealth",
+      "name": {
+        "th": "PiggyWise - ⚖️ Hybrid Wealth (สายบาลานซ์ เติบโต + ปันผล)",
+        "en": "PiggyWise - ⚖️ Hybrid Wealth (Balanced growth + dividends)"
+      },
+      "link": {
+        "th": "https://docs.google.com/spreadsheets/d/1QoxtWGHUERS7T5RjcvcyA-dJEDJktvcaT3ZdGVe6YeU/copy",
+        "en": "[PRODUCT_LINK_HYBRID_WEALTH_EN]"
+      }
+    },
+    {
+      "short_name": "Aggressive Go",
+      "key":        "aggressive_go",
+      "name": {
+        "th": "PiggyWise - 🚀 Aggressive Go (สายซิ่ง คุมเสี่ยง สินทรัพย์ทางเลือก)",
+        "en": "PiggyWise - 🚀 Aggressive Go (High-growth, risk-managed, alternative assets)"
+      },
+      "link": {
+        "th": "https://docs.google.com/spreadsheets/d/1YFOKkfFrgRoeofwTIdArfuXpTyFr4TSbzGZ4my_h-ng/copy",
+        "en": "[PRODUCT_LINK_AGGRESSIVE_GO_EN]"
+      }
+    }
+  ],
+
+  "th": {
+    "activation_cmd": "Activate PiggyWise: อ่าน README และ Settings เพื่อรับบทบาทผู้ช่วยส่วนตัว แล้วรายงานความพร้อมตาม Live Data Protocol ทันที.",
+    "thank_you": "ขอบคุณที่เลือก PiggyWise\nยินดีต้อนรับสู่ระดับถัดไปของการลงทุน\nนี่ไม่ใช่แค่ Template — นี่คือระบบการเงินส่วนตัวที่ทำงานเพื่อคุณ 24 ชม.\nตั้งค่าเสร็จใน 30 นาที แล้วปล่อยให้ AI coach ดูแลที่เหลือ",
+    "closing_text": "เพราะความมั่งคั่งไม่ได้วัดกันที่ตัวเลข\nแต่คือความอุ่นใจและอิสรภาพในการใช้ชีวิต\n\nPiggyWise จึงถูกออกแบบมาให้ดูแลคุณในทุกมิติของการเงิน",
+    "strings": {
+      "guide_title": "คู่มือการตั้งค่า",
+      "section_overview": "ภาพรวม",
+      "overview_body": "PiggyWise {product_name} คือระบบจัดการพอร์ตโฟลิโอส่วนตัวด้วย AI — Google Sheet ที่ทำหน้าที่เป็นโค้ชการเงินของคุณ คู่มือนี้จะพาคุณตั้งค่าระบบใน 6 ขั้นตอน",
+      "tab_color_system": "ระบบสีของ Tab:",
+      "tab_color_bullets": [
+        "🔴 แดง — Tab ระบบ ตั้งค่าไว้แล้ว อ่านและทำตามคำแนะนำเท่านั้น",
+        "🟢 เขียว — Tab ของคุณ กรอกข้อมูลและปรับแต่งตามเป้าหมาย",
+        "🟡 เหลือง — แสดงผลอย่างเดียว คำนวณอัตโนมัติ ไม่ต้องกรอกข้อมูล"
+      ],
+      "tab_all_tabs": "Tab ทั้งหมดในระบบ:",
+      "tab_headers": ["Tab", "สี", "สิ่งที่คุณต้องทำ"],
+      "ongoing_headers": ["เมื่อไหร่", "สิ่งที่ต้องทำ"],
+      "product_card_label": "สินค้าของคุณ",
+      "product_card_link_label": "ลิงก์ Google Sheet ของคุณ",
+      "product_card_instruction": "⚠️  คลิกลิงก์ → เลือก 'ทำสำเนา' → บันทึกลง Google Drive ของคุณ",
+      "step1_title": "ขั้นตอนที่ 1: รับ Template ของคุณ",
+      "step1_body": "คลิกลิงก์ในหน้า 'สินค้าของคุณ' ด้านบน แล้วเลือก 'ทำสำเนา' เพื่อบันทึก Google Sheet ลงใน Google Drive ของคุณ",
+      "step1_note": "ทำสำเนาเท่านั้น — ห้ามแก้ไขไฟล์ต้นฉบับโดยตรง",
+      "step2_title": "ขั้นตอนที่ 2: Settings",
+      "step2_body": "ตั้งค่าระบบครั้งเดียว เปิด Tab Settings แล้วกรอกข้อมูลต่อไปนี้:",
+      "step2_bullets": ["ชื่อ / โปรไฟล์นักลงทุน", "เงินทุนเริ่มต้น", "จำนวนเงินลงทุนต่อเดือน", "ระยะเวลาลงทุน / เป้าหมายเกษียณ", "ระดับความเสี่ยงที่รับได้"],
+      "step3_title": "ขั้นตอนที่ 3: DCA_Plan",
+      "step3_body": "ตั้งค่าแผนซื้อรายเดือน เปิด Tab DCA_Plan แล้วกรอก:",
+      "step3_bullets": ["จำนวนเงิน DCA ต่อเดือนสำหรับแต่ละสินทรัพย์", "ปรับสัดส่วน % ให้เหมาะกับสถานการณ์ของคุณ"],
+      "step3_note": "กลับมาปรับแก้ได้ตลอดเมื่อเป้าหมายหรือสถานการณ์เปลี่ยน",
+      "step4_title": "ขั้นตอนที่ 4: Safety_Fortress",
+      "step4_body": "ตั้งค่าชั้นป้องกัน เปิด Tab Safety_Fortress แล้วกรอก:",
+      "step4_bullets": ["เกณฑ์กองทุนฉุกเฉิน", "เงื่อนไขการ Rebalance อัตโนมัติ", "กฎ Crisis Event (เช่น ช้อนซื้อเมื่อตลาดดิ่งเกิน X%)"],
+      "step4_note": "ทบทวนเป็นครั้งคราว — ไม่จำเป็นต้องทุกเดือน",
+      "step5_title": "ขั้นตอนที่ 5: เปิดใช้งาน AI Finance Coach",
+      "step5_numbered": ["เปิด AI ที่คุณเลือก (ChatGPT, Claude, Gemini — ใช้ได้ทุกตัว)", "อัปโหลดไฟล์ Google Sheet ของคุณเข้าสู่ AI", "ส่งคำสั่งเปิดใช้งานนี้:"],
+      "step5_body": "AI จะอ่าน Tab README และ Settings รับบทบาทโค้ชการเงินส่วนตัว แล้วยืนยันความพร้อม",
+      "step6_title": "ขั้นตอนที่ 6: ตั้งค่าการแจ้งเตือนรายเดือน",
+      "step6_body": "ให้ AI coach ตั้งการแจ้งเตือนให้คุณ มี 2 วิธี:",
+      "step6_method1_heading": "วิธีที่ 1: ระบุวันและเวลาชัดเจน (แนะนำ)",
+      "step6_method1_cmd": "ช่วยตั้งเตือนความจำให้ผมหน่อย: [ชื่อเรื่องที่ต้องการเตือน] ในวันที่ [ระบุวันที่] เวลา [ระบุเวลา]",
+      "step6_example_label": "ตัวอย่าง:",
+      "step6_method1_example": "ช่วยตั้งเตือนความจำให้หน่อย: 'ทำ DCA พอร์ต {product_name}' ในวันที่ 25 ของทุกเดือน เวลา 10:00 น.",
+      "step6_method2_heading": "วิธีที่ 2: Smart Reminder จากแผน DCA ของคุณ",
+      "step6_method2_body": "เนื่องจากมีแผน DCA ใน Sheet อยู่แล้ว สามารถสั่งแบบนี้ได้:",
+      "step6_method2_cmd": "ช่วยตั้งเตือนความจำตาม 'DCA_Plan' ในชีทให้ผมหน่อย โดยให้เตือนล่วงหน้า 1 วันก่อนถึงกำหนด",
+      "ongoing_title": "การใช้งานประจำ",
+      "troubles_title": "🔧 การแก้ปัญหาเบื้องต้น",
+      "tests_title": "🚀 คำสั่งทดสอบระบบ (Installation & Test Commands)",
+      "tests_body": "ใช้ชุดคำสั่งเหล่านี้เพื่อตรวจสอบความเรียบร้อยของระบบหลังจากอัปโหลดไฟล์เสร็จสิ้น",
+      "advisories_title": "🧠 คำสั่งปรึกษา (Wealth Advisory Commands)",
+      "advisories_body": "ตัวอย่างการปรึกษา AI coach เชิงลึก",
+      "beyond_title": "🌟 สิ่งที่ PiggyWise ทำได้มากกว่าแค่จัดพอร์ต",
+      "crisis_title": "🛡️ การจัดการวิกฤตและความเสี่ยง (Crisis & Risk Management)",
+      "crisis_body1": "AI ของคุณไม่ใช่แค่คนจดบัญชี แต่เป็น \"ผู้พิทักษ์ทรัพย์สิน\" ที่พร้อมทำงานในยามคับขัน",
+      "crisis_body2": "Scenario: เมื่อตลาดเกิดวิกฤต หรือสินทรัพย์บางตัวในพอร์ตมีความเสี่ยงสูง",
+      "crisis_cmd": "ช่วยทำ Stress Test ให้พอร์ตนี้หน่อย: หากเกิดวิกฤตเศรษฐกิจถดถอย (Recession) และหุ้นร่วง 30% พอร์ตของผมจะได้รับผลกระทบกี่บาท? และตาม Strategies เรามีแผนสำรองอย่างไร?",
+      "lifestyle_title": "💎 เชื่อมโยงพอร์ตกับชีวิต (Lifestyle & Goal Integration)",
+      "lifestyle_body1": "เปลี่ยน \"ตัวเลขในตาราง\" ให้กลายเป็น \"ความสุขในชีวิตจริง\"",
+      "lifestyle_body2": "Scenario: การตัดสินใจซื้อของชิ้นใหญ่ หรือการปรับแผนเพื่อเกษียณเร็วขึ้น",
+      "lifestyle_cmd": "ผมกำลังวางแผนทริปต่างประเทศงบ 100,000 บาท ถ้าดึงเงินจากพอร์ตไปซื้อ จะทำให้เป้าหมายเกษียณช้าลงกี่เดือน? หรือมีแผนเก็บเงินเพิ่มแยกต่างหากโดยไม่กระทบพอร์ตหลักไหม?",
+      "exec_title": "📅 รายงานสรุปและการฉลอง Milestone (Executive Summaries)",
+      "exec_body1": "\"จิตวิทยาการลงทุน\" และ \"ความรู้สึกพิเศษ\" เพื่อให้การลงทุนระยะยาวไม่น่าเบื่อ",
+      "exec_body2": "Scenario: การสรุปผลงานรายปี หรือการฉลองเมื่อยอดเงินถึงเป้า",
+      "exec_cmd": "ช่วยสร้างรายงาน 'Executive Summary' ประจำปีให้ผมหน่อย: สรุปผลตอบแทนแยกตามประเภทสินทรัพย์, วินัยการออมสะสม, และประกาศ Milestone ที่ทำสำเร็จในปีนี้ พร้อมคำแนะนำ 3 ข้อสำหรับปีหน้า"
+    },
+    "tabs": [
+      ["Settings",            "🔴 แดง",    "กรอกข้อมูลครั้งเดียวตอนตั้งค่า"],
+      ["Strategies",          "🔴 แดง",    "อ่านอย่างเดียว — กลยุทธ์ของสินค้าคุณ"],
+      ["README",              "🔴 แดง",    "โหลดเข้า AI เพื่อเปิดใช้งาน Finance Coach"],
+      ["DCA_Plan",            "🟢 เขียว",  "ตั้งค่าตอนเริ่มต้น แก้ไขได้ตลอด"],
+      ["Safety_Fortress",     "🟢 เขียว",  "ตั้งค่าตอนเริ่มต้น ทบทวนเป็นครั้งคราว"],
+      ["Transaction_History", "🟢 เขียว",  "อัปเดตทุกครั้งที่ซื้อขาย"],
+      ["Portfolio_Summary",   "🟡 เหลือง", "คำนวณอัตโนมัติ — ดูภาพรวมพอร์ตที่นี่"]
+    ],
+    "ongoing": [
+      ["ทุกครั้งที่ซื้อขาย",          "บันทึกลงใน Transaction_History"],
+      ["ทุกเดือน",                    "เช็คอิน 15–30 นาที — ดู Portfolio_Summary ปรึกษา AI coach"],
+      ["ทุกไตรมาส / ตามความเหมาะสม", "ทบทวน DCA_Plan หากเป้าหมายเปลี่ยน"],
+      ["เป็นครั้งคราว",               "ทบทวน Safety_Fortress"]
+    ],
+    "troubles": [
+      {
+        "title": "AI ลืม Context หรือลืมไฟล์",
+        "desc": "เกิดขึ้นเมื่อเริ่มแชทใหม่ ไม่จำเป็นต้องตั้งค่าใหม่ทั้งหมด — ทำแค่นี้:",
+        "steps": ["เปิดแชทใหม่กับ AI", "อัปโหลดไฟล์ Google Sheet อีกครั้ง", "ส่งคำสั่งเปิดใช้งานอีกครั้ง:"],
+        "cmd": "{activation_cmd}"
+      },
+      {
+        "title": "AI ใช้ข้อมูลเก่า",
+        "desc": "หาก AI อ้างอิงตัวเลขที่ไม่ตรงกับปัจจุบัน ให้สั่ง:",
+        "steps": [],
+        "cmd": "โปรดโหลดข้อมูลใหม่จากไฟล์และรายงานยอดปัจจุบันอีกครั้ง"
+      },
+      {
+        "title": "AI คิดตัวเลขเองที่ไม่มีในชีท",
+        "desc": "ถาม AI ว่าข้อมูลมาจากไหน หากตอบไม่ได้ให้อัปโหลดไฟล์ใหม่:",
+        "steps": [],
+        "cmd": "ข้อมูลนี้มาจากแท็บไหนในไฟล์?"
+      },
+      {
+        "title": "AI ออกนอกบทบาท",
+        "desc": "ส่งคำสั่งเปิดใช้งานซ้ำเพื่อคืนบทบาท — ไม่จำเป็นต้องอัปโหลดไฟล์ใหม่",
+        "steps": [],
+        "cmd": null
+      },
+      {
+        "title": "AI ให้คำแนะนำทั่วไป ไม่ใช่แบบเฉพาะตัว",
+        "desc": "เตือน AI ให้อ้างอิงข้อมูลจาก Sheet ของคุณ:",
+        "steps": [],
+        "cmd": "กรุณาอ้างอิงจากข้อมูลใน Settings และ DCA_Plan ของผมเท่านั้น ไม่ใช่คำแนะนำทั่วไป"
+      },
+      {
+        "title": "การแจ้งเตือนไม่ถูกสร้างใน Google Calendar",
+        "desc": "ตรวจสอบว่า AI มีสิทธิ์เข้าถึง Google Calendar หรือไม่ หากไม่มี ตั้งเตือนด้วยตนเองตามวันเวลาที่ AI แนะนำ",
+        "steps": [],
+        "cmd": null
+      },
+      {
+        "title": "แก้ไข Tab สีแดง (ระบบ) โดยไม่ตั้งใจ",
+        "desc": "Tab สีแดงตั้งค่าไว้แล้วและไม่ควรแก้ไข หากแก้ไขโดยไม่ตั้งใจ ให้ทำสำเนาไฟล์ใหม่จากลิงก์สินค้าแล้วกรอกข้อมูลใน Tab สีเขียว (DCA_Plan, Safety_Fortress, Transaction_History) ใหม่",
+        "steps": [],
+        "cmd": null
+      }
+    ],
+    "tests": [
+      {
+        "title": "คำสั่งปลุกระบบ (System Activation)",
+        "desc": "ใช้สำหรับเริ่ม Session ใหม่ เพื่อให้ AI สวมบทบาทเป็นผู้ช่วยส่วนตัวทันที",
+        "cmd": "{activation_cmd}",
+        "check": "✅ AI ต้องทักทายด้วยชื่อของคุณ ระบุชื่อพอร์ตได้ถูกต้อง และรายงานว่าดึงข้อมูลล่าสุดมาเรียบร้อยแล้ว"
+      },
+      {
+        "title": "ทดสอบความแม่นยำ (Integrity Test)",
+        "desc": "ลองส่งข้อมูลไม่ครบ เพื่อดูว่า AI จะ \"มโน\" ตัวเลขเอง หรือจะถามหาข้อมูลที่ขาด",
+        "cmd": "ช่วยบันทึกรายการซื้อวันนี้หน่อยครับ ผมซื้อหุ้น VOO ไปยอดเงินรวม 10,000 บาท",
+        "check": "✅ AI ห้ามบันทึกทันที แต่ต้องทักท้วงขอข้อมูลที่ขาด (เช่น จำนวนหน่วย หรือ ราคาต่อหน่วย)"
+      },
+      {
+        "title": "ทดสอบการเชื่อมโยงข้อมูล (Logic & Plan Test)",
+        "desc": "เช็คว่า AI อ่านและวิเคราะห์แผนจากหน้า DCA_Plan ได้หรือไม่",
+        "cmd": "แผน DCA เดือนนี้ของผมต้องลงทุนในสินทรัพย์ตัวไหนบ้าง และยอดรวมทั้งหมดเป็นเท่าไหร่?",
+        "check": "✅ AI ต้องสรุปรายการจากแท็บ DCA_Plan ได้อย่างถูกต้องและครบถ้วน"
+      },
+      {
+        "title": "ทดสอบระบบแจ้งเตือน (Proactive Reminder)",
+        "desc": "ทดสอบการตั้งเตือนข้ามระบบ",
+        "cmd": "ช่วยตั้งเตือนความจำให้ผมหน่อย: 'เช็คพอร์ตและทำ Rebalancing' ในวันที่ 28 ของทุกเดือน เวลา 10:00 น.",
+        "check": "✅ AI ต้องตั้งเตือนใน Google Calendar/Tasks และยืนยันวัน/เวลา"
+      },
+      {
+        "title": "ทดสอบบุคลิกภาพพรีเมียม (Premium Persona Test)",
+        "desc": "เช็คโทนเสียงและการให้กำลังใจตาม Milestone",
+        "cmd": "สรุปภาพรวมพอร์ตให้หน่อยครับ ตอนนี้ผมเข้าใกล้เป้าหมาย Milestone แรกที่วางไว้หรือยัง?",
+        "check": "✅ AI ต้องแสดงน้ำเสียงกระตือรือร้น ร่วมยินดี (ถ้าพอร์ตโต) และเรียกชื่อคุณ"
+      }
+    ],
+    "advisories": [
+      {
+        "title": "วิเคราะห์ความเสี่ยงและ Rebalancing",
+        "desc": "ใช้เมื่อรู้สึกว่าพอร์ตเริ่มไม่สมดุล",
+        "cmd": "วิเคราะห์พอร์ตปัจจุบันให้หน่อยครับว่า Asset Allocation ยังตรงตามเป้าหมายในหน้า Settings หรือไม่? หากเบี่ยงเบนไปมาก ควร Rebalance อย่างไรดี?",
+        "note": "💡 AI จะอ่าน Portfolio_Summary เทียบกับ Settings แล้วแนะนำการปรับสมดุล"
+      },
+      {
+        "title": "ปรึกษาการปรับแผนออม (Financial Planning)",
+        "desc": "ใช้เมื่อมีเงินก้อนพิเศษ หรือต้องการปรับยอด DCA",
+        "cmd": "เดือนนี้ผมมีเงินก้อนพิเศษเพิ่มมา 20,000 บาท ตามกลยุทธ์ใน Strategies และสภาพตลาดตอนนี้ คุณแนะนำให้ผมลงเงินก้อนนี้ในสินทรัพย์ตัวไหนเพิ่มดี?",
+        "note": "💡 AI จะหาสินทรัพย์ที่ยัง Underweight และเช็ค Strategies ก่อนให้คำแนะนำ"
+      },
+      {
+        "title": "วิเคราะห์ตลาดและจิตวิทยา (Market Insight & Psychology)",
+        "desc": "ใช้เมื่อตลาดผันผวนและต้องการ \"เบรกมือทางอารมณ์\"",
+        "cmd": "ตอนนี้ตลาดหุ้น [ชื่อตลาด] แดงหนักมาก ผมเริ่มรู้สึกกังวล ช่วยเช็คแผนในพอร์ตและให้คำแนะนำตามกฎ 'Celebration & Emotional Tone' ใน README ให้ผมสบายใจหน่อยครับ",
+        "note": "💡 AI จะใช้โทนนุ่มนวลและดึงเป้าหมายระยะยาวมาเตือนสติ"
+      },
+      {
+        "title": "สอบถามภาษีและผลตอบแทน (Tax & Yield Advice)",
+        "desc": "ใช้ถามข้อมูลเฉพาะทาง",
+        "cmd": "จากพอร์ต {product_name} ปีนี้ผมมีโอกาสได้รับปันผลประมาณเท่าไหร่? และควรบริหารจัดการภาษีปันผลอย่างไรให้คุ้มค่า?",
+        "note": "💡 AI จะค้นหาข้อมูลปันผลและให้ความรู้เรื่องเครดิตภาษี"
+      }
+    ],
+    "beyond": [
+      {
+        "title": "จำลองอนาคต (Financial Forecasting)",
+        "cmd": "ถ้าผมเพิ่มเงิน DCA จากเดือนละ 10,000 เป็น 15,000 บาท และคาดการณ์ผลตอบแทน 7% ต่อปี อีก 10 ปีข้างหน้าพอร์ตจะมีมูลค่าต่างจากเดิมเท่าไหร่?",
+        "note": "💡 AI คำนวณ Future Value โดยอิงจากวินัยการออมจริงของคุณ"
+      },
+      {
+        "title": "ที่ปรึกษาการใช้จ่าย (Strategic Spending Advisor)",
+        "cmd": "ผมอยากซื้อ iPhone ตัวใหม่ราคา 45,000 บาท ถ้าถอนเงินจากพอร์ตไปซื้อ จะส่งผลต่อเป้าหมายเกษียณนานขึ้นกี่เดือน?",
+        "note": "💡 AI วิเคราะห์ Opportunity Cost เทียบกับการปล่อยให้เงินเติบโต"
+      },
+      {
+        "title": "ผู้ช่วยด้านภาษี (Tax & Document Assistant)",
+        "cmd": "ช่วยลิสต์รายการหุ้นที่ผมซื้อในปี 2025 เพื่อใช้ประกอบการยื่นภาษี และตรวจสอบว่ามีตัวไหนที่มีสิทธิลดหย่อนได้ (SSF/RMF/ThaiESG)",
+        "note": "💡 AI กรองข้อมูลจาก Transaction_History และจัดกลุ่มภาษีทันที"
+      },
+      {
+        "title": "เฝ้าระวังความเสี่ยง (Proactive Risk Monitoring)",
+        "cmd": "ช่วงนี้มีข่าวเรื่องวิกฤตอสังหาฯ ในจีน พอร์ตของผมมีตัวไหนที่มีความเสี่ยงทางอ้อมไหม? ช่วยเสนอแผนสำรองด้วย",
+        "note": "💡 AI ตรวจสอบไส้ในของกองทุน/หุ้น (ผ่าน Search) แล้วเทียบกับพอร์ตเพื่อเตือนภัย"
+      },
+      {
+        "title": "โค้ชพฤติกรรมการเงิน (Financial Behavioral Coach)",
+        "cmd": "ย้อนดูประวัติการออม 6 เดือนล่าสุดหน่อย มีเดือนไหนที่ผมหย่อนวินัยบ้าง? ช่วยวิเคราะห์หาสาเหตุจาก Notes ที่บันทึกไว้",
+        "note": "💡 AI วิเคราะห์ Pattern การออมและทำ Self-Reflection ให้คุณ"
+      }
+    ]
+  },
+
+  "en": {
+    "activation_cmd": "Activate PiggyWise: Read README and Settings to take on your personal assistant role, then report readiness according to the Live Data Protocol immediately.",
+    "thank_you": "Welcome to PiggyWise.\nYour personal finance system starts now.",
+    "closing_text": "Your money works. You live.\nLess time managing. More time living.",
+    "strings": {
+      "guide_title": "Setup Guide",
+      "section_overview": "Overview",
+      "overview_body": "PiggyWise {product_name} is your AI-powered personal portfolio management system — a Google Sheet that acts as your personal finance coach. This guide will walk you through setup in 6 steps.",
+      "tab_color_system": "Tab Color System:",
+      "tab_color_bullets": [
+        "🔴 Red — System tabs, pre-configured. Read and follow instructions only",
+        "🟢 Green — Your tabs. Fill in data and customise to your goals",
+        "🟡 Yellow — Display only. Auto-calculated, no input needed"
+      ],
+      "tab_all_tabs": "All tabs in the system:",
+      "tab_headers": ["Tab", "Color", "What you need to do"],
+      "ongoing_headers": ["When", "What to do"],
+      "product_card_label": "Your Product",
+      "product_card_link_label": "Your Google Sheet link",
+      "product_card_instruction": "⚠️  Click the link → Select 'Make a copy' → Save to your Google Drive",
+      "step1_title": "Step 1: Get Your Template",
+      "step1_body": "Click the link in the 'Your Product' section above, then select 'Make a copy' to save the Google Sheet to your Google Drive.",
+      "step1_note": "Make a copy only — do not edit the original file directly",
+      "step2_title": "Step 2: Settings",
+      "step2_body": "One-time system setup. Open the Settings tab and fill in the following:",
+      "step2_bullets": ["Name / Investor profile", "Starting capital", "Monthly investment amount", "Investment timeline / retirement goal", "Acceptable risk level"],
+      "step3_title": "Step 3: DCA_Plan",
+      "step3_body": "Set up your monthly buying plan. Open the DCA_Plan tab and fill in:",
+      "step3_bullets": ["Monthly DCA amount for each asset", "Adjust the % allocation to fit your situation"],
+      "step3_note": "Revisit and adjust anytime as goals or circumstances change",
+      "step4_title": "Step 4: Safety_Fortress",
+      "step4_body": "Set up your protection layer. Open the Safety_Fortress tab and fill in:",
+      "step4_bullets": ["Emergency fund threshold", "Automatic Rebalance conditions", "Crisis Event rules (e.g. buy the dip when market drops more than X%)"],
+      "step4_note": "Review occasionally — not necessary every month",
+      "step5_title": "Step 5: Activate Your AI Finance Coach",
+      "step5_numbered": ["Open your AI of choice (ChatGPT, Claude, Gemini — all work)", "Upload your Google Sheet file to the AI", "Send this activation command:"],
+      "step5_body": "The AI will read the README and Settings tabs, take on the role of your personal finance coach, and confirm readiness.",
+      "step6_title": "Step 6: Set Up Monthly Reminders",
+      "step6_body": "Have your AI coach set up reminders for you. There are 2 methods:",
+      "step6_method1_heading": "Method 1: Specify exact date and time (recommended)",
+      "step6_method1_cmd": "Please set a reminder for me: [reminder title] on [specific date] at [specific time]",
+      "step6_example_label": "Example:",
+      "step6_method1_example": "Please set a reminder: 'Do DCA for {product_name} portfolio' on the 25th of every month at 10:00 AM",
+      "step6_method2_heading": "Method 2: Smart Reminder from your DCA plan",
+      "step6_method2_body": "Since you already have a DCA plan in your sheet, you can use this command:",
+      "step6_method2_cmd": "Please set reminders based on my 'DCA_Plan' in the sheet, with 1-day advance notice before each due date",
+      "ongoing_title": "Ongoing Use",
+      "troubles_title": "🔧 Basic Troubleshooting",
+      "tests_title": "🚀 System Test Commands (Installation & Test Commands)",
+      "tests_body": "Use these commands to verify the system is working correctly after uploading your file.",
+      "advisories_title": "🧠 Wealth Advisory Commands",
+      "advisories_body": "Examples of in-depth AI coach consultations.",
+      "beyond_title": "🌟 What PiggyWise Can Do Beyond Portfolio Management",
+      "crisis_title": "🛡️ Crisis & Risk Management",
+      "crisis_body1": "Your AI isn't just a bookkeeper — it's a \"wealth guardian\" ready to act in times of crisis",
+      "crisis_body2": "Scenario: When the market is in crisis or certain assets in your portfolio carry elevated risk",
+      "crisis_cmd": "Please run a Stress Test on my portfolio: if an economic recession hits and stocks drop 30%, how much will my portfolio be affected? And according to Strategies, what is our contingency plan?",
+      "lifestyle_title": "💎 Connecting Your Portfolio to Life (Lifestyle & Goal Integration)",
+      "lifestyle_body1": "Turn \"numbers in a spreadsheet\" into \"real-life happiness\"",
+      "lifestyle_body2": "Scenario: Making a big purchase decision, or adjusting your plan to retire earlier",
+      "lifestyle_cmd": "I'm planning an overseas trip with a budget of 100,000 Baht. If I withdraw from my portfolio for this trip, how many months will it delay my retirement goal? Or is there a way to save separately without affecting the main portfolio?",
+      "exec_title": "📅 Progress Reports & Milestone Celebrations (Executive Summaries)",
+      "exec_body1": "\"Investment psychology\" and \"special moments\" to make long-term investing enjoyable",
+      "exec_body2": "Scenario: Annual performance review, or celebrating when your balance hits a target",
+      "exec_cmd": "Please create an annual 'Executive Summary' report for me: summarise returns by asset class, cumulative savings discipline, and announce the Milestones achieved this year — with 3 recommendations for next year"
+    },
+    "tabs": [
+      ["Settings",            "🔴 Red",    "Fill in once during initial setup"],
+      ["Strategies",          "🔴 Red",    "Read only — your product's investment strategy"],
+      ["README",              "🔴 Red",    "Load into AI to activate your Finance Coach"],
+      ["DCA_Plan",            "🟢 Green",  "Set up at the start, adjustable anytime"],
+      ["Safety_Fortress",     "🟢 Green",  "Set up at the start, review occasionally"],
+      ["Transaction_History", "🟢 Green",  "Update every time you trade"],
+      ["Portfolio_Summary",   "🟡 Yellow", "Auto-calculated — view your portfolio overview here"]
+    ],
+    "ongoing": [
+      ["Every trade",               "Record in Transaction_History"],
+      ["Monthly",                   "15–30 min check-in — view Portfolio_Summary, consult AI coach"],
+      ["Quarterly / as needed",     "Review DCA_Plan if goals change"],
+      ["Occasionally",              "Review Safety_Fortress"]
+    ],
+    "troubles": [
+      {
+        "title": "AI Forgets Context or File",
+        "desc": "This happens when starting a new chat. No need to reconfigure everything — just do this:",
+        "steps": ["Open a new chat with AI", "Upload your Google Sheet file again", "Send the activation command again:"],
+        "cmd": "{activation_cmd}"
+      },
+      {
+        "title": "AI Uses Outdated Data",
+        "desc": "If AI references numbers that don't match the current state, use this command:",
+        "steps": [],
+        "cmd": "Please reload the data from the file and report the current figures again"
+      },
+      {
+        "title": "AI Makes Up Numbers Not in the Sheet",
+        "desc": "Ask AI where the data came from. If it can't answer, re-upload the file:",
+        "steps": [],
+        "cmd": "Which tab in the file does this data come from?"
+      },
+      {
+        "title": "AI Goes Out of Role",
+        "desc": "Send the activation command again to restore the role — no need to re-upload the file",
+        "steps": [],
+        "cmd": null
+      },
+      {
+        "title": "AI Gives Generic Advice Instead of Personalised",
+        "desc": "Remind AI to reference your sheet data only:",
+        "steps": [],
+        "cmd": "Please reference only data from my Settings and DCA_Plan, not generic advice"
+      },
+      {
+        "title": "Reminder Not Created in Google Calendar",
+        "desc": "Check if AI has permission to access Google Calendar. If not, set the reminder manually based on the date and time AI suggests",
+        "steps": [],
+        "cmd": null
+      },
+      {
+        "title": "Accidentally Edited a Red Tab (System)",
+        "desc": "Red tabs are pre-configured and should not be edited. If accidentally edited, make a new copy from the product link and re-enter your data in the Green tabs (DCA_Plan, Safety_Fortress, Transaction_History)",
+        "steps": [],
+        "cmd": null
+      }
+    ],
+    "tests": [
+      {
+        "title": "System Activation Command",
+        "desc": "Use to start a new session so AI takes on the personal assistant role immediately",
+        "cmd": "{activation_cmd}",
+        "check": "✅ AI must greet you by name, correctly identify the portfolio name, and confirm it has loaded the latest data"
+      },
+      {
+        "title": "Accuracy Test (Integrity Test)",
+        "desc": "Send incomplete data to see whether AI will hallucinate numbers or ask for the missing information",
+        "cmd": "Please record today's purchase: I bought VOO shares for a total of 10,000 Baht",
+        "check": "✅ AI must NOT record immediately — it must flag and request the missing information (e.g. number of units or price per unit)"
+      },
+      {
+        "title": "Data Logic Test (Logic & Plan Test)",
+        "desc": "Check if AI can read and analyse the plan from the DCA_Plan tab",
+        "cmd": "What assets do I need to invest in for my DCA plan this month, and what is the total amount?",
+        "check": "✅ AI must correctly and completely summarise the items from the DCA_Plan tab"
+      },
+      {
+        "title": "Reminder System Test (Proactive Reminder)",
+        "desc": "Test cross-system reminder creation",
+        "cmd": "Please set a reminder: 'Check portfolio and Rebalance' on the 28th of every month at 10:00 AM",
+        "check": "✅ AI must set the reminder in Google Calendar/Tasks and confirm the date/time"
+      },
+      {
+        "title": "Premium Persona Test",
+        "desc": "Check tone of voice and Milestone encouragement",
+        "cmd": "Please summarise my portfolio overview — am I approaching my first Milestone target yet?",
+        "check": "✅ AI must show an enthusiastic tone, celebrate (if portfolio is growing), and address you by name"
+      }
+    ],
+    "advisories": [
+      {
+        "title": "Portfolio Risk Analysis & Rebalancing",
+        "desc": "Use when you feel the portfolio is becoming unbalanced",
+        "cmd": "Please analyse my current portfolio to see if the Asset Allocation still matches my goals in Settings. If it has drifted significantly, how should I Rebalance?",
+        "note": "💡 AI will read Portfolio_Summary, compare it to Settings, and recommend adjustments"
+      },
+      {
+        "title": "Savings Plan Consultation (Financial Planning)",
+        "desc": "Use when you have a windfall or want to adjust your DCA amount",
+        "cmd": "This month I have an extra lump sum of 20,000 Baht. Based on the strategy in Strategies and current market conditions, which asset do you recommend I put this extra money into?",
+        "note": "💡 AI will find underweight assets and check Strategies before giving recommendations"
+      },
+      {
+        "title": "Market Analysis & Psychology (Market Insight & Psychology)",
+        "desc": "Use when the market is volatile and you need an emotional check",
+        "cmd": "The [market name] market is down sharply right now and I'm feeling anxious. Please check my portfolio plan and reassure me according to the 'Celebration & Emotional Tone' rules in README",
+        "note": "💡 AI will use a gentle tone and bring up long-term goals to provide reassurance"
+      },
+      {
+        "title": "Tax & Yield Advice",
+        "desc": "Use for specialised financial queries",
+        "cmd": "From my {product_name} portfolio, how much dividend income can I expect this year? And how should I manage dividend taxes to maximise returns?",
+        "note": "💡 AI will research dividend data and explain dividend tax credits"
+      }
+    ],
+    "beyond": [
+      {
+        "title": "Financial Forecasting",
+        "cmd": "If I increase my DCA from 10,000 to 15,000 Baht per month, with an estimated 7% annual return, how different will my portfolio value be in 10 years?",
+        "note": "💡 AI calculates Future Value based on your actual savings discipline"
+      },
+      {
+        "title": "Strategic Spending Advisor",
+        "cmd": "I want to buy a new iPhone for 45,000 Baht. If I withdraw from my portfolio to pay for it, how many months longer will it take to reach my retirement goal?",
+        "note": "💡 AI analyses the Opportunity Cost versus letting your money grow"
+      },
+      {
+        "title": "Tax & Document Assistant",
+        "cmd": "Please list all stocks I bought in 2025 for my tax filing, and check which ones qualify for tax deductions (SSF/RMF/ThaiESG)",
+        "note": "💡 AI filters data from Transaction_History and groups by tax category instantly"
+      },
+      {
+        "title": "Proactive Risk Monitoring",
+        "cmd": "There's news about a property crisis in China. Are there any holdings in my portfolio with indirect exposure? Please also propose a contingency plan",
+        "note": "💡 AI inspects fund/stock holdings (via Search) and compares to your portfolio to flag risks"
+      },
+      {
+        "title": "Financial Behavioral Coach",
+        "cmd": "Please review my last 6 months of savings history. Were there any months where I lacked discipline? Help me analyse the causes from the Notes recorded",
+        "note": "💡 AI analyses your savings patterns and creates a Self-Reflection report for you"
+      }
+    ]
+  }
+}
