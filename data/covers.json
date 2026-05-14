@@ -1,0 +1,70 @@
+[
+  {
+    "key": "retire_smooth",
+    "motif": "retire",
+    "premium": false,
+    "en": {
+      "title": "Retire Smooth",
+      "sub": "PORTFOLIO TEMPLATE",
+      "tagline": "DCA  ·  Auto-Rebalance  ·  Goal Tracker",
+      "label": "CONSERVATIVE"
+    },
+    "th": {
+      "title": "เกษียณสบาย",
+      "sub": "แผนการลงทุนระยะยาว",
+      "tagline": "DCA อัตโนมัติ  ·  ติดตามเป้าเกษียณ",
+      "label": "CONSERVATIVE"
+    }
+  },
+  {
+    "key": "hybrid_wealth",
+    "motif": "hybrid",
+    "premium": false,
+    "en": {
+      "title": "Hybrid Wealth",
+      "sub": "PORTFOLIO TEMPLATE",
+      "tagline": "Growth  ·  Dividend Income  ·  Strong Fortress",
+      "label": "HYBRID"
+    },
+    "th": {
+      "title": "ไฮบริด เวลธ์",
+      "sub": "พอร์ตโฟลิโอผสมผสาน",
+      "tagline": "เติบโต  ·  รายได้ปันผล  ·  ป้อมปราการ",
+      "label": "HYBRID"
+    }
+  },
+  {
+    "key": "aggressive_go",
+    "motif": "aggressive",
+    "premium": false,
+    "en": {
+      "title": "Aggressive Go",
+      "sub": "PORTFOLIO TEMPLATE",
+      "tagline": "High Growth  ·  Maximum Returns",
+      "label": "AGGRESSIVE"
+    },
+    "th": {
+      "title": "สายซิ่ง",
+      "sub": "พอร์ตโฟลิโอเชิงรุก",
+      "tagline": "เน้นผลตอบแทนสูงสุด  ·  ยอมรับความเสี่ยง",
+      "label": "AGGRESSIVE"
+    }
+  },
+  {
+    "key": "premium_setup",
+    "motif": "premium",
+    "premium": true,
+    "en": {
+      "title": "Premium Setup",
+      "sub": "DONE-FOR-YOU SERVICE",
+      "tagline": "We configure your portfolio — you invest",
+      "label": "PREMIUM"
+    },
+    "th": {
+      "title": "บริการพรีเมียม",
+      "sub": "ตั้งค่าพอร์ตให้ครบ",
+      "tagline": "ทีมงานตั้งค่าให้  ·  คุณแค่ลงทุน",
+      "label": "PREMIUM"
+    }
+  }
+]

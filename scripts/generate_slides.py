@@ -14,6 +14,7 @@ Total: 20 images
 """
 
 import os
+import json
 import math
 from PIL import Image, ImageDraw, ImageFont
 
@@ -153,108 +154,11 @@ def draw_feature_bullet(draw, x, y, text, is_thai=False):
     else:
         draw_tracked(draw, tx, y + 1, text, fnt(F_AVENIR_HEAVY, 24), WHITE, tracking=1)
 
-SLIDE1_PRODUCTS = [
-    {
-        "key": "retire_smooth", "premium": False,
-        "en": {
-            "title": "Retire Smooth",
-            "sub": "PORTFOLIO TEMPLATE",
-            "label": "CONSERVATIVE",
-            "features": [
-                "Monthly DCA auto-schedule",
-                "Auto-rebalance calculator",
-                "Retirement goal tracker",
-                "Retirement planning instructions",
-            ],
-        },
-        "th": {
-            "title": "เกษียณสบาย",
-            "sub": "แผนการลงทุนระยะยาว",
-            "label": "CONSERVATIVE",
-            "features": [
-                "ตารางซื้อ DCA รายเดือนอัตโนมัติ",
-                "เครื่องคำนวณปรับสมดุลพอร์ต",
-                "ติดตามเป้าหมายเกษียณ",
-                "คู่มือวางแผนเกษียณ",
-            ],
-        },
-    },
-    {
-        "key": "hybrid_wealth", "premium": False,
-        "en": {
-            "title": "Hybrid Wealth",
-            "sub": "PORTFOLIO TEMPLATE",
-            "label": "HYBRID",
-            "features": [
-                "Growth + Dividend Income split",
-                "Strong Fortress defensive layer",
-                "Monthly income tracker",
-                "Income & growth review instructions",
-            ],
-        },
-        "th": {
-            "title": "ไฮบริด เวลธ์",
-            "sub": "พอร์ตโฟลิโอผสมผสาน",
-            "label": "HYBRID",
-            "features": [
-                "แยกส่วนเติบโต + รายได้ปันผล",
-                "ชั้น Strong Fortress ป้องกันความเสี่ยง",
-                "ติดตามรายได้รายเดือน",
-                "คู่มือรีวิวรายได้และการเติบโต",
-            ],
-        },
-    },
-    {
-        "key": "aggressive_go", "premium": False,
-        "en": {
-            "title": "Aggressive Go",
-            "sub": "PORTFOLIO TEMPLATE",
-            "label": "AGGRESSIVE",
-            "features": [
-                "High-growth asset allocation",
-                "Maximum returns optimizer",
-                "Risk guardrails & alerts",
-                "Risk & returns analysis instructions",
-            ],
-        },
-        "th": {
-            "title": "สายซิ่ง",
-            "sub": "พอร์ตโฟลิโอเชิงรุก",
-            "label": "AGGRESSIVE",
-            "features": [
-                "จัดสรรสินทรัพย์เติบโตสูง",
-                "ออปติไมซ์ผลตอบแทนสูงสุด",
-                "ระบบเตือนความเสี่ยง",
-                "คู่มือวิเคราะห์ความเสี่ยง",
-            ],
-        },
-    },
-    {
-        "key": "premium_setup", "premium": True,
-        "en": {
-            "title": "Premium Setup",
-            "sub": "DONE-FOR-YOU SERVICE",
-            "label": "PREMIUM",
-            "features": [
-                "Custom setup by the PiggyWise team",
-                "Personalised allocation & configuration",
-                "Portfolio instructions, built for you",
-                "Setup documentation tailored to your goals",
-            ],
-        },
-        "th": {
-            "title": "บริการพรีเมียม",
-            "sub": "ตั้งค่าพอร์ตให้ครบ",
-            "label": "PREMIUM",
-            "features": [
-                "ทีม PiggyWise ตั้งค่าพอร์ตให้คุณ",
-                "จัดพอร์ตให้เฉพาะตัวคุณ",
-                "คู่มือการลงทุนที่สร้างมาเพื่อคุณ",
-                "เอกสารตั้งค่าที่ออกแบบตามเป้าหมายคุณ",
-            ],
-        },
-    },
-]
+_DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data")
+with open(os.path.join(_DATA_DIR, "slides.json"), encoding="utf-8") as _f:
+    _slides = json.load(_f)
+
+SLIDE1_PRODUCTS = _slides["slide1"]
 
 
 def render_slide1(product, lang):
@@ -337,25 +241,7 @@ def draw_section_header(draw, img, title_en, title_th, is_thai, y=80):
 
 
 # ── Slide 2: How It Works ────────────────────────────────────────────────────
-SLIDE2 = {
-    "key": "how_it_works",
-    "en": {
-        "title": "HOW IT WORKS",
-        "steps": [
-            ("01", "Get Your Template", "Download to your Google Drive. Ready in minutes."),
-            ("02", "Configure Your Portfolio", "Set your allocation, strategy and investment goals."),
-            ("03", "Monthly Check-In", "15–30 min routine. DCA, rebalance, review. Done."),
-        ],
-    },
-    "th": {
-        "title": "วิธีใช้งาน",
-        "steps": [
-            ("01", "รับ Template", "ดาวน์โหลดไปยัง Google Drive พร้อมใช้งานใน 5 นาที"),
-            ("02", "ตั้งค่าพอร์ตของคุณ", "กำหนดสัดส่วน กลยุทธ์ และเป้าหมายการลงทุน"),
-            ("03", "เช็คอินรายเดือน", "กิจวัตร 15–30 นาทีต่อเดือน DCA ปรับสมดุล รีวิว เสร็จ"),
-        ],
-    },
-}
+SLIDE2 = _slides["slide2"]
 
 def render_slide2(lang):
     data = SLIDE2[lang]
@@ -407,25 +293,7 @@ def render_slide2(lang):
 
 
 # ── Slide 3: Fits Your Life ──────────────────────────────────────────────────
-SLIDE3 = {
-    "key": "fits_your_life",
-    "en": {
-        "title": "FITS YOUR LIFE",
-        "points": [
-            ("Choose Your Broker", "Works with any broker or platform you already use."),
-            ("Set Once, Run Monthly", "No daily watching. Follow the monthly checklist. Done."),
-            ("Your Data, Your Drive", "All data stays in your own Google Drive. Private and secure."),
-        ],
-    },
-    "th": {
-        "title": "เข้ากับชีวิตคุณ",
-        "points": [
-            ("เลือก Broker เองได้", "ใช้ได้กับ broker หรือแพลตฟอร์มที่คุณใช้อยู่แล้ว"),
-            ("ตั้งครั้งเดียว รันรายเดือน", "ไม่ต้องดูทุกวัน ทำตาม checklist รายเดือน แค่นั้นเอง"),
-            ("ข้อมูลคุณ Google Drive คุณ", "ข้อมูลทั้งหมดอยู่ใน Google Drive ของคุณ ปลอดภัย ส่วนตัว"),
-        ],
-    },
-}
+SLIDE3 = _slides["slide3"]
 
 def render_slide3(lang):
     data = SLIDE3[lang]
@@ -471,35 +339,7 @@ def render_slide3(lang):
     print(f"  [shared] {out_path}")
 
 # ── Slide 4: AI Platform ─────────────────────────────────────────────────────
-SLIDE4 = {
-    "key": "ai_platform",
-    "en": {
-        "title": "YOUR FINANCE COACH",
-        "intro": "Use ChatGPT, Claude, Gemini — or any AI of your choice.",
-        "items": [
-            "Portfolio review & rebalance advice",
-            "Market outlook & risk analysis",
-            "Goal planning & retirement math",
-            "Behavioral coaching & discipline",
-            "Monthly check-in guided workflow",
-            "Your AI, your rules",
-            "Ask anything, anytime",
-        ],
-    },
-    "th": {
-        "title": "โค้ชการเงินส่วนตัว",
-        "intro": "ใช้กับ ChatGPT, Claude, Gemini — หรือ AI ที่คุณเลือกเอง",
-        "items": [
-            "รีวิวและปรับสมดุลพอร์ต",
-            "วิเคราะห์ตลาดและความเสี่ยง",
-            "วางแผนเป้าหมายและเกษียณ",
-            "โค้ชด้านจิตวิทยาการลงทุน",
-            "Workflow เช็คอินรายเดือน",
-            "เลือก AI เองได้อิสระ",
-            "ถามได้ทุกคำถาม ทุกเวลา",
-        ],
-    },
-}
+SLIDE4 = _slides["slide4"]
 
 def render_slide4(lang):
     data = SLIDE4[lang]
@@ -554,27 +394,7 @@ def render_slide4(lang):
 
 
 # ── Slide 5: Data Security ────────────────────────────────────────────────────
-SLIDE5 = {
-    "key": "data_security",
-    "en": {
-        "title": "YOUR DATA STAYS YOURS",
-        "subtitle": "No backend. No server. No account required.",
-        "points": [
-            ("100% Google Drive", "Stays in your Google Drive — we never see your data."),
-            ("No Account Needed", "No sign-up, no password, no app. Just a Google Sheet."),
-            ("Always Accessible", "Works on any device with Google Sheets. Offline supported."),
-        ],
-    },
-    "th": {
-        "title": "ข้อมูลคุณ ไม่ผ่านมือใคร",
-        "subtitle": "ไม่มีเซิร์ฟเวอร์ ไม่มีแบ็คเอนด์ ไม่ต้องสมัครสมาชิก",
-        "points": [
-            ("100% Google Drive", "อยู่ใน Google Drive ของคุณ — เราไม่เห็นข้อมูล"),
-            ("ไม่ต้องสมัครสมาชิก", "ไม่ต้อง sign-up ไม่ต้องรหัสผ่าน แค่ Google Sheet เดียว"),
-            ("เข้าถึงได้ทุกที่", "ใช้ได้ทุกอุปกรณ์ที่มี Google Sheets รองรับ offline"),
-        ],
-    },
-}
+SLIDE5 = _slides["slide5"]
 
 def render_slide5(lang):
     data = SLIDE5[lang]
@@ -622,27 +442,7 @@ def render_slide5(lang):
 
 
 # ── Slide 6: What You Receive ─────────────────────────────────────────────────
-SLIDE6 = {
-    "key": "what_you_receive",
-    "en": {
-        "title": "WHAT YOU RECEIVE",
-        "items": [
-            ("Google Sheets Template", "Pre-built portfolio tracker. Ready to use in minutes."),
-            ("AI Prompt Library", "Prompt templates for any AI — your personal finance coach."),
-            ("Setup Guide (PDF)", "Step-by-step configuration. No guesswork required."),
-            ("Monthly Checklist", "15–30 min monthly routine. Stay on track effortlessly."),
-        ],
-    },
-    "th": {
-        "title": "คุณจะได้รับอะไร",
-        "items": [
-            ("Google Sheets Template", "ตัวติดตามพอร์ตสำเร็จรูป พร้อมใช้งานใน 5 นาที"),
-            ("คลัง AI Prompt", "Prompt สำหรับทุก AI — โค้ชการเงินส่วนตัวของคุณ"),
-            ("คู่มือตั้งค่า (PDF)", "ขั้นตอนการตั้งค่าทีละขั้น ไม่ต้องเดาเอง"),
-            ("Checklist รายเดือน", "กิจวัตร 15–30 นาทีต่อเดือน ลงทุนได้อย่างมีวินัย"),
-        ],
-    },
-}
+SLIDE6 = _slides["slide6"]
 
 def render_slide6(lang):
     data = SLIDE6[lang]
@@ -695,25 +495,7 @@ def render_slide6(lang):
 
 
 # ── Slide 7: Who It's For ─────────────────────────────────────────────────────
-SLIDE7 = {
-    "key": "who_its_for",
-    "en": {
-        "title": "WHO THIS IS FOR",
-        "personas": [
-            ("THE PLANNER", "Structured goals, automated DCA, AI to stay on track."),
-            ("THE CURIOUS", "Learning to invest. The AI Prompt Library guides you step-by-step."),
-            ("THE BUSY PRO", "15–30 min/month. Your broker, your data, your control."),
-        ],
-    },
-    "th": {
-        "title": "เหมาะกับใคร",
-        "personas": [
-            ("นักวางแผน", "ระบบที่เป็นระเบียบ ตั้งเป้า DCA อัตโนมัติ ควบคุมแผนด้วย AI"),
-            ("มือใหม่อยากรู้", "กำลังเรียนรู้การลงทุน คลัง AI Prompt แนะนำทีละขั้นตอน"),
-            ("คนยุ่งไม่มีเวลา", "15–30 นาทีต่อเดือน Broker ของคุณ ข้อมูลของคุณ"),
-        ],
-    },
-}
+SLIDE7 = _slides["slide7"]
 
 def render_slide7(lang):
     data = SLIDE7[lang]

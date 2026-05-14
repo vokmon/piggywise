@@ -10,6 +10,7 @@ Background images:
 """
 
 import os
+import json
 import math
 from PIL import Image, ImageDraw, ImageFont
 
@@ -181,36 +182,9 @@ def draw_bottom_text(draw):
     draw_tracked(draw, 44, H-50, "YOUR PERSONAL AI FINANCE COACH", f2, OFFWHITE, tracking=2)
 
 # ── Products ────────────────────────────────────────────────────────────────
-PRODUCTS = [
-    {
-        "key": "retire_smooth", "motif": "retire", "premium": False,
-        "en": {"title":"Retire Smooth","sub":"PORTFOLIO TEMPLATE",
-               "tagline":"DCA  ·  Auto-Rebalance  ·  Goal Tracker","label":"CONSERVATIVE"},
-        "th": {"title":"เกษียณสบาย","sub":"แผนการลงทุนระยะยาว",
-               "tagline":"DCA อัตโนมัติ  ·  ติดตามเป้าเกษียณ","label":"CONSERVATIVE"},
-    },
-    {
-        "key": "hybrid_wealth", "motif": "hybrid", "premium": False,
-        "en": {"title":"Hybrid Wealth","sub":"PORTFOLIO TEMPLATE",
-               "tagline":"Growth  ·  Dividend Income  ·  Strong Fortress","label":"HYBRID"},
-        "th": {"title":"ไฮบริด เวลธ์","sub":"พอร์ตโฟลิโอผสมผสาน",
-               "tagline":"เติบโต  ·  รายได้ปันผล  ·  ป้อมปราการ","label":"HYBRID"},
-    },
-    {
-        "key": "aggressive_go", "motif": "aggressive", "premium": False,
-        "en": {"title":"Aggressive Go","sub":"PORTFOLIO TEMPLATE",
-               "tagline":"High Growth  ·  Maximum Returns","label":"AGGRESSIVE"},
-        "th": {"title":"สายซิ่ง","sub":"พอร์ตโฟลิโอเชิงรุก",
-               "tagline":"เน้นผลตอบแทนสูงสุด  ·  ยอมรับความเสี่ยง","label":"AGGRESSIVE"},
-    },
-    {
-        "key": "premium_setup", "motif": "premium", "premium": True,
-        "en": {"title":"Premium Setup","sub":"DONE-FOR-YOU SERVICE",
-               "tagline":"We configure your portfolio — you invest","label":"PREMIUM"},
-        "th": {"title":"บริการพรีเมียม","sub":"ตั้งค่าพอร์ตให้ครบ",
-               "tagline":"ทีมงานตั้งค่าให้  ·  คุณแค่ลงทุน","label":"PREMIUM"},
-    },
-]
+_DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data")
+with open(os.path.join(_DATA_DIR, "covers.json"), encoding="utf-8") as _f:
+    PRODUCTS = json.load(_f)
 
 # ── Render ───────────────────────────────────────────────────────────────────
 def render_cover(product, lang):
