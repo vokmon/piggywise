@@ -34,6 +34,17 @@ docs/
 
 ---
 
+## สร้างภาพใหม่
+
+1. Generate images with codex:
+   ```bash
+   echo "<prompt>" | codex exec
+   ```
+2. Move output images to the appropriate folder under `images/`
+3. Delete the generated images from the codex output location
+
+---
+
 ## Brand
 
 | องค์ประกอบ | ค่า |
