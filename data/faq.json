@@ -1,0 +1,430 @@
+{
+  "version": "2026.1",
+  "page_title": {
+    "th": "คำถามที่พบบ่อย",
+    "en": "Frequently Asked Questions"
+  },
+  "page_subtitle": {
+    "th": "รวมคำถามและคำตอบเกี่ยวกับ PiggyWise Financial Ecosystem",
+    "en": "Common questions about the PiggyWise Financial Ecosystem"
+  },
+  "sections": [
+    {
+      "id": "general",
+      "th": {
+        "heading": "ทั่วไปและผลิตภัณฑ์",
+        "questions": [
+          {
+            "id": "q1",
+            "question": "PiggyWise คืออะไร และต่างจากแอปบริหารเงินทั่วไปอย่างไร?",
+            "answer": "PiggyWise คือระบบบริหารความมั่งคั่งส่วนบุคคล (Personal Wealth OS) ที่รวมพลัง Google Sheets เข้ากับ AI Agent ต่างจากแอปทั่วไปตรงที่คุณเป็นเจ้าของข้อมูล 100% ปรับแต่งได้เต็มที่ และมี AI ที่รู้จักบริบทการเงินของคุณจริงๆ คอยให้คำปรึกษาแบบ 1:1"
+          },
+          {
+            "id": "q2",
+            "question": "ผลิตภัณฑ์ทั้ง 3 ตัว (Retire Smooth, Hybrid Wealth, Aggressive Go) ต่างกันอย่างไร?",
+            "answer": "1. Retire Smooth: เน้นความมั่นคง ปันผล และการรักษาเงินต้น 2. Hybrid Wealth: สมดุลระหว่างการเติบโตและการป้องกันความเสี่ยง 3. Aggressive Go: เน้นการเติบโตสูงในสินทรัพย์ที่มีความเสี่ยงสูง เลือกตามเป้าหมายและระดับความเสี่ยงที่รับได้"
+          },
+          {
+            "id": "q3",
+            "question": "ระบบนี้เหมาะกับใครมากที่สุด?",
+            "answer": "เหมาะกับนักลงทุนที่ต้องการระบบยืดหยุ่นแต่ไม่อยากจดบันทึกแบบเดิมๆ, ผู้ที่ให้ความสำคัญกับความเป็นส่วนตัวของข้อมูล และผู้ที่อยากมีที่ปรึกษาการเงินส่วนตัวที่พร้อมให้คำแนะนำตลอด 24 ชั่วโมง"
+          },
+          {
+            "id": "q4",
+            "question": "Premium Setup ต่างจากผลิตภัณฑ์ทั้ง 3 ตัวอย่างไร?",
+            "answer": "Premium Setup คือบริการ Done-for-You ที่ทีม PiggyWise ตั้งค่าและปรับแต่งระบบทั้งหมดให้คุณโดยเฉพาะ ตั้งแต่การกำหนด Asset Allocation ไปจนถึงการตั้งค่า Safety_Fortress ตามสถานการณ์จริง เหมาะสำหรับผู้ที่ต้องการเริ่มต้นแบบไม่ต้องลงมือเอง"
+          },
+          {
+            "id": "q5",
+            "question": "ต้องจ่ายรายเดือนหรือจ่ายครั้งเดียว?",
+            "answer": "จ่ายครั้งเดียว (One-Time Payment) ไม่มีค่าสมาชิกรายเดือนหรือค่าต่ออายุ คุณจะได้รับ Template และสิทธิ์ใช้งานตลอดชีพ"
+          }
+        ]
+      },
+      "en": {
+        "heading": "General & Products",
+        "questions": [
+          {
+            "id": "q1",
+            "question": "What is PiggyWise, and how is it different from regular money management apps?",
+            "answer": "PiggyWise is a Personal Wealth OS that combines Google Sheets with AI Agents. Unlike typical apps, you own 100% of your data, fully customize the system, and have an AI that truly understands your financial context — available for 1:1 consultation anytime."
+          },
+          {
+            "id": "q2",
+            "question": "How are the 3 products (Retire Smooth, Hybrid Wealth, Aggressive Go) different?",
+            "answer": "1. Retire Smooth: Focuses on stability, dividends, and capital preservation. 2. Hybrid Wealth: Balances growth and risk management. 3. Aggressive Go: Targets high growth in higher-risk assets. Choose based on your goals and risk tolerance."
+          },
+          {
+            "id": "q3",
+            "question": "Who is this system best suited for?",
+            "answer": "Ideal for investors who want a flexible system without old-school manual tracking, those who value data privacy, and anyone who wants a personal finance advisor available 24/7."
+          },
+          {
+            "id": "q4",
+            "question": "How is Premium Setup different from the 3 products?",
+            "answer": "Premium Setup is a Done-for-You service where the PiggyWise team personally configures and customizes the entire system for you — from Asset Allocation to Safety_Fortress setup based on your real situation. Best for those who prefer a hands-off start."
+          },
+          {
+            "id": "q5",
+            "question": "Is it a monthly payment or a one-time fee?",
+            "answer": "One-time payment. No monthly subscription or renewal fees. You receive the Template and lifetime usage rights."
+          }
+        ]
+      }
+    },
+    {
+      "id": "getting_started",
+      "th": {
+        "heading": "การเริ่มต้นใช้งาน",
+        "questions": [
+          {
+            "id": "q6",
+            "question": "หลังจากซื้อแล้วจะได้รับอะไรบ้าง?",
+            "answer": "คุณจะได้รับ 4 สิ่ง: 1. Google Sheets Template พร้อมใช้งาน 2. AI Prompt Library สำหรับเปิดใช้งาน Finance Coach 3. Setup Guide (PDF) คู่มือทีละขั้นตอน 4. Monthly Checklist สำหรับเช็คอินรายเดือน"
+          },
+          {
+            "id": "q7",
+            "question": "ตั้งค่าครั้งแรกใช้เวลานานแค่ไหน?",
+            "answer": "ประมาณ 20–30 นาที ครอบคลุมการทำสำเนา Template, กรอกข้อมูลใน Settings, DCA_Plan และ Safety_Fortress จากนั้นระบบพร้อมใช้งานทันที"
+          },
+          {
+            "id": "q8",
+            "question": "ต้องมีความรู้ด้านการลงทุนมาก่อนไหม?",
+            "answer": "ไม่จำเป็น ระบบถูกออกแบบให้ผู้เริ่มต้นใช้งานได้ มี Setup Guide และ AI Coach คอยแนะนำทุกขั้นตอน แต่หากมีพื้นฐานมาก่อน จะสามารถใช้ฟีเจอร์ขั้นสูงได้เต็มประสิทธิภาพยิ่งขึ้น"
+          },
+          {
+            "id": "q9",
+            "question": "ต้องติดตั้งโปรแกรมอะไรเพิ่มเติมไหม?",
+            "answer": "ไม่จำเป็น ใช้งานผ่าน Google Sheets บน Browser หรือแอปมือถือได้เลย ร่วมกับ AI ที่คุณใช้อยู่แล้ว ไม่มีการติดตั้ง ไม่มี Account ที่ต้องสมัคร"
+          }
+        ]
+      },
+      "en": {
+        "heading": "Getting Started",
+        "questions": [
+          {
+            "id": "q6",
+            "question": "What do I get after purchasing?",
+            "answer": "You receive 4 things: 1. A ready-to-use Google Sheets Template. 2. An AI Prompt Library to activate your Finance Coach. 3. A Setup Guide with step-by-step instructions. 4. A Monthly Checklist for regular check-ins."
+          },
+          {
+            "id": "q7",
+            "question": "How long does the initial setup take?",
+            "answer": "About 20–30 minutes, covering copying the Template and filling in Settings, DCA_Plan, and Safety_Fortress. The system is ready to use immediately after."
+          },
+          {
+            "id": "q8",
+            "question": "Do I need prior investment knowledge?",
+            "answer": "No. The system is designed for beginners, with a Setup Guide and AI Coach guiding every step. Prior knowledge lets you use advanced features more effectively, but it's not required."
+          },
+          {
+            "id": "q9",
+            "question": "Do I need to install any extra software?",
+            "answer": "No. Works directly through Google Sheets in your browser or mobile app alongside any AI you already use. No installation. No new accounts required."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ai_technology",
+      "th": {
+        "heading": "AI และเทคโนโลยี",
+        "questions": [
+          {
+            "id": "q10",
+            "question": "ต้องใช้ AI ตัวไหนในการรันระบบ PiggyWise?",
+            "answer": "รองรับ AI ชั้นนำทุกตัว เช่น ChatGPT (GPT-4o), Claude 3.5 หรือ Gemini 1.5 Pro เพียงแค่อัปโหลดไฟล์ของคุณเข้าสู่แชทและใช้คำสั่ง Activate ตามที่ระบุใน README"
+          },
+          {
+            "id": "q11",
+            "question": "AI ตัวไหนให้ผลลัพธ์ดีที่สุดกับ PiggyWise?",
+            "answer": "ทุก AI ทำงานได้ดี แต่หากต้องการผลลัพธ์ดีที่สุด แนะนำ Claude 3.5 Sonnet หรือ GPT-4o เนื่องจากวิเคราะห์ข้อมูลตาราง (Spreadsheet) ได้แม่นยำกว่า และรองรับการอัปโหลดไฟล์ขนาดใหญ่"
+          },
+          {
+            "id": "q12",
+            "question": "เมื่อเริ่มแชทใหม่ต้องทำอะไรบ้าง?",
+            "answer": "AI จะลืม Context เดิมเมื่อเริ่มแชทใหม่ เพียงแค่ 1. อัปโหลดไฟล์ Google Sheet ล่าสุด 2. ส่งคำสั่ง Activate ที่ระบุใน README เท่านี้ AI จะกลับมาเป็น Finance Coach ส่วนตัวทันที ไม่ต้องตั้งค่าใหม่ทั้งหมด"
+          },
+          {
+            "id": "q13",
+            "question": "ข้อมูลการเงินของผมจะปลอดภัยหรือไม่?",
+            "answer": "ปลอดภัยสูงสุด ข้อมูลทั้งหมดเก็บบน Google Drive ส่วนตัวของคุณ ไม่มีการเชื่อมต่อ API กับเซิร์ฟเวอร์ภายนอก AI เข้าถึงข้อมูลได้ก็ต่อเมื่อคุณอัปโหลดไฟล์ให้ในแต่ละเซสชั่นเท่านั้น"
+          },
+          {
+            "id": "q14",
+            "question": "ทำไมต้องใช้รูปแบบ Tab-Separated Values (TSV) ในการบันทึกข้อมูล?",
+            "answer": "เพื่อให้คุณ Copy ข้อมูลจากกล่องข้อความของ AI และ Paste ลง Google Sheets ได้ทันที ข้อมูลจะแยกคอลัมน์ให้อัตโนมัติ แม่นยำ และเร็วกว่าการพิมพ์ทีละช่อง"
+          }
+        ]
+      },
+      "en": {
+        "heading": "AI & Technology",
+        "questions": [
+          {
+            "id": "q10",
+            "question": "Which AI do I need to run PiggyWise?",
+            "answer": "Supports all major AI platforms — ChatGPT (GPT-4o), Claude 3.5, or Gemini 1.5 Pro. Just upload your file into a chat and use the Activate command as specified in the README."
+          },
+          {
+            "id": "q11",
+            "question": "Which AI works best with PiggyWise?",
+            "answer": "All work well, but for best results we recommend Claude 3.5 Sonnet or GPT-4o — they analyze spreadsheet data more accurately and handle large file uploads better."
+          },
+          {
+            "id": "q12",
+            "question": "What do I do when I start a new chat session?",
+            "answer": "AI loses context when you start a new chat. Simply: 1. Upload your latest Google Sheet file. 2. Send the Activate command from the README. Your personal Finance Coach is back instantly — no need to reconfigure everything."
+          },
+          {
+            "id": "q13",
+            "question": "Is my financial data safe?",
+            "answer": "Completely. All data is stored on your private Google Drive — no API connections to external servers. AI only accesses your data when you upload the file in each session."
+          },
+          {
+            "id": "q14",
+            "question": "Why use Tab-Separated Values (TSV) format for recording data?",
+            "answer": "So you can copy data from the AI's chat output and paste directly into Google Sheets. Columns are separated automatically — accurate and faster than typing cell by cell."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ongoing_use",
+      "th": {
+        "heading": "การใช้งานต่อเนื่อง",
+        "questions": [
+          {
+            "id": "q15",
+            "question": "ต้องใช้เวลาเท่าไหร่ต่อเดือนในการจัดการพอร์ต?",
+            "answer": "เพียง 15–30 นาทีต่อเดือน สำหรับการเช็คอิน ดูภาพรวมพอร์ต และปรึกษา AI Coach นอกจากนี้จะใช้เวลาเพิ่มเล็กน้อยในการบันทึกรายการซื้อขายทุกครั้งที่ทำธุรกรรม"
+          },
+          {
+            "id": "q16",
+            "question": "ต้องอัปโหลดไฟล์ให้ AI ทุกครั้งที่ใช้งานไหม?",
+            "answer": "ใช่ เพราะข้อมูลเก็บบน Google Drive ของคุณ ไม่ใช่บนเซิร์ฟเวอร์ของ AI การอัปโหลดทุกครั้งคือการรักษาความเป็นส่วนตัวของข้อมูลคุณ ใช้เวลาไม่กี่วินาที"
+          },
+          {
+            "id": "q17",
+            "question": "สามารถใช้ PiggyWise บนมือถือได้ไหม?",
+            "answer": "ได้ Google Sheets รองรับทั้ง iOS และ Android คุณสามารถดูข้อมูลและบันทึกรายการบนมือถือได้ แต่แนะนำให้ใช้คอมพิวเตอร์สำหรับการตั้งค่าครั้งแรกและการปรึกษา AI Coach"
+          }
+        ]
+      },
+      "en": {
+        "heading": "Ongoing Use",
+        "questions": [
+          {
+            "id": "q15",
+            "question": "How much time per month does portfolio management take?",
+            "answer": "Just 15–30 minutes per month for check-ins, reviewing your portfolio overview, and consulting the AI Coach. Plus a few extra minutes to log transactions each time you trade."
+          },
+          {
+            "id": "q16",
+            "question": "Do I need to upload the file to AI every time I use it?",
+            "answer": "Yes, because your data is stored on your Google Drive, not on the AI's server. Uploading each time is what keeps your data private. It takes just a few seconds."
+          },
+          {
+            "id": "q17",
+            "question": "Can I use PiggyWise on mobile?",
+            "answer": "Yes. Google Sheets supports both iOS and Android. You can view data and log transactions on mobile, but we recommend using a computer for the initial setup and AI Coach consultations."
+          }
+        ]
+      }
+    },
+    {
+      "id": "strategic_advice",
+      "th": {
+        "heading": "คำแนะนำเชิงกลยุทธ์",
+        "questions": [
+          {
+            "id": "q18",
+            "question": "AI สามารถช่วยเรื่องการตัดสินใจซื้อของชิ้นใหญ่ได้จริงหรือ?",
+            "answer": "ได้จริง AI จะคำนวณ 'ค่าเสียโอกาส' (Opportunity Cost) ว่าเงินที่จะนำไปซื้อของนั้น หากปล่อยไว้ในพอร์ตจะเติบโตเป็นเท่าไหร่ และจะทำให้เป้าหมายเกษียณช้าลงกี่เดือน"
+          },
+          {
+            "id": "q19",
+            "question": "หากตลาดเกิดวิกฤต (Market Crash) ระบบจะช่วยอย่างไร?",
+            "answer": "AI จะใช้ข้อมูลจาก Safety_Fortress ตรวจสอบแผนสำรองที่คุณวางไว้ และใช้โทนเสียงที่ช่วยลดความตระหนก พร้อมแนะนำขั้นตอนบริหารความเสี่ยงตามกลยุทธ์ของผลิตภัณฑ์ที่คุณเลือก"
+          },
+          {
+            "id": "q20",
+            "question": "PiggyWise รองรับสินทรัพย์ประเภทไหนบ้าง?",
+            "answer": "รองรับหลากหลาย ได้แก่ หุ้นไทยและต่างประเทศ, กองทุนรวม (LTF/RMF/SSF/ThaiESG), ETF, ตราสารหนี้, คริปโตเคอร์เรนซี และสินทรัพย์ทางเลือกอื่นๆ คุณปรับแต่งรายการใน DCA_Plan ตามพอร์ตจริงของคุณได้เลย"
+          },
+          {
+            "id": "q21",
+            "question": "PiggyWise สามารถทดแทนที่ปรึกษาการเงิน (Financial Advisor) ได้ไหม?",
+            "answer": "PiggyWise ทำหน้าที่เป็น Coach, Helper และ Assistant ด้านการเงินส่วนบุคคล ไม่ใช่การทดแทนที่ปรึกษาที่มีใบอนุญาต ระบบนี้ช่วยให้คุณตัดสินใจได้ดียิ่งขึ้นจากข้อมูลพอร์ตจริง แต่ไม่รับประกันผลลัพธ์ใดๆ ผลลัพธ์ขึ้นอยู่กับการตัดสินใจและวินัยของคุณเอง สำหรับการตัดสินใจทางการเงินครั้งใหญ่ ยังแนะนำให้ปรึกษาผู้เชี่ยวชาญที่มีใบอนุญาตควบคู่ด้วยเสมอ"
+          }
+        ]
+      },
+      "en": {
+        "heading": "Strategic Advice",
+        "questions": [
+          {
+            "id": "q18",
+            "question": "Can AI really help with major purchasing decisions?",
+            "answer": "Absolutely. AI calculates the Opportunity Cost — how much the money you're about to spend would have grown if kept in your portfolio, and how many months it would delay your retirement goal."
+          },
+          {
+            "id": "q19",
+            "question": "How does the system help if a market crash happens?",
+            "answer": "AI uses your Safety_Fortress data to review your contingency plan, responds with a calm and reassuring tone, and recommends risk management steps aligned with your chosen product's strategy."
+          },
+          {
+            "id": "q20",
+            "question": "What asset types does PiggyWise support?",
+            "answer": "A wide range, including Thai and international stocks, mutual funds (LTF/RMF/SSF/ThaiESG), ETFs, bonds, cryptocurrency, and other alternative assets. Customize your DCA_Plan to match your actual portfolio."
+          },
+          {
+            "id": "q21",
+            "question": "Can PiggyWise replace a Financial Advisor?",
+            "answer": "PiggyWise acts as a personal Finance Coach, Helper, and Assistant — not a replacement for a licensed financial advisor. It helps you make better-informed decisions based on your real portfolio data, but it does not guarantee any results or returns. Outcomes depend on your own decisions and discipline. For major financial decisions, we always recommend consulting a licensed professional alongside this system."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tax_compliance",
+      "th": {
+        "heading": "ภาษีและกฎหมาย",
+        "questions": [
+          {
+            "id": "q22",
+            "question": "AI สามารถช่วยวางแผนภาษีจากพอร์ตปัจจุบันได้อย่างไร?",
+            "answer": "AI จะวิเคราะห์รายการซื้อขายใน Transaction_History เพื่อแยกแยะส่วนที่นำไปลดหย่อนภาษีได้ (SSF, RMF, ThaiESG) และคำนวณปันผลสะสมเพื่อประเมินเครดิตภาษีปันผล ช่วยให้บริหารจัดการคืนภาษีได้อย่างมีประสิทธิภาพ"
+          },
+          {
+            "id": "q23",
+            "question": "หากมีการขายสินทรัพย์ที่มีกำไร AI จะเตือนเรื่องภาษีหรือไม่?",
+            "answer": "ใช่ AI จะช่วยคำนวณ Capital Gain, ภาษีหัก ณ ที่จ่าย หรือภาษีจากการขายคริปโต (ถ้ามีบันทึก) เพื่อให้คุณเตรียมงบประมาณสำหรับชำระภาษีล่วงหน้าและไม่เกิดปัญหาภายหลัง"
+          }
+        ]
+      },
+      "en": {
+        "heading": "Tax & Compliance",
+        "questions": [
+          {
+            "id": "q22",
+            "question": "How can AI help with tax planning from my current portfolio?",
+            "answer": "AI analyzes transactions in your Transaction_History to identify tax-deductible investments (SSF, RMF, ThaiESG) and calculates cumulative dividends to estimate dividend tax credits — helping you manage tax refunds more effectively."
+          },
+          {
+            "id": "q23",
+            "question": "Will AI warn me about taxes when I sell an asset at a profit?",
+            "answer": "Yes. AI helps calculate Capital Gains, withholding tax, or crypto tax (if recorded) so you can budget for upcoming tax payments in advance and avoid surprises later."
+          }
+        ]
+      }
+    },
+    {
+      "id": "advanced_planning",
+      "th": {
+        "heading": "การวางแผนการเงินขั้นสูง",
+        "questions": [
+          {
+            "id": "q24",
+            "question": "ระบบสามารถช่วยวางแผนเป้าหมายหลายอย่างพร้อมกันได้ไหม (เช่น เกษียณ + ซื้อบ้าน)?",
+            "answer": "ได้ คุณสามารถระบุเป้าหมายเพิ่มเติมใน Settings และ AI จะจัดลำดับความสำคัญพร้อมเสนอแนะการกระจายยอด DCA เพื่อให้ทุกเป้าหมายเดินหน้าไปพร้อมกัน"
+          },
+          {
+            "id": "q25",
+            "question": "AI จะแนะนำการปรับปรุงแผน (Portfolio Optimization) เมื่อไหร่?",
+            "answer": "AI จะเสนอการปรับปรุงใน 3 กรณี: 1. เมื่อสัดส่วนสินทรัพย์เบี่ยงเบนจากเป้าหมาย (Rebalancing) 2. เมื่อสถานการณ์ชีวิตเปลี่ยน เช่น รายได้เพิ่ม/ลด 3. เมื่อสภาวะตลาดเปลี่ยนอย่างมีนัยสำคัญ"
+          },
+          {
+            "id": "q26",
+            "question": "สามารถจำลองสถานการณ์ What-if ได้ไหม?",
+            "answer": "ได้ คุณสามารถถาม AI ว่า 'ถ้าผมเพิ่ม DCA เป็น 2 เท่า พอร์ตจะถึงเป้าหมายเร็วขึ้นกี่ปี?' หรือ 'ถ้าตลาดร่วง 40% ผมควรปรับพอร์ตอย่างไร?' AI จะคำนวณและแสดงผลตามข้อมูลจริงของคุณ"
+          }
+        ]
+      },
+      "en": {
+        "heading": "Advanced Financial Planning",
+        "questions": [
+          {
+            "id": "q24",
+            "question": "Can the system help plan multiple goals simultaneously (e.g., retirement + buying a house)?",
+            "answer": "Yes. You can specify additional goals in Settings and AI will prioritize them, suggesting how to distribute your DCA contributions so all goals progress in parallel."
+          },
+          {
+            "id": "q25",
+            "question": "When will AI recommend portfolio optimization?",
+            "answer": "AI will suggest adjustments in 3 situations: 1. When asset allocation drifts from targets (Rebalancing). 2. When your life situation changes, such as income increase or decrease. 3. When market conditions shift significantly."
+          },
+          {
+            "id": "q26",
+            "question": "Can I run What-if scenarios?",
+            "answer": "Yes. Ask AI things like 'If I double my DCA, how many years sooner will I reach my goal?' or 'If the market drops 40%, how should I adjust my portfolio?' AI calculates and responds based on your actual data."
+          }
+        ]
+      }
+    },
+    {
+      "id": "market_intelligence",
+      "th": {
+        "heading": "ข้อมูลตลาด",
+        "questions": [
+          {
+            "id": "q27",
+            "question": "AI วิเคราะห์ตลาดโดยอิงจากอะไร และมีความแม่นยำแค่ไหน?",
+            "answer": "AI ใช้ Live Search ติดตามข่าวเศรษฐกิจ งบการเงิน และดัชนีทางเทคนิค แล้วสรุปผลกระทบ 'เฉพาะ' กับสินทรัพย์ที่คุณถืออยู่จริง ทำให้คำแนะนำแม่นยำและตรงประเด็นกว่าบทวิเคราะห์ทั่วไป"
+          },
+          {
+            "id": "q28",
+            "question": "ถ้าตลาดผันผวนหนัก AI จะแนะนำให้ 'หยุด' หรือ 'ลุย' ต่อ?",
+            "answer": "AI จะอิงตาม Strategies และ Safety_Fortress ของพอร์ตคุณ หากเป็น Aggressive Go อาจแนะนำเป็นโอกาสซื้อ แต่หากเป็น Retire Smooth อาจแนะนำให้รอดูหรือขยับไปสินทรัพย์ปลอดภัย ตามกฎเกณฑ์ที่คุณวางไว้ตั้งแต่ต้น"
+          }
+        ]
+      },
+      "en": {
+        "heading": "Market Intelligence",
+        "questions": [
+          {
+            "id": "q27",
+            "question": "What does AI base its market analysis on, and how accurate is it?",
+            "answer": "AI uses Live Search to track economic news, financial reports, and technical indicators, then summarizes the impact specifically on assets you actually hold. This makes the advice more precise and relevant than general market analysis."
+          },
+          {
+            "id": "q28",
+            "question": "When the market is highly volatile, will AI recommend 'stop' or 'keep going'?",
+            "answer": "AI bases its advice on your portfolio's Strategies and Safety_Fortress. For Aggressive Go, it might see it as a buying opportunity; for Retire Smooth, it might suggest waiting or shifting to safer assets — all according to the rules you set from the start."
+          }
+        ]
+      }
+    },
+    {
+      "id": "support_updates",
+      "th": {
+        "heading": "การสนับสนุนและอัปเดต",
+        "questions": [
+          {
+            "id": "q29",
+            "question": "หาก Template มีปัญหาสามารถขอความช่วยเหลือได้อย่างไร?",
+            "answer": "ติดต่อทีม PiggyWise ผ่านช่องทางที่ระบุในเอกสารหลังซื้อ นอกจากนี้ Setup Guide ที่แนบมาครอบคลุมปัญหาที่พบบ่อยและวิธีแก้ไขอย่างละเอียด"
+          },
+          {
+            "id": "q30",
+            "question": "มีการอัปเดต Template ในอนาคตหรือไม่?",
+            "answer": "เมื่อมีการอัปเดตเวอร์ชั่นใหม่ที่มีนัยสำคัญ ลูกค้าเก่าจะได้รับแจ้งและสามารถอัปเกรดได้ Template ที่คุณถืออยู่ใช้งานได้ตลอดโดยไม่มีวันหมดอายุ"
+          }
+        ]
+      },
+      "en": {
+        "heading": "Support & Updates",
+        "questions": [
+          {
+            "id": "q29",
+            "question": "If there's a problem with the Template, how can I get help?",
+            "answer": "Contact the PiggyWise team through the channels specified in your post-purchase documents. The included Setup Guide also covers common issues and detailed troubleshooting steps."
+          },
+          {
+            "id": "q30",
+            "question": "Will the Template receive future updates?",
+            "answer": "When significant new versions are released, existing customers will be notified and can upgrade. The Template you currently own works indefinitely and never expires."
+          }
+        ]
+      }
+    }
+  ]
+}

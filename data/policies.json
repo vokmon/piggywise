@@ -1,0 +1,46 @@
+{
+  "version": "2026.1",
+  "page_title": {
+    "th": "นโยบาย",
+    "en": "Policies"
+  },
+  "page_subtitle": {
+    "th": "นโยบายการใช้งานและการให้บริการของ PiggyWise",
+    "en": "PiggyWise usage and service policies"
+  },
+  "sections": [
+    {
+      "id": "refund",
+      "th": {
+        "heading": "นโยบายการคืนเงิน",
+        "body": "ผลิตภัณฑ์ PiggyWise ทั้งหมดเป็นสินค้าดิจิทัลที่ส่งมอบทันทีหลังการชำระเงิน เนื่องจากลักษณะของสินค้าที่ไม่สามารถ \"คืน\" ได้เมื่อเข้าถึงแล้ว ทางทีมงาน PiggyWise จึงไม่มีนโยบายคืนเงินในทุกกรณี หากมีข้อสงสัยเกี่ยวกับผลิตภัณฑ์ก่อนการซื้อ กรุณาติดต่อทีมงานก่อนทำการชำระเงิน"
+      },
+      "en": {
+        "heading": "Refund Policy",
+        "body": "All PiggyWise products are digital goods delivered immediately upon payment. Due to the nature of digital products — which cannot be \"returned\" once accessed — all sales are final. No refunds are available under any circumstances. If you have questions about a product before purchasing, please contact the team prior to payment."
+      }
+    },
+    {
+      "id": "privacy",
+      "th": {
+        "heading": "นโยบายความเป็นส่วนตัว",
+        "body": "ข้อมูลการเงินทั้งหมดของคุณถูกจัดเก็บบน Google Drive ส่วนตัวของคุณเอง ทีม PiggyWise ไม่มีการเข้าถึง จัดเก็บ หรือรับรู้ข้อมูลทางการเงินใดๆ ของคุณ การที่ AI เข้าถึงข้อมูลได้เกิดขึ้นเฉพาะเมื่อคุณอัปโหลดไฟล์เข้าสู่เซสชั่นแชทด้วยตนเอง ทาง PiggyWise อาจเก็บข้อมูลการติดต่อ เช่น อีเมล เพื่อการให้บริการและการแจ้งอัปเดตเท่านั้น"
+      },
+      "en": {
+        "heading": "Privacy Policy",
+        "body": "All your financial data is stored on your own private Google Drive. The PiggyWise team does not access, store, or view any of your financial data. AI access to your data occurs only when you manually upload your file within a chat session. PiggyWise may retain contact information such as email solely for customer service and update notifications."
+      }
+    },
+    {
+      "id": "terms",
+      "th": {
+        "heading": "เงื่อนไขการใช้งาน",
+        "body": "เมื่อซื้อผลิตภัณฑ์ PiggyWise คุณได้รับสิทธิ์ใช้งานส่วนบุคคล (Personal Use License) สำหรับตัวคุณเองเท่านั้น ไม่อนุญาตให้แชร์ คัดลอก ขายต่อ หรือแจกจ่าย Template หรือเนื้อหาใดๆ ของ PiggyWise ให้กับบุคคลอื่นโดยไม่ได้รับอนุญาต การละเมิดสิทธิ์อาจนำไปสู่การยกเลิกสิทธิ์การใช้งานโดยไม่มีการคืนเงิน"
+      },
+      "en": {
+        "heading": "Terms of Use",
+        "body": "Upon purchasing a PiggyWise product, you are granted a Personal Use License for your own use only. Sharing, copying, reselling, or distributing any PiggyWise Template or content to third parties without authorization is strictly prohibited. Violation may result in termination of your usage rights without refund."
+      }
+    }
+  ]
+}

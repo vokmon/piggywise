@@ -1,0 +1,57 @@
+{
+  "version": "2026.1",
+  "page_title": {
+    "th": "ข้อควรทราบก่อนใช้งาน",
+    "en": "Disclaimer"
+  },
+  "page_subtitle": {
+    "th": "โปรดอ่านและทำความเข้าใจก่อนใช้งาน",
+    "en": "Please read and understand before use"
+  },
+  "sections": [
+    {
+      "id": "role",
+      "th": {
+        "heading": "บทบาทของ PiggyWise",
+        "body": "PiggyWise ทำหน้าที่เป็น Coach, Helper และ Assistant ด้านการเงินส่วนบุคคล เพื่อช่วยให้คุณบริหารจัดการและติดตามเป้าหมายทางการเงินได้อย่างมีระบบ ระบบนี้ไม่ใช่ที่ปรึกษาการเงิน (Financial Advisor) ที่มีใบอนุญาต และไม่ใช่บริการการลงทุนในรูปแบบใดๆ"
+      },
+      "en": {
+        "heading": "PiggyWise's Role",
+        "body": "PiggyWise acts as a personal Finance Coach, Helper, and Assistant — designed to help you manage and track your financial goals in a structured way. It is not a licensed Financial Advisor and does not constitute any form of investment service."
+      }
+    },
+    {
+      "id": "no_guarantee",
+      "th": {
+        "heading": "ไม่มีการรับประกันผลลัพธ์",
+        "body": "PiggyWise ไม่รับประกันผลลัพธ์ ผลตอบแทน หรือความสำเร็จทางการเงินใดๆ ทั้งสิ้น ผลลัพธ์ที่ได้ขึ้นอยู่กับการตัดสินใจ วินัย ความสม่ำเสมอ และสภาวะตลาดของแต่ละบุคคล ผู้ใช้งานทุกคนมีบริบทและสถานการณ์ทางการเงินที่แตกต่างกัน"
+      },
+      "en": {
+        "heading": "No Guarantee of Results",
+        "body": "PiggyWise does not guarantee any financial results, returns, or success. Outcomes depend on your own decisions, discipline, consistency, and market conditions. Every user has a unique financial context and situation."
+      }
+    },
+    {
+      "id": "investment_risk",
+      "th": {
+        "heading": "ความเสี่ยงจากการลงทุน",
+        "body": "การลงทุนทุกประเภทมีความเสี่ยง ผลการดำเนินงานในอดีตไม่ใช่สิ่งยืนยันผลในอนาคต คุณอาจได้รับเงินคืนน้อยกว่าที่ลงทุนไป โปรดศึกษาข้อมูลและทำความเข้าใจความเสี่ยงก่อนตัดสินใจลงทุนทุกครั้ง"
+      },
+      "en": {
+        "heading": "Investment Risk",
+        "body": "All investments carry risk. Past performance is not indicative of future results. You may receive back less than you invested. Please understand the risks involved before making any investment decision."
+      }
+    },
+    {
+      "id": "consult_professional",
+      "th": {
+        "heading": "ปรึกษาผู้เชี่ยวชาญ",
+        "body": "สำหรับการตัดสินใจทางการเงินที่มีนัยสำคัญ เช่น การวางแผนเกษียณ การลงทุนในสินทรัพย์มูลค่าสูง หรือการจัดการภาษีที่ซับซ้อน ควรปรึกษาผู้เชี่ยวชาญทางการเงินที่มีใบอนุญาตควบคู่เสมอ PiggyWise เป็นเพียงเครื่องมือช่วยเสริม ไม่ใช่ทดแทน"
+      },
+      "en": {
+        "heading": "Consult a Professional",
+        "body": "For significant financial decisions — such as retirement planning, high-value investments, or complex tax management — always consult a licensed financial professional. PiggyWise is a supporting tool, not a substitute for professional advice."
+      }
+    }
+  ]
+}
