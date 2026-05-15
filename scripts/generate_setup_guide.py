@@ -12,6 +12,7 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.enum.table import WD_TABLE_ALIGNMENT, WD_ALIGN_VERTICAL
 from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
+from docx.opc.constants import RELATIONSHIP_TYPE as RT
 
 BASE_DIR   = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT_DIR    = os.path.join(BASE_DIR, "docs", "instructions")
@@ -32,6 +33,27 @@ with open(os.path.join(BASE_DIR, "data", "setup_guide.json"), encoding="utf-8") 
     _data = json.load(_f)
 
 PRODUCTS = _data["products"]
+
+
+# ── Hyperlink helper ──────────────────────────────────────────────────────────
+
+def add_hyperlink(para, text, url, color="D4A017", size=11, bold=False):
+    r_id = para.part.relate_to(url, RT.HYPERLINK, is_external=True)
+    hl = OxmlElement("w:hyperlink")
+    hl.set(qn("r:id"), r_id)
+    run = OxmlElement("w:r")
+    rPr = OxmlElement("w:rPr")
+    c = OxmlElement("w:color"); c.set(qn("w:val"), color)
+    u = OxmlElement("w:u");     u.set(qn("w:val"), "single")
+    sz = OxmlElement("w:sz");   sz.set(qn("w:val"), str(int(size * 2)))
+    rPr.append(c); rPr.append(u); rPr.append(sz)
+    if bold:
+        b = OxmlElement("w:b"); rPr.append(b)
+    run.append(rPr)
+    t = OxmlElement("w:t"); t.text = text
+    run.append(t)
+    hl.append(run)
+    para._p.append(hl)
 
 
 # ── XML helpers ────────────────────────────────────────────────────────────────
@@ -567,6 +589,29 @@ def build_doc(product_name, short_name, product_key, product_link, lang, lang_da
     r.font.bold = True
     r.font.italic = True
     r.font.color.rgb = COLOR_GOLD
+
+    # ── Resources ──────────────────────────────────────────────────────────────
+    doc.add_paragraph().paragraph_format.space_after = Pt(24)
+    add_h1(doc, s["resources_title"])
+
+    def add_resource_row(label, url_th, url_en):
+        url = url_th if lang == "th" else url_en
+        p = doc.add_paragraph()
+        p.paragraph_format.space_after = Pt(6)
+        rl = p.add_run(f"{label}   ")
+        rl.font.size = Pt(11)
+        rl.font.bold = True
+        rl.font.color.rgb = COLOR_DARK
+        add_hyperlink(p, "→ อ่านที่นี่" if lang == "th" else "→ Read here", url)
+
+    add_resource_row(s["faq_label"],        s["faq_url_th"],        s["faq_url_en"])
+    add_resource_row(s["disclaimer_label"], s["disclaimer_url_th"], s["disclaimer_url_en"])
+    add_resource_row(s["policies_label"],   s["policies_url_th"],   s["policies_url_en"])
+
+    # ── Contact ────────────────────────────────────────────────────────────────
+    doc.add_paragraph().paragraph_format.space_after = Pt(8)
+    add_h1(doc, s["contact_title"])
+    add_body(doc, s["contact_body"])
 
     return doc
 

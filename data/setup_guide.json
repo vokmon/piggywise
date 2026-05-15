@@ -102,7 +102,19 @@
       "exec_title": "📅 รายงานสรุปและการฉลอง Milestone (Executive Summaries)",
       "exec_body1": "\"จิตวิทยาการลงทุน\" และ \"ความรู้สึกพิเศษ\" เพื่อให้การลงทุนระยะยาวไม่น่าเบื่อ",
       "exec_body2": "Scenario: การสรุปผลงานรายปี หรือการฉลองเมื่อยอดเงินถึงเป้า",
-      "exec_cmd": "ช่วยสร้างรายงาน 'Executive Summary' ประจำปีให้ผมหน่อย: สรุปผลตอบแทนแยกตามประเภทสินทรัพย์, วินัยการออมสะสม, และประกาศ Milestone ที่ทำสำเร็จในปีนี้ พร้อมคำแนะนำ 3 ข้อสำหรับปีหน้า"
+      "exec_cmd": "ช่วยสร้างรายงาน 'Executive Summary' ประจำปีให้ผมหน่อย: สรุปผลตอบแทนแยกตามประเภทสินทรัพย์, วินัยการออมสะสม, และประกาศ Milestone ที่ทำสำเร็จในปีนี้ พร้อมคำแนะนำ 3 ข้อสำหรับปีหน้า",
+      "resources_title": "แหล่งข้อมูลเพิ่มเติม",
+      "faq_label": "คำถามที่พบบ่อย (FAQ)",
+      "faq_url_th": "https://same-pudding-e62.notion.site/FAQ-36146726d93281cca6d7c926cb195d7c",
+      "faq_url_en": "https://same-pudding-e62.notion.site/FAQ-Frequently-Asked-Questions-36146726d9328118aa43d001e8415a02",
+      "disclaimer_label": "ข้อควรทราบก่อนใช้งาน",
+      "disclaimer_url_th": "https://same-pudding-e62.notion.site/36146726d932817f94dceaa6b6bc39f1",
+      "disclaimer_url_en": "https://same-pudding-e62.notion.site/Disclaimer-36146726d9328180ac61cde86caf955a",
+      "policies_label": "นโยบาย",
+      "policies_url_th": "https://same-pudding-e62.notion.site/36146726d932810a8323ce4d67be2d07",
+      "policies_url_en": "https://same-pudding-e62.notion.site/Policies-36146726d93281a1a04af391c5aa7b78",
+      "contact_title": "ติดต่อเรา",
+      "contact_body": "หากมีคำถามหรือต้องการความช่วยเหลือ กรุณาติดต่อผ่านแพลตฟอร์มที่คุณซื้อสินค้า"
     },
     "tabs": [
       ["Settings",            "🔴 แดง",    "กรอกข้อมูลครั้งเดียวตอนตั้งค่า"],
@@ -314,7 +326,19 @@
       "exec_title": "📅 Progress Reports & Milestone Celebrations (Executive Summaries)",
       "exec_body1": "\"Investment psychology\" and \"special moments\" to make long-term investing enjoyable",
       "exec_body2": "Scenario: Annual performance review, or celebrating when your balance hits a target",
-      "exec_cmd": "Please create an annual 'Executive Summary' report for me: summarise returns by asset class, cumulative savings discipline, and announce the Milestones achieved this year — with 3 recommendations for next year"
+      "exec_cmd": "Please create an annual 'Executive Summary' report for me: summarise returns by asset class, cumulative savings discipline, and announce the Milestones achieved this year — with 3 recommendations for next year",
+      "resources_title": "Resources",
+      "faq_label": "FAQ — Frequently Asked Questions",
+      "faq_url_th": "https://same-pudding-e62.notion.site/FAQ-36146726d93281cca6d7c926cb195d7c",
+      "faq_url_en": "https://same-pudding-e62.notion.site/FAQ-Frequently-Asked-Questions-36146726d9328118aa43d001e8415a02",
+      "disclaimer_label": "Disclaimer",
+      "disclaimer_url_th": "https://same-pudding-e62.notion.site/36146726d932817f94dceaa6b6bc39f1",
+      "disclaimer_url_en": "https://same-pudding-e62.notion.site/Disclaimer-36146726d9328180ac61cde86caf955a",
+      "policies_label": "Policies",
+      "policies_url_th": "https://same-pudding-e62.notion.site/36146726d932810a8323ce4d67be2d07",
+      "policies_url_en": "https://same-pudding-e62.notion.site/Policies-36146726d93281a1a04af391c5aa7b78",
+      "contact_title": "Contact Us",
+      "contact_body": "If you have any questions or need assistance, please reach out via the platform where you purchased this product."
     },
     "tabs": [
       ["Settings",            "🔴 Red",    "Fill in once during initial setup"],

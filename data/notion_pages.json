@@ -1,56 +1,62 @@
 {
   "workspace": "sukaya.suk275@gmail.com",
   "hub": {
-    "title": "🐷 PiggyWise",
+    "title": "PiggyWise",
     "id": "36146726-d932-8157-a9c2-c5a599ac50f5",
     "url": "https://www.notion.so/36146726d9328157a9c2c5a599ac50f5"
   },
   "pages": [
     {
       "id": "faq_th",
-      "title": "🇹🇭 FAQ — คำถามที่พบบ่อย",
+      "title": "FAQ — คำถามที่พบบ่อย",
       "notion_id": "36146726-d932-81cc-a6d7-c926cb195d7c",
       "url": "https://www.notion.so/36146726d93281cca6d7c926cb195d7c",
+      "public_url": "https://same-pudding-e62.notion.site/FAQ-36146726d93281cca6d7c926cb195d7c",
       "source": "data/faq.json",
       "lang": "th"
     },
     {
       "id": "faq_en",
-      "title": "🇬🇧 FAQ — Frequently Asked Questions",
+      "title": "FAQ — Frequently Asked Questions",
       "notion_id": "36146726-d932-8118-aa43-d001e8415a02",
       "url": "https://www.notion.so/36146726d9328118aa43d001e8415a02",
+      "public_url": "https://same-pudding-e62.notion.site/FAQ-Frequently-Asked-Questions-36146726d9328118aa43d001e8415a02",
       "source": "data/faq.json",
       "lang": "en"
     },
     {
       "id": "disclaimer_th",
-      "title": "⚠️ ข้อควรทราบก่อนใช้งาน",
+      "title": "ข้อควรทราบก่อนใช้งาน",
       "notion_id": "36146726-d932-817f-94dc-eaa6b6bc39f1",
       "url": "https://www.notion.so/36146726d932817f94dceaa6b6bc39f1",
+      "public_url": "https://same-pudding-e62.notion.site/36146726d932817f94dceaa6b6bc39f1",
       "source": "data/disclaimer.json",
       "lang": "th"
     },
     {
       "id": "disclaimer_en",
-      "title": "⚠️ Disclaimer",
+      "title": "Disclaimer",
       "notion_id": "36146726-d932-8180-ac61-cde86caf955a",
       "url": "https://www.notion.so/36146726d9328180ac61cde86caf955a",
+      "public_url": "https://same-pudding-e62.notion.site/Disclaimer-36146726d9328180ac61cde86caf955a",
       "source": "data/disclaimer.json",
       "lang": "en"
     },
     {
       "id": "policies_th",
-      "title": "📜 นโยบาย",
+      "title": "นโยบาย",
       "notion_id": "36146726-d932-810a-8323-ce4d67be2d07",
       "url": "https://www.notion.so/36146726d932810a8323ce4d67be2d07",
+      "public_url": "https://same-pudding-e62.notion.site/36146726d932810a8323ce4d67be2d07",
       "source": "data/policies.json",
       "lang": "th"
     },
     {
       "id": "policies_en",
-      "title": "📜 Policies",
+      "title": "Policies",
       "notion_id": "36146726-d932-81a1-a04a-f391c5aa7b78",
       "url": "https://www.notion.so/36146726d93281a1a04af391c5aa7b78",
+      "public_url": "https://same-pudding-e62.notion.site/Policies-36146726d93281a1a04af391c5aa7b78",
       "source": "data/policies.json",
       "lang": "en"
     }
