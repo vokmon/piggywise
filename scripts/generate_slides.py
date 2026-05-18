@@ -43,7 +43,7 @@ def fnt(spec, size):
 
 # ── Assets ─────────────────────────────────────────────────────────────────
 BASE_DIR  = "/Users/arnon/vokmon/study/piggywise"
-ICON_PATH = os.path.join(BASE_DIR, "images/logo/piggywise-icon.png")
+ICON_PATH = os.path.join(BASE_DIR, "logo/piggywise-icon.png")
 BG_DIR    = os.path.join(BASE_DIR, "images/bg")
 SLIDES_BG = os.path.join(BASE_DIR, "images/bg/slides")
 OUT_BASE  = os.path.join(BASE_DIR, "images/slides")

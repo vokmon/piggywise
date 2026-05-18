@@ -38,7 +38,7 @@ def fnt(spec, size):
     return ImageFont.truetype(path, size, index=index)
 
 # ── Assets ─────────────────────────────────────────────────────────────────
-ICON_PATH = "/Users/arnon/vokmon/study/piggywise/images/logo/piggywise-icon.png"
+ICON_PATH = "/Users/arnon/vokmon/study/piggywise/logo/piggywise-icon.png"
 BG_DIR    = "/Users/arnon/vokmon/study/piggywise/images/bg"
 OUT_DIR   = "/Users/arnon/vokmon/study/piggywise/images/cover"
 os.makedirs(OUT_DIR, exist_ok=True)

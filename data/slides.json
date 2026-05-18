@@ -5,7 +5,7 @@
       "premium": false,
       "en": {
         "title": "Retire Smooth",
-        "sub": "PORTFOLIO TEMPLATE",
+        "sub": "SAVE STEADY, RETIRE WEALTHY",
         "label": "CONSERVATIVE",
         "features": [
           "Monthly DCA auto-schedule",
@@ -31,7 +31,7 @@
       "premium": false,
       "en": {
         "title": "Hybrid Wealth",
-        "sub": "PORTFOLIO TEMPLATE",
+        "sub": "GROW ASSETS, HARVEST DIVIDENDS",
         "label": "HYBRID",
         "features": [
           "Growth + Dividend Income split",
@@ -57,7 +57,7 @@
       "premium": false,
       "en": {
         "title": "Aggressive Go",
-        "sub": "PORTFOLIO TEMPLATE",
+        "sub": "GO AGGRESSIVE, STAY DISCIPLINED",
         "label": "AGGRESSIVE",
         "features": [
           "High-growth asset allocation",
