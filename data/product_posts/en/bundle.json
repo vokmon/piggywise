@@ -1,0 +1,110 @@
+{
+  "product": "bundle",
+  "title": "🚀💰🏖️ 3-in-1 Bundle — Aggressive Go + Hybrid Wealth + Retire Smooth, All Strategies with AI Coach",
+  "body": `🗂️ PiggyWise (3-in-1 Bundle) - All 3 Smart Portfolio Systems on Google Sheets, Powered by AI
+"Whatever your financial goal is — there's a system for it in this Bundle"
+
+🎯 Best for: Investors who want all 3 strategies in one price, aren't sure which portfolio to start with, or want every system on hand to switch as their financial goals evolve.
+
+Are you facing any of these problems?
+❌ Not sure whether a high-growth, hybrid, or retirement portfolio suits you more
+❌ You have multiple goals at the same time — want to grow fast, get dividends, and plan for retirement
+❌ Buying systems one by one gets expensive when you want everything from the start
+❌ You want a personal financial advisor available 24/7 without paying expensive annual fees
+
+PiggyWise 3-in-1 Bundle is the answer! All 3 Google Sheets Templates bundled together — covering every investment strategy — with a complete AI Prompt Library that turns ChatGPT, Gemini, or Claude into your personal financial advisor using your real portfolio data.
+
+─── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ───
+
+📦 The 3 Systems You Get
+
+🚀 Aggressive Go — High-Growth Portfolio, Stocks + Crypto
+Built for investors who want maximum portfolio growth, embrace volatility, and want crypto in their portfolio with discipline. Includes Anti-Greed Lock and Smart Signal Rules for disciplined investing without screen-watching.
+
+💰 Hybrid Wealth — Balanced Portfolio, Growth + Dividends
+Built for investors who want both portfolio growth and dividend income simultaneously. Includes Dual-Engine Dashboard and Dividend Tax Optimizer for complete visibility across both dimensions.
+
+🏖️ Retire Smooth — Long-Term Retirement Portfolio
+Built for long-term investors. Includes Retirement Goal Tracker, Monthly DCA Scheduler, and Auto-Rebalance Calculator to guide you steadily toward your retirement target.
+
+─── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ───
+
+✅ What you get in this service
+📦 1. All 3 Google Sheets Templates — Ready in 5 minutes each, installed directly to your personal Google Drive
+🧠 2. Full AI Prompt Library (all 3 sets) — For ChatGPT, Claude, Gemini — turns your favourite AI into a personal financial advisor for each strategy
+📖 3. Setup Guide PDFs (all 3) — Step-by-step usage instructions and strategy breakdown for each system
+📅 4. Monthly Checklists (all 3 sets) — 15–30 min/month routine for each strategy
+
+─── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ───
+
+🔒 Data Privacy & Security (100% Private)
+All data lives entirely on your personal Google Drive. PiggyWise cannot see or access your data at any point. ❌ No account registration ❌ No passwords shared ❌ No monthly or annual subscription — one-time payment, yours forever.
+
+─── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ───
+
+⏱️ Order & Delivery Process
+1. Select your package and pay securely through the platform.
+2. Receive all 3 system copy links, setup guides, and AI Prompts instantly via chat.
+3. Confirm everything is in order, approve the delivery, and start your smart investing journey immediately!
+
+💬 After-Sales Support & Upgrade
+
+🤝 We're here so you never have to go it alone. If you encounter any installation or system issues, reach out via chat anytime — we'll help troubleshoot until everything works perfectly.
+
+🔥 Lifetime Free Updates: Whenever we release improved versions of the Google Sheets templates, you can access and download the latest versions for free immediately — the update link is embedded in your Setup Guide.
+
+"Your financial goals may change over time — but with every system in hand, you're always ready."`,
+  "tags": [
+    "portfolio management",
+    "financial planning",
+    "Google Sheets finance",
+    "passive income",
+    "DCA",
+    "portfolio rebalancing",
+    "dividend stocks",
+    "retirement planning",
+    "crypto investing",
+    "US stocks",
+    "financial advisor",
+    "beginner investor",
+    "investment template",
+    "bundle",
+    "all-in-one investing",
+    "AI finance"
+  ],
+  "packages": [
+    {
+      "name": "🗂️ 3-in-1 Bundle",
+      "details": "All 3 systems in one price. Easy setup, ready in 5 minutes each. Configure all portfolios yourself with complete setup guides and AI Prompt Libraries for all 3 strategies.",
+      "price": {
+        "normal": 109,
+        "promo": 79,
+        "currency": "USD"
+      },
+      "delivery": [
+        "Setup Guide PDFs (all 3) — step-by-step instructions",
+        "Google Sheets Template [Aggressive Go] — copy link to your personal Google Drive",
+        "Google Sheets Template [Hybrid Wealth] — copy link to your personal Google Drive",
+        "Google Sheets Template [Retire Smooth] — copy link to your personal Google Drive",
+        "Monthly Checklists (all 3) — 15–30 min/month routine (usage guide included in Setup PDFs)"
+      ],
+      "delivery_time": "Instant (link delivered via chat)"
+    },
+    {
+      "name": "🗂️ 3-in-1 Bundle + Setup",
+      "details": "Everything in the standard Bundle, plus the PiggyWise team configures 1 portfolio of your choice — enters your initial portfolio data and customises it so it's ready to use immediately. Zero effort required on your part.",
+      "price": {
+        "normal": 109,
+        "currency": "USD"
+      },
+      "delivery": [
+        "Setup Guide PDFs (all 3) — step-by-step instructions",
+        "Google Sheets Template [Aggressive Go] — copy link to your personal Google Drive",
+        "Google Sheets Template [Hybrid Wealth] — copy link to your personal Google Drive",
+        "Google Sheets Template [Retire Smooth] — configured and pre-filled with your initial portfolio data by our team",
+        "Monthly Checklists (all 3) — 15–30 min/month routine (usage guide included in Setup PDFs)"
+      ],
+      "delivery_time": "1–2 business days"
+    }
+  ]
+}

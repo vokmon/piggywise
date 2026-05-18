@@ -1,0 +1,108 @@
+{
+  "product": "hybrid_wealth",
+  "title": "💰💰💰 Hybrid Wealth — Google Sheets Hybrid Portfolio, Growth + Dividends with AI Coach",
+  "body": `💰 PiggyWise (Hybrid Wealth) - Smart Hybrid Portfolio System on Google Sheets, Powered by AI
+"Build a portfolio that grows and pays you dividend income — both, in one sheet"
+
+🎯 Best for: Modern investors aged 25–40 who want their portfolio to both grow and generate dividend cash flow simultaneously — without waiting 20 years, and without watching screens every day.
+
+Are you facing any of these problems?
+❌ You hold multiple dividend stocks but don't know your actual total monthly dividend income or when you'll hit your target
+❌ You want both portfolio growth and dividend income together but don't know how to balance the allocation
+❌ You're scared of sharp market drops but don't want to miss growth opportunities — nothing in your portfolio is absorbing the shocks
+❌ You don't know whether to reinvest dividends or withdraw them, and want to know your actual net dividend income after tax
+
+PiggyWise - Hybrid Wealth is the answer! This Google Sheets Template is built specifically for investors who want both growth and dividend income. It strips out all the complexity and handles everything through the power of Generative AI (ChatGPT, Gemini, Claude) — acting as your extended brain, analyzing your portfolio and giving advice based on your real data.
+
+─── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ───
+
+⚡ System Core Features
+📊 [Dual-Engine Dashboard] Displays portfolio growth and dividend income separately and clearly — track both dimensions simultaneously on a single sheet.
+
+🏰 [Strong Fortress Layer] Automatic risk-protection layer that maintains portfolio stability during market volatility — so you can keep growing without anxiety.
+
+📅 [Income Strategy Planner] Built-in portfolio strategy planner — helps you decide whether to reinvest dividends or convert to income stream, according to your own goals and life stage.
+
+💹 [Dividend Tax Optimizer] Built-in dividend withholding tax planner — lets you know in advance exactly how much net income you'll actually receive. No more guessing.
+
+🔌 [Universal Compatibility] Platform-independent and broker-agnostic — works instantly alongside any app or broker you already use.
+
+─── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ───
+
+✅ What you get in this service
+📦 1. Google Sheets Template [Hybrid Wealth] — Ready in 5 minutes, installed directly to your personal Google Drive
+🧠 2. AI Prompt Library — System activation prompts for ChatGPT, Claude, Gemini — instantly turns your favourite AI into a personal financial advisor using your real portfolio data
+📖 3. Setup Guide PDF — Step-by-step usage instructions and 2-phase strategy breakdown
+📅 4. Monthly Checklist — 15–30 min/month routine: DCA, rebalance, income review, done
+
+─── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ───
+
+🔒 Data Privacy & Security (100% Private)
+All data lives entirely on your personal Google Drive. PiggyWise cannot see or access your data at any point. ❌ No account registration ❌ No passwords shared ❌ No monthly or annual subscription — one-time payment, yours forever.
+
+─── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ───
+
+⏱️ Order & Delivery Process
+1. Select your package and pay securely through the platform.
+2. Receive the system copy link, setup guide, and AI Prompts instantly via chat.
+3. Confirm everything is in order, approve the delivery, and start building your smart portfolio immediately!
+
+💬 After-Sales Support & Upgrade
+
+🤝 We're here so you never have to go it alone. If you encounter any installation or system issues, reach out via chat anytime — we'll help troubleshoot until everything works perfectly.
+
+🔥 Lifetime Free Updates: Whenever we release an improved version of the Google Sheets template (new calculation features, refreshed dashboard design, smarter AI Prompts), you can access and download the latest version for free immediately — the update link is embedded in your Setup Guide.
+
+"A great portfolio doesn't just grow fast — it pays you too. Let PiggyWise map the balanced path between growth and income from day one."`,
+  "tags": [
+    "retirement planning",
+    "dividend stocks",
+    "dividend income",
+    "portfolio management",
+    "passive income",
+    "DCA",
+    "portfolio rebalancing",
+    "US stocks",
+    "financial planning",
+    "Google Sheets finance",
+    "financial advisor",
+    "long-term investing",
+    "dividend",
+    "investment template",
+    "hybrid portfolio",
+    "AI finance"
+  ],
+  "packages": [
+    {
+      "name": "💰 Hybrid Wealth",
+      "details": "Easy setup, ready in 5 minutes. Configure your portfolio yourself with the full setup guide and AI Prompt Library. Ideal for those who want full control over their own portfolio.",
+      "price": {
+        "normal": 39,
+        "promo": 29,
+        "currency": "USD"
+      },
+      "delivery": [
+        "Setup Guide PDF — step-by-step instructions",
+        "Google Sheets Template [Hybrid Wealth] — copy link to your personal Google Drive",
+        "AI Prompt Library — prompts for ChatGPT, Claude, Gemini",
+        "Monthly Checklist — 15–30 min/month routine (usage guide included in Setup PDF)"
+      ],
+      "delivery_time": "Instant (link delivered via chat)"
+    },
+    {
+      "name": "💰 Hybrid Wealth + Setup",
+      "details": "Everything in the standard package, plus the PiggyWise team configures the system for you — enters your initial portfolio data and customises it so it's ready to use immediately. Zero effort required on your part.",
+      "price": {
+        "normal": 49,
+        "currency": "USD"
+      },
+      "delivery": [
+        "Setup Guide PDF — step-by-step instructions",
+        "Google Sheets Template [Hybrid Wealth] — configured and pre-filled with your initial portfolio data by our team",
+        "AI Prompt Library — prompts for ChatGPT, Claude, Gemini",
+        "Monthly Checklist — 15–30 min/month routine (usage guide included in Setup PDF)"
+      ],
+      "delivery_time": "1–2 business days"
+    }
+  ]
+}

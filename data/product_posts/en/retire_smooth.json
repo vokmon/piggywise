@@ -1,0 +1,110 @@
+{
+  "product": "retire_smooth",
+  "title": "🏖️🏖️🏖️ Retire Smooth — Google Sheets Retirement Portfolio, Dividend Income + Auto DCA + Goal Tracker with AI Coach",
+  "body": `🏖️ PiggyWise (Retire Smooth) - Smart Retirement Planner on Google Sheets, Powered by AI
+"Save month by month, track your goal, retire comfortably — without watching screens"
+
+🎯 Best for: Working professionals aged 30–45 who want a systematic retirement plan, prefer stability over volatility, and need a safe long-term portfolio that runs without daily screen time.
+
+Are you facing any of these problems?
+❌ You've been DCA-ing for a while but don't know if you'll have enough to retire, at what age, or how much more you need to save
+❌ You're scared of market volatility but know that keeping everything in a savings account isn't enough — and don't know how to build a safe portfolio
+❌ Your portfolio is growing but the allocation is drifting — you don't know when to rebalance or what to buy and sell
+❌ You want a personal financial advisor available 24/7 without paying expensive annual fees
+
+PiggyWise - Retire Smooth is the answer! This Google Sheets Template is built specifically for conservative, long-term investors. It strips out all the complexity and handles everything through the power of Generative AI (ChatGPT, Gemini, Claude) — acting as your extended brain, analyzing your portfolio and giving advice based on your real data.
+
+─── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ───
+
+⚡ System Core Features
+🎯 [Retirement Goal Tracker] Real-time retirement goal tracker — shows exactly where you are now, how much is left, and when you'll hit your target.
+
+📆 [Monthly DCA Scheduler] Ready-to-use monthly DCA table — tells you exactly what to buy this month and how much. No calculations needed, just follow and execute.
+
+⚖️ [Auto-Rebalance Calculator] Instantly calculates portfolio rebalancing — tells you exactly what to buy or sell to bring your portfolio back to the correct allocation.
+
+📅 [2-Phase Strategy Engine] Built-in 2-phase portfolio planner — Phase 1 (working years): disciplined accumulation and DCA. Phase 2 (pre-retirement): gradually shift the portfolio toward stability and income-ready for withdrawal according to your goals.
+
+🛡️ [Volatility Shield] Conservative portfolio designed to minimise volatility — ideal for those who don't want to see their portfolio drop hard.
+
+🔌 [Universal Compatibility] Platform-independent and broker-agnostic — works instantly alongside any app or broker you already use.
+
+─── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ───
+
+✅ What you get in this service
+📦 1. Google Sheets Template [Retire Smooth] — Ready in 5 minutes, installed directly to your personal Google Drive
+🧠 2. AI Prompt Library — System activation prompts for ChatGPT, Claude, Gemini — instantly turns your favourite AI into a personal financial advisor using your real portfolio data
+📖 3. Setup Guide PDF — Step-by-step usage instructions and retirement strategy breakdown
+📅 4. Monthly Checklist — 15–30 min/month routine: DCA, rebalance, retirement goal review, done
+
+─── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ───
+
+🔒 Data Privacy & Security (100% Private)
+All data lives entirely on your personal Google Drive. PiggyWise cannot see or access your data at any point. ❌ No account registration ❌ No passwords shared ❌ No monthly or annual subscription — one-time payment, yours forever.
+
+─── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ───
+
+⏱️ Order & Delivery Process
+1. Select your package and pay securely through the platform.
+2. Receive the system copy link, setup guide, and AI Prompts instantly via chat.
+3. Confirm everything is in order, approve the delivery, and start your smooth retirement journey immediately!
+
+💬 After-Sales Support & Upgrade
+
+🤝 We're here so you never have to go it alone. If you encounter any installation or system issues, reach out via chat anytime — we'll help troubleshoot until everything works perfectly.
+
+🔥 Lifetime Free Updates: Whenever we release an improved version of the Google Sheets template (new calculation features, refreshed dashboard design, smarter AI Prompts), you can access and download the latest version for free immediately — the update link is embedded in your Setup Guide.
+
+"A comfortable retirement isn't luck — it's discipline built one month at a time. Let PiggyWise be your companion every step of the way from today."`,
+  "tags": [
+    "retirement planning",
+    "retirement",
+    "DCA",
+    "portfolio management",
+    "savings investing",
+    "portfolio rebalancing",
+    "US stocks",
+    "financial planning",
+    "Google Sheets finance",
+    "financial advisor",
+    "long-term investing",
+    "beginner investor",
+    "investment template",
+    "conservative portfolio",
+    "goal tracker",
+    "AI finance"
+  ],
+  "packages": [
+    {
+      "name": "🏖️ Retire Smooth",
+      "details": "Easy setup, ready in 5 minutes. Configure your portfolio yourself with the full setup guide and AI Prompt Library. Ideal for those who want full control over their own retirement plan.",
+      "price": {
+        "normal": 39,
+        "promo": 29,
+        "currency": "USD"
+      },
+      "delivery": [
+        "Setup Guide PDF — step-by-step instructions",
+        "Google Sheets Template [Retire Smooth] — copy link to your personal Google Drive",
+        "AI Prompt Library — prompts for ChatGPT, Claude, Gemini",
+        "Monthly Checklist — 15–30 min/month routine (usage guide included in Setup PDF)"
+      ],
+      "delivery_time": "Instant (link delivered via chat)"
+    },
+    {
+      "name": "🏖️ Retire Smooth + Setup",
+      "details": "Everything in the standard package, plus the PiggyWise team configures the system for you — enters your initial portfolio data and customises it so it's ready to use immediately. Zero effort required on your part.",
+      "price": {
+        "normal": 49,
+        "currency": "USD"
+      },
+      "delivery": [
+        "Setup Guide PDF — step-by-step instructions",
+        "Google Sheets Template [Retire Smooth] — configured and pre-filled with your initial portfolio data by our team",
+        "AI Prompt Library — prompts for ChatGPT, Claude, Gemini",
+        "Monthly Checklist — 15–30 min/month routine (usage guide included in Setup PDF)"
+      ],
+      "delivery_time": "1–2 business days"
+    }
+  ]
+}

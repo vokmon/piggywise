@@ -1,0 +1,110 @@
+{
+  "product": "aggressive_go",
+  "title": "🚀🚀🚀 Aggressive Go — Google Sheets High-Growth Portfolio, Stocks + Crypto with AI Coach",
+  "body": `🚀 PiggyWise (Aggressive Go) - Smart Portfolio Manager on Google Sheets, Powered by AI
+"Turn market volatility into your maximum monthly cash flow machine"
+
+🎯 Best for: Ambitious builders aged 25–45 who want their portfolio to grow as fast as possible, embrace volatility, and want crypto in their portfolio with discipline — without watching screens all day.
+
+Are you facing any of these problems?
+❌ You hold multiple assets (US stocks, crypto, Bitcoin) scattered everywhere — can't calculate your portfolio allocation correctly and want to see everything in one place
+❌ You buy dividend stocks and crypto but don't know your total monthly cash flow or when you'll hit your target
+❌ No time to watch screens, but you want a safe, maximum-efficiency portfolio
+❌ You want a personal financial advisor available 24/7 without paying expensive annual fees
+
+PiggyWise - Aggressive Go is the answer! This Google Sheets Template is built specifically for aggressive investors. It strips out all the complexity and handles everything through the power of Generative AI (ChatGPT, Gemini, Claude) — acting as your extended brain, analyzing your portfolio and giving advice based on your real data.
+
+─── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ───
+
+⚡ System Core Features
+📱 [All-in-One Dashboard] Manage and balance high-growth assets — both stocks and crypto — all on a single sheet.
+
+🛡️ [Anti-Greed Dynamic Lock] Automatically locks and controls high-risk asset allocation to prevent greed and over-investing.
+
+🚨 [Smart Signal Rules] Intelligent alert system that signals you to stop adding funds when asset prices surge too high, and alerts you to buy the dip when the market corrects sharply — building the best investment discipline and timing.
+
+⏱️ [The 1-Day Discipline] Designed for just one monthly check-in (only 15–30 minutes) — preventing panic and reducing over-trading driven by market emotion.
+
+📅 [Max Returns Strategy Engine] Built-in aggressive portfolio strategy planner — helps you decide which assets to add, when to accumulate, and when to start harvesting cash flow, all according to your own goals.
+
+🔌 [Universal Compatibility] Platform-independent and broker-agnostic — works instantly alongside any app or broker you already use.
+
+─── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ───
+
+✅ What you get in this service
+📦 1. Google Sheets Template [Aggressive Go] — Ready in 5 minutes, installed directly to your personal Google Drive
+🧠 2. AI Prompt Library — System activation prompts for ChatGPT, Claude, Gemini — instantly turns your favourite AI into a personal financial advisor using your real portfolio data
+📖 3. Setup Guide PDF — Step-by-step usage instructions and strategy breakdown
+📅 4. Monthly Checklist — 15–30 min/month routine: DCA, rebalance, review, done
+
+─── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ───
+
+🔒 Data Privacy & Security (100% Private)
+All data lives entirely on your personal Google Drive. PiggyWise cannot see or access your data at any point. ❌ No account registration ❌ No passwords shared ❌ No monthly or annual subscription — one-time payment, yours forever.
+
+─── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ───
+
+⏱️ Order & Delivery Process
+1. Select your package and pay securely through the platform.
+2. Receive the system copy link, setup guide, and AI Prompts instantly via chat.
+3. Confirm everything is in order, approve the delivery, and start building your smart portfolio immediately!
+
+💬 After-Sales Support & Upgrade
+
+🤝 We're here so you never have to go it alone. If you encounter any installation or system issues, reach out via chat anytime — we'll help troubleshoot until everything works perfectly.
+
+🔥 Lifetime Free Updates: Whenever we release an improved version of the Google Sheets template (new calculation features, refreshed dashboard design, smarter AI Prompts), you can access and download the latest version for free immediately — the update link is embedded in your Setup Guide.
+
+"Great discipline starts with choosing the right tool. Let PiggyWise be the extended brain that steers your wealth from day one."`,
+  "tags": [
+    "portfolio management",
+    "aggressive investing",
+    "crypto investing",
+    "US stocks",
+    "DCA",
+    "portfolio rebalancing",
+    "financial planning",
+    "Google Sheets finance",
+    "passive income",
+    "bitcoin",
+    "financial advisor",
+    "beginner investor",
+    "international stocks",
+    "investment template",
+    "high growth portfolio",
+    "AI finance"
+  ],
+  "packages": [
+    {
+      "name": "🚀 Aggressive Go",
+      "details": "Easy setup, ready in 5 minutes. Configure your portfolio yourself with the full setup guide and AI Prompt Library. Ideal for those who want full control over their own portfolio.",
+      "price": {
+        "normal": 39,
+        "promo": 29,
+        "currency": "USD"
+      },
+      "delivery": [
+        "Setup Guide PDF — step-by-step instructions",
+        "Google Sheets Template [Aggressive Go] — copy link to your personal Google Drive",
+        "AI Prompt Library — prompts for ChatGPT, Claude, Gemini",
+        "Monthly Checklist — 15–30 min/month routine (usage guide included in Setup PDF)"
+      ],
+      "delivery_time": "Instant (link delivered via chat)"
+    },
+    {
+      "name": "🚀 Aggressive Go + Setup",
+      "details": "Everything in the standard package, plus the PiggyWise team configures the system for you — enters your initial portfolio data and customises it so it's ready to use immediately. Zero effort required on your part.",
+      "price": {
+        "normal": 49,
+        "currency": "USD"
+      },
+      "delivery": [
+        "Setup Guide PDF — step-by-step instructions",
+        "Google Sheets Template [Aggressive Go] — configured and pre-filled with your initial portfolio data by our team",
+        "AI Prompt Library — prompts for ChatGPT, Claude, Gemini",
+        "Monthly Checklist — 15–30 min/month routine (usage guide included in Setup PDF)"
+      ],
+      "delivery_time": "1–2 business days"
+    }
+  ]
+}

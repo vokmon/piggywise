@@ -1,0 +1,98 @@
+{
+  "product": "premium_fastwork",
+  "title": "✨✨✨ Premium — Custom AI Prompt, Skills & Agents + System Design Built for Your Specific Needs",
+  "body": `✨ PiggyWise (Premium) - Custom AI Prompt, Skills & Agent Design Service
+"We design the system and AI to work exactly for your work"
+
+🎯 Best for: People who want to use AI for real work — beyond basic Q&A. Whether it's building reusable prompts, designing agents that work autonomously, or setting up a workflow where AI plays an active role.
+
+Are you facing any of these problems?
+❌ You already use AI but want results that actually match your real work — not just generic answers
+❌ You want AI to run more automatically without having to re-prompt every time
+❌ You want to build a system or reusable workflow but don't know how to design it
+❌ You don't have an IT team but want a working system without buying expensive software
+
+PiggyWise Premium is the answer! A custom AI Prompt, Skills, and Agents design service tailored specifically to your needs. We choose the approach that fits your actual work — whether that's a reusable Prompt Library, a Custom Agent that works for you, Skills for Claude Code, Codex CLI or Gemini CLI, or a system built on Google Sheets, Notion, or other tools.
+
+─── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ───
+
+⚡ Examples of What We Can Build for You
+
+🧠 Personal AI Prompt Library — Design a set of AI commands for tasks you repeat regularly, such as data analysis, report summarising, customer responses, or financial planning.
+🤖 AI Agent & Custom Skills — Design Agents or Skills for Claude Code, Codex CLI, Gemini CLI, or the AI you use — so it runs automatically according to the process you define, with no re-prompting needed.
+📊 Tracking System & Dashboard — Design a data collection and display system for whatever you need to track: finances, sales, or goals.
+🗂️ Task Management & Workflow — Design an AI-assisted work process that gets things done faster and more systematically.
+🤝 Client or Project Tracking System — For freelancers or SMEs who want a system without paying monthly SaaS fees.
+💡 Anything else — Just tell us. We'll design it to fit your work.
+
+─── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ───
+
+✅ How It Works
+🗣️ 1. Consult first — Chat with us about your needs and desired scope. We'll assess and recommend an approach for free before you commit.
+🛠️ 2. Design & Build — Our team designs and builds the Prompts and system as agreed.
+📦 3. Deliver & Ready to Use — We deliver the complete system or Prompt set with clear, easy-to-understand usage instructions.
+
+─── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ───
+
+🔒 Data Privacy & Security (100% Private)
+All systems and data created belong to you 100%. PiggyWise will not store or access your data after delivery. ❌ No monthly or annual subscription — one-time payment, yours forever.
+
+─── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ─── ❖ ────── ❖ ─── ❖ ─── ❖ ───
+
+💬 After-Sales Support (Support)
+
+🤝 We're here to support you after delivery. If you encounter any issues using the system or want to make adjustments, reach out via chat anytime — we'll help until everything works perfectly.
+
+"You don't need to be technical — just tell us what you want to do, and we'll design it to fit your work."`,
+  "tags": [
+    "AI Prompt",
+    "AI Agent",
+    "prompt engineering",
+    "Claude Code",
+    "Codex",
+    "Gemini",
+    "system design",
+    "workflow",
+    "Google Sheets",
+    "business automation",
+    "SME",
+    "Freelancer",
+    "online business",
+    "ChatGPT",
+    "data management",
+    "business consultant"
+  ],
+  "packages": [
+    {
+      "name": "✨ AI Prompt & Skills Design",
+      "details": "Design a custom AI Prompt Library and Custom Skills for tasks you repeat regularly — compatible with ChatGPT, Claude, or Gemini. Ideal for those who want AI to help more consistently and precisely than general prompting.",
+      "price": {
+        "normal": 29,
+        "currency": "USD"
+      },
+      "delivery": [
+        "AI Prompt Library designed for your specific tasks — ready for ChatGPT, Claude, Gemini",
+        "Custom Skills for tasks requiring consistency or repetition",
+        "Step-by-step usage instructions for each Prompt and Skill",
+        "1 revision round after delivery"
+      ],
+      "delivery_time": "1–3 business days"
+    },
+    {
+      "name": "✨ Custom System & Agent Design",
+      "details": "Custom system, Agents, and workflow design built specifically for your needs — covering Prompts, Skills, Agents, and the right tools for your work. Free consultation before committing — no charge until scope is agreed.",
+      "price": {
+        "normal": 57,
+        "currency": "USD"
+      },
+      "delivery": [
+        "System or workflow designed to your requirements",
+        "AI Agent or Custom Skills for automated tasks",
+        "AI Prompt Library for the system built",
+        "Step-by-step usage instructions",
+        "1 revision round after delivery"
+      ],
+      "delivery_time": "3–5 business days (depending on scope)"
+    }
+  ]
+}
