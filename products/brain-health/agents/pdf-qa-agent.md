@@ -42,9 +42,11 @@ This is a second QA pass — runs after assembly-agent, before marketing-agent.
 - [ ] Game intro line present (warm, scene-setting)
 - [ ] Instructions say "Here's how to play:" — not "Instructions:" or "Task:"
 - [ ] Score box or completion celebration present at bottom of each game page
+- [ ] Score box uses activity-specific warm phrasing — not "How did I do?"
 - [ ] No exam language: "test", "exam", "pass", "fail", "must", "complete all"
 - [ ] No age labels: "senior", "elderly", "older adult"
 - [ ] Difficulty label present (★ Warm Up / ★★ Getting Going / ★★★ Brain Stretcher) on question-based games
+- [ ] If page is a memory activity (1.1, 1.2, 1.3): round headers visible between question groups — no unbroken numbered list
 
 ### Answer Key Spot-Check (Sample 3 Random Answer Pages)
 - [ ] Header says "How Did You Go?" — not "Answer Key"
@@ -92,6 +94,7 @@ Open the PDF and work through this list. Takes about 5–10 minutes.
 - [ ] Print one activity page — is every word easy to read at arm's length?
 - [ ] Print the same page in B&W — is everything still fully usable?
 - [ ] Score box at the bottom of the page is clear and unambiguous
+- [ ] Open to a word recall or trivia page — does it feel spacious and conversational, or like a wall of questions?
 
 ### Warmth & Tone
 - [ ] Read the intro line of 3 random games — do they feel warm and inviting?

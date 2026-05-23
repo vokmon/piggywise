@@ -19,11 +19,15 @@ Review all generated activity content for accuracy, quality, and consistency.
 - [ ] All 9 activity types exist
 - [ ] Each activity has exactly 10 variations
 - [ ] All answer keys are present
+- [ ] Activity 1.1: 10 questions per game × 10 games = 100 questions total
+- [ ] Activity 1.2: 15 questions per game × 10 games = 150 questions total
+- [ ] Activity 1.3: 25 sentences per game × 10 games = 250 sentences total
 
 ### Accuracy
 - [ ] Facts are accurate for the theme era
 - [ ] Answer keys match the questions
-- [ ] No ambiguous answers (one clear correct answer per question)
+- [ ] Puzzle activities (crossword, word search, pattern, logic, sequence, riddle): one clear correct answer per question
+- [ ] Open-answer activities (1.1, 1.2): answer key notes acceptable variations (e.g., "Queen" or "The Queen")
 
 ### Quality
 - [ ] Mix of difficulty levels (easy, medium, hard) within each activity
@@ -55,6 +59,20 @@ Review all generated activity content for accuracy, quality, and consistency.
 - [ ] Word search words are 4–15 letters
 - [ ] Crossword answers are 3–12 letters
 - [ ] Pattern sequences have logical rules with clear explanations
+
+### Activity 1.1 (Word Recall)
+- [ ] Every question has a whisper hint (one sentence, casual tone, not a giveaway)
+- [ ] Questions are grouped into 2 rounds of 5 with round headers
+- [ ] Questions phrased as "Do you remember..." / "Can you recall..." — not quizzy or demanding
+
+### Activity 1.2 (Memory Trivia)
+- [ ] Questions are grouped into 3 rounds of 5 with round headers
+- [ ] Questions phrased conversationally — warm, not clinical
+
+### Activity 1.3 (Fill-in-the-Blank)
+- [ ] Blanks are embedded within sentences — not presented as separate questions
+- [ ] Sentences are grouped into 5 rounds of 5 with round headers
+- [ ] All sentences are famous or well-known from the theme era
 
 ## Output Format
 ```

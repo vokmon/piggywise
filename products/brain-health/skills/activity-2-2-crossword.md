@@ -42,7 +42,7 @@ python scripts/generate_crossword.py \
 - Answer key on separate page
 
 ## Tone & Presentation
-See `skills/activity-tone.md` for full guidelines. Activity-specific notes:
+See `products/brain-health/skills/activity-tone.md` for full guidelines. Activity-specific notes:
 
 - **Game name format:** "The [Topic] Crossword" — e.g., "The 1970s TV Crossword"
 - **Intro line:** e.g., "Every answer in this crossword takes you back to 1970s television. Grab a pencil and see how many you know!"

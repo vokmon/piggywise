@@ -26,11 +26,11 @@ Generate Sequence Challenges for Set 3: Logic & Problem Solving.
 - No duplicate items across challenge sets
 
 ## Tone & Presentation
-See `skills/activity-tone.md` for full guidelines. Activity-specific notes:
+See `products/brain-health/skills/activity-tone.md` for full guidelines. Activity-specific notes:
 
 - **Game name format:** "Put It in Order: [Topic]" — e.g., "Put It in Order: 1970s Number Ones"
 - **Intro line:** e.g., "These five songs all reached No. 1 in the 1970s — but can you put them in the right order from earliest to latest?"
 - **Instructions:** "Here's how to play: Number the items in the correct order. Give it your best guess — you might remember more than you think!"
 - **Difficulty label:** Top right of page
-- **Score box:** "How did I do? ___ / [N]" — bottom of page
+- **Score box:** "Sequences I sorted: ___ / [N]" — bottom of page
 - **No reflection prompt** — logic activity, skip it

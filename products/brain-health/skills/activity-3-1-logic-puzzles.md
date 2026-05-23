@@ -25,11 +25,11 @@ Generate Logic Puzzles for Set 3: Logic & Problem Solving.
 - Answers are unambiguous with clear explanations
 
 ## Tone & Presentation
-See `skills/activity-tone.md` for full guidelines. Activity-specific notes:
+See `products/brain-health/skills/activity-tone.md` for full guidelines. Activity-specific notes:
 
 - **Game name format:** "The [Scenario] Mystery" — e.g., "The Disco Night Mystery"
 - **Intro line:** Set the scene like a story — e.g., "It's a Saturday night in 1976. Five friends each brought a different vinyl record to the party. Can you figure out who brought what?"
 - **Instructions:** "Here's how to play: Read the clues carefully, then answer the questions at the end. You can use the grid below to keep track. No rush — think it through!"
 - **Difficulty label:** Top right of page
-- **Score box:** "How did I do? ___ / [N questions]" — bottom of page
+- **Score box:** "Mysteries I solved: ___ / [N]" — bottom of page
 - **No reflection prompt** — logic activity, skip it

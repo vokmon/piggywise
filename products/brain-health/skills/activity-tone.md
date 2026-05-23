@@ -16,7 +16,7 @@ The reader should feel:
 - **Celebrated** — every attempt is worth something
 
 Language to avoid: "You must", "Complete all", "Score", "Pass", "Fail", "Test", "Exercise", "Task"
-Language to use: "Give it a go", "Take your time", "No peeking!", "Ready when you are", "How did you do?"
+Language to use: "Give it a go", "Take your time", "No peeking!", "Ready when you are", "Jot it down"
 
 ---
 
@@ -73,32 +73,42 @@ Show the label at the top right of the game page, next to the game name.
 ---
 
 ## Score Box (Bottom of Every Game Page)
-Add a friendly score box at the bottom of each game:
+Add a friendly score box at the bottom of each game. Use activity-specific wording — not a generic "How did I do?":
 
 ```
 ┌─────────────────────────────────────────┐
-│  How did I do?   ___ / [TOTAL]          │
+│  [Activity phrase]   ___ / [TOTAL]      │
 │  ★ ☆ ☆  Just warming up                │
 │  ★ ★ ☆  Getting there!                 │
 │  ★ ★ ★  Brilliant!                     │
 └─────────────────────────────────────────┘
 ```
 
-- Total is the number of questions/words/clues in that game
+Activity phrases by type:
+- Word Recall (1.1): "How many came back to me?"
+- Memory Trivia (1.2): "How many came back to me?"
+- Fill-in-the-Blank (1.3): "Lines I finished:"
+- Pattern Recognition (2.3): "Patterns I cracked:"
+- Logic Puzzles (3.1): "Mysteries I solved:"
+- Sequence Challenges (3.2): "Sequences I sorted:"
+- Riddle & Deduction (3.3): "Riddles I cracked:"
+- Word Search (2.1): completion celebration + tracking line — "Found all 30? You're a legend! ★★★" with "Words found: ___ / 30"
+- Crossword (2.2): completion celebration + tracking line — "Filled every square? Absolutely brilliant! ★★★" with "Clues solved: ___ / [N]"
+
 - Keep it light — no pass/fail language
-- Add a small "No peeking at the answers yet! 😄" line just above the score box to keep it playful
+- Add a small "No peeking at the answers yet!" line just above the score box to keep it playful
 
 ---
 
 ## Reflection Prompt (Memory-Based Activities)
-Add one soft optional prompt after trivia and fill-in-the-blank games:
+Add one soft optional prompt after word recall, trivia, and fill-in-the-blank games (1.1, 1.2, 1.3):
 
 > "Does any of this bring back a memory? Jot it down:"
 > _______________________________________________
 > _______________________________________________
 
-This is optional for the reader — do not frame it as a required task.
-Skip for puzzle-based activities (word search, crossword, pattern, logic).
+Exact wording can vary per activity to match its tone — see each individual skill file for the specific phrasing. The spirit is always the same: warm, optional, no pressure.
+Skip for puzzle-based activities (word search, crossword, pattern, logic, sequence, riddle).
 
 ---
 

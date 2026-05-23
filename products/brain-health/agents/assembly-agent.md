@@ -11,7 +11,8 @@ Compile all QA-approved activities into the final deliverable PDF.
 - Final PDF: `workspace/[THEME]/output/[THEME]_Memory_Lane_Brain_Health_Pack.pdf`
 
 ## Skills Used
-- `skills/assemble-pdf.md`
+- `products/brain-health/skills/assemble-pdf.md`
+- `products/brain-health/skills/design-theme.md`
 - `skills/canva-design.md`
 
 ## Steps

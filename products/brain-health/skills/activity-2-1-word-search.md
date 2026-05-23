@@ -40,7 +40,7 @@ python scripts/generate_word_search.py \
 - Answer key shows word locations
 
 ## Tone & Presentation
-See `skills/activity-tone.md` for full guidelines. Activity-specific notes:
+See `products/brain-health/skills/activity-tone.md` for full guidelines. Activity-specific notes:
 
 - **Game name format:** "The [Topic] Word Hunt" — e.g., "The 1970s Music Word Hunt"
 - **Intro line:** Make it playful — e.g., "Thirty words from the 1970s music scene are hiding in this grid. Can you track them all down?"

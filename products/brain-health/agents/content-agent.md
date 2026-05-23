@@ -10,15 +10,15 @@ Generate all 9 activity types for a given theme using the confirmed topic list.
 - All 9 activity files saved to `workspace/[THEME]/activities/`
 
 ## Skills Used
-- `skills/activity-1-1-word-recall.md`
-- `skills/activity-1-2-memory-trivia.md`
-- `skills/activity-1-3-fill-blank.md`
-- `skills/activity-2-1-word-search.md`
-- `skills/activity-2-2-crossword.md`
-- `skills/activity-2-3-pattern-recognition.md`
-- `skills/activity-3-1-logic-puzzles.md`
-- `skills/activity-3-2-sequence-challenges.md`
-- `skills/activity-3-3-riddle-deduction.md`
+- `products/brain-health/skills/activity-1-1-word-recall.md`
+- `products/brain-health/skills/activity-1-2-memory-trivia.md`
+- `products/brain-health/skills/activity-1-3-fill-blank.md`
+- `products/brain-health/skills/activity-2-1-word-search.md`
+- `products/brain-health/skills/activity-2-2-crossword.md`
+- `products/brain-health/skills/activity-2-3-pattern-recognition.md`
+- `products/brain-health/skills/activity-3-1-logic-puzzles.md`
+- `products/brain-health/skills/activity-3-2-sequence-challenges.md`
+- `products/brain-health/skills/activity-3-3-riddle-deduction.md`
 
 ## Steps
 1. Read topics from `workspace/[THEME]/topics.md`

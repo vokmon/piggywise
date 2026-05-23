@@ -40,7 +40,7 @@ Page 2      How to use this pack
 Page 3      My Progress page (see below)
 Page 4      4-week guided schedule (see below)
 Page 5      Table of contents (activities)
-Pages 5+    ── ACTIVITY SECTION ──
+Pages 6+    ── ACTIVITY SECTION ──
               [Set opener page] Set 1: Memory Enhancement
                 Warm intro blurb (2–3 lines) — what this set trains, encouraging tone
                 e.g. "This set is all about memory. Don't worry about getting everything
@@ -136,7 +136,7 @@ Each day lists the exact activity so there is zero decision fatigue:
 Week 1 — Getting Started
   Day 1   Set 1 · Word Recall · Remember When: [Topic 1]           p.X
   Day 2   Set 1 · Memory Trivia · Do You Remember...? [Topic 2]    p.X
-  Day 3   Set 1 · Fill in the Line: [Topic 3]                      p.X
+  Day 3   Set 1 · Finish the Line: [Topic 3]                       p.X
   Day 4   Set 2 · The [Topic 4] Word Hunt                          p.X
   Day 5   Set 2 · The [Topic 5] Crossword                          p.X
   Day 6   Set 2 · Spot the Pattern: [Topic 6]                      p.X
@@ -208,7 +208,10 @@ A simple, warm full-page certificate printed at the back of the activity section
 - Footer text: 10pt, bottom of page
 - Line spacing: 1.5x
 - Margins: 20mm all sides
-- 4–6 MCQ questions per page, 8–10 short questions per page
+- Memory activities (1.1, 1.2): 5 questions per page — 1 round per page, generous write space
+- Fill-blank (1.3): ~12 sentences per page — rounds 1–3 on page 1, rounds 4–5 on page 2
+- Logic puzzles (3.1): 1 puzzle per page — scenario, clues, and questions together
+- All other question-based activities: 8–10 items per page
 - Word search cell: 12mm
 - Crossword cell: 11mm
 - **B&W compatible** — era colors are decorative only; no information is conveyed by color alone (a senior printing on a B&W printer must still be able to use every page)

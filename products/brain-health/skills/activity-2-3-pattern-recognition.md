@@ -26,11 +26,11 @@ Generate Pattern Recognition Grids for Set 2: Focus & Concentration.
 - Inspired by or themed around the era (e.g., years, chart positions, TV episode numbers)
 
 ## Tone & Presentation
-See `skills/activity-tone.md` for full guidelines. Activity-specific notes:
+See `products/brain-health/skills/activity-tone.md` for full guidelines. Activity-specific notes:
 
 - **Game name format:** "Spot the Pattern: [Topic]" — e.g., "Spot the Pattern: 1970s Chart Hits"
 - **Intro line:** e.g., "These sequences all have a hidden rule. Can you figure out what comes next?"
 - **Instructions:** "Here's how to play: Look at each sequence and figure out the pattern. Write the next number, letter, or word in the blank. Take your time — the answer is always logical!"
 - **Difficulty label:** Top right of page
-- **Score box:** "How did I do? ___ / [N]" — bottom of page
+- **Score box:** "Patterns I cracked: ___ / [N]" — bottom of page
 - **No reflection prompt** — logic activity, skip it

@@ -25,12 +25,12 @@ Generate Riddle & Deduction Challenges for Set 3: Logic & Problem Solving.
 - Mix of difficulty across the 10 riddles
 
 ## Tone & Presentation
-See `skills/activity-tone.md` for full guidelines. Activity-specific notes:
+See `products/brain-health/skills/activity-tone.md` for full guidelines. Activity-specific notes:
 
 - **Game name format:** "Who or What Am I? [Topic]" — e.g., "Who or What Am I? 1970s Icons"
 - **Intro line:** Build the mystery playfully — e.g., "I've got a few clues for you. Read them one at a time, and see if you can guess what I am before the last one!"
 - **Instructions:** "Here's how to play: Read the clues one by one. Write your guess after each clue — or wait until the end. The earlier you guess, the more impressive!"
 - **Difficulty label:** Top right of page
-- **Score box:** "How did I do? ___ / 10" — bottom of page
+- **Score box:** "Riddles I cracked: ___ / 10" — bottom of page
 - **Bonus line in score box:** "Guessed it from clue 1 or 2? Give yourself a bonus star! ★"
 - **No reflection prompt** — deduction activity, skip it
