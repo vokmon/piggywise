@@ -21,7 +21,7 @@ Complete listing JSON with all fields below — ready to post manually or via th
 - Max 140 characters
 - No emojis, no filler words ("ultimate", "amazing")
 - Allowed characters: letters, numbers, punctuation, ™, ©, ® — %, :, &, + can only appear once each
-- Example: `1970s Brain Training Activity Pack, Large Print Memory Games for Seniors, Printable Nostalgia Puzzle Book, Caregiver Gift`
+- Example: `AI Portfolio Tracker Google Sheets Template, Stock and Crypto DCA System, Investment Dashboard for Beginners`
 
 ### Body Rules
 - First sentence must be keyword-rich — Google uses it as the meta description for the listing page
@@ -64,7 +64,7 @@ These fields must be included in the listing JSON. They affect category placemen
 
 ```json
 {
-  "title": "1970s Brain Training Activity Pack, Large Print Memory Games for Seniors, Printable Nostalgia Puzzle Book, Caregiver Gift",
+  "title": "AI Portfolio Tracker Google Sheets Template, Stock and Crypto DCA System, Investment Dashboard for Beginners",
   "description": "...",
   "price": 14.99,
   "quantity": 999,
@@ -73,9 +73,9 @@ These fields must be included in the listing JSON. They affect category placemen
   "when_made": "made_to_order",
   "is_supply": false,
   "taxonomy_id": null,
-  "tags": ["large print", "memory games", "brain activity", "1970s gift", "printable puzzle", "seniors gift", "activity book", "nostalgia game", "large print puzzle", "caregiver gift", "printable", "word search", "crossword"],
-  "styles": ["Vintage", "Nostalgic"],
-  "materials": ["PDF"],
+  "tags": ["google sheets", "portfolio tracker", "DCA template", "stock tracker", "crypto tracker", "investment tool", "AI prompts", "finance template", "spreadsheet", "passive income", "beginner investing", "budget tool", "digital download"],
+  "styles": ["Modern", "Minimalist"],
+  "materials": ["Google Sheets"],
   "should_auto_renew": true,
   "language": "en"
 }

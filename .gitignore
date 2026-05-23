@@ -9,3 +9,4 @@ images
 .env
 *.docx
 .etsy-credentials.json
+.playwright-mcp
