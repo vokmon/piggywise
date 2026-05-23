@@ -2,9 +2,12 @@
 .DS_Store
 
 # Local workspaces
-products/brain-health/workspace/
 temp
 images
+
+# Pipeline outputs (generated, not committed)
+pipeline/*/output/
+
 # Local secrets
 .env
 *.docx
