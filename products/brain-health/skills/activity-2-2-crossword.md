@@ -21,7 +21,7 @@ Generate Crossword Puzzles for Set 2: Focus & Concentration.
 ## Phase 2: Generate Grids (Python Script)
 Run the crossword grid generator script:
 ```bash
-python scripts/generate_crossword.py \
+python products/brain-health/scripts/generate_crossword.py \
   --input workspace/[THEME]/activities/2-2-crossword-clues.md \
   --output workspace/[THEME]/activities/2-2-crossword-grids/ \
   --cell-size 11
@@ -39,7 +39,7 @@ python scripts/generate_crossword.py \
 - Clues are clear and unambiguous
 - No obscure references
 - Mix of across and down clues
-- Answer key on separate page
+- Completed grid (upside-down) printed at bottom of puzzle page
 
 ## Tone & Presentation
 See `products/brain-health/skills/activity-tone.md` for full guidelines. Activity-specific notes:

@@ -10,7 +10,7 @@ Generate Word Recall Games for Set 1: Memory Enhancement.
 - 10 complete Word Recall Games
 - Each game: 10 open-answer questions, grouped into 2 rounds of 5
 - Each question has an optional whisper hint
-- Answer key at end of each game
+- Upside-down suggested answers at the bottom of page 2
 - Saved to: `workspace/[THEME]/activities/1-1-word-recall.md`
 
 ## Steps

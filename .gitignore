@@ -8,3 +8,4 @@ images
 # Local secrets
 .env
 *.docx
+.etsy-credentials.json

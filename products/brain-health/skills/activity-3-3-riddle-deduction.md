@@ -8,7 +8,7 @@ Generate Riddle & Deduction Challenges for Set 3: Logic & Problem Solving.
 
 ## Output
 - 10 Riddle & Deduction challenges
-- Each riddle: mystery setup, 4–6 progressive clues, answer, explanation
+- Each riddle: mystery setup, 4–6 progressive clues, upside-down answer at page bottom
 - Saved to: `workspace/[THEME]/activities/3-3-riddle-deduction.md`
 
 ## Steps

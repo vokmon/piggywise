@@ -30,7 +30,7 @@ Language to use: "Give it a go", "Take your time", "No peeking!", "Ready when yo
 ---
 
 ## Never Use Age Labels Inside the Pack
-Do not use "Senior", "Elderly", "Older Adult", or any age label anywhere inside the pack — not in headers, game titles, instructions, or the answer key.
+Do not use "Senior", "Elderly", "Older Adult", or any age label anywhere inside the pack — not in headers, game titles, instructions, or answer blocks.
 
 The era name (e.g., "1970s") already signals who this is for without labelling them.
 These words belong only in Etsy titles and tags for search — never in the product the reader holds in their hands.
@@ -88,12 +88,12 @@ Activity phrases by type:
 - Word Recall (1.1): "How many came back to me?"
 - Memory Trivia (1.2): "How many came back to me?"
 - Fill-in-the-Blank (1.3): "Lines I finished:"
-- Pattern Recognition (2.3): "Patterns I cracked:"
 - Logic Puzzles (3.1): "Mysteries I solved:"
-- Sequence Challenges (3.2): "Sequences I sorted:"
 - Riddle & Deduction (3.3): "Riddles I cracked:"
 - Word Search (2.1): completion celebration + tracking line — "Found all 30? You're a legend! ★★★" with "Words found: ___ / 30"
 - Crossword (2.2): completion celebration + tracking line — "Filled every square? Absolutely brilliant! ★★★" with "Clues solved: ___ / [N]"
+- Sudoku (2.3): completion celebration only — "Completed it? Brilliant! ★" (no score box — puzzle is self-checking)
+- Crossnumber (3.2): completion celebration + tracking line — "Filled every square? Absolutely brilliant! ★★★" with "Clues solved: ___ / [N]"
 
 - Keep it light — no pass/fail language
 - Add a small "No peeking at the answers yet!" line just above the score box to keep it playful
@@ -108,7 +108,7 @@ Add one soft optional prompt after word recall, trivia, and fill-in-the-blank ga
 > _______________________________________________
 
 Exact wording can vary per activity to match its tone — see each individual skill file for the specific phrasing. The spirit is always the same: warm, optional, no pressure.
-Skip for puzzle-based activities (word search, crossword, pattern, logic, sequence, riddle).
+Skip for puzzle-based activities (word search, crossword, sudoku, crossnumber, logic, riddle).
 
 ---
 
@@ -122,9 +122,9 @@ Name games warmly, not by number alone:
 | Fill-in-the-Blank | "Finish the Line: [Topic]" | "Finish the Line: 1970s Song Lyrics" |
 | Word Search | "The [Topic] Word Hunt" | "The 1970s Music Word Hunt" |
 | Crossword | "The [Topic] Crossword" | "The 1970s TV Crossword" |
-| Pattern Recognition | "Spot the Pattern: [Topic]" | "Spot the Pattern: Chart Hits" |
+| Sudoku | "The [Era] Sudoku — Puzzle [N]" | "The 1970s Sudoku — Puzzle 3" |
 | Logic Puzzles | "The [Scenario] Mystery" | "The Disco Night Mystery" |
-| Sequence Challenges | "Put It in Order: [Topic]" | "Put It in Order: 1970s Number Ones" |
+| Crossnumber | "The [Topic] Number Puzzle" | "The 1970s Music Number Puzzle" |
 | Riddle & Deduction | "Who or What Am I? [Topic]" | "Who or What Am I? 1970s Icons" |
 
 Include the game number small and secondary: e.g., **Game 3 · The 1970s Music Word Hunt**
@@ -140,10 +140,10 @@ After the last game in each Set, add a short celebration line:
 
 ---
 
-## Answer Key Tone
-- Header: **"How Did You Go?"** (not "Answer Key")
-- After each answer, add a brief context line where helpful:
-  > "1977 — the year Star Wars changed cinema forever."
-  > "ABBA — 'Dancing Queen' reached No. 1 in 15 countries."
-- Keep context lines to one sentence — it's a reward, not a lecture
-- Tone: like a friend confirming the answer and sharing the story behind it
+## Upside-Down Answer Format
+Answers appear at the bottom of each game's last page, rotated 180°, in small grey text (9pt). No separate answer section.
+
+- Label: **"Solution ↕"** (puzzles) or **"Suggested Answers ↕"** (memory activities)
+- For memory activities (1.1, 1.2, 1.3): list compact answers — "1. ABBA · 2. Bowie · 3. 1974..." — with no context lines (the game itself is the experience, not the answer reveal)
+- For puzzle grids (sudoku, crossword, crossnumber, word search): include the completed grid reduced in size
+- Tone: discreet and functional — the upside-down orientation signals "no peeking" without needing to say it

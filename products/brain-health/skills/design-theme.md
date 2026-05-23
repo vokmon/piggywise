@@ -34,7 +34,6 @@ Full-opacity color is used only for borders, icons, and decorative elements.
 
 ### Footer
 - Plain white strip at bottom
-- Left: `Answers → p.[X]` (10pt)
 - Right: `Page [N]` (10pt)
 
 ---
@@ -68,9 +67,9 @@ Together they answer every buyer question: *What is it? What's inside? How do I 
 - **Preview 2** — "What's included" callout graphic. Clean layout on era-colored background:
   ```
   ✔ 90 activities across 9 types
-  ✔ Word search, crossword, trivia, logic puzzles & more
+  ✔ Word search, crossword, sudoku, trivia, logic puzzles & more
   ✔ 4-week guided schedule
-  ✔ Full answer key with context
+  ✔ Answers on every page — no flipping to the back
   ✔ Large print — 14pt A4
   ✔ Print as many times as you like
   ```

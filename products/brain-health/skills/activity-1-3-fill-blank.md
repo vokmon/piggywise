@@ -9,7 +9,7 @@ Generate Fill-in-the-Blank Challenges for Set 1: Memory Enhancement.
 ## Output
 - 10 complete Fill-in-the-Blank games
 - Each game: 25 sentences with one or two blanks, grouped into 5 rounds of 5
-- Answer key at end of each game
+- Upside-down suggested answers at the bottom of the last page
 - Saved to: `workspace/[THEME]/activities/1-3-fill-blank.md`
 
 ## Steps

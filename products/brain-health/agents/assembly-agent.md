@@ -26,4 +26,4 @@ Compile all QA-approved activities into the final deliverable PDF.
 ## Do Not Proceed If
 - QA report is missing or shows NEEDS FIXES
 - Any activity file is missing
-- Grid files for 2.1 or 2.2 are incomplete
+- Grid files for 2.1, 2.2, 2.3, or 3.2 are incomplete

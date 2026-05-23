@@ -21,7 +21,7 @@ Generate Word Search Puzzles for Set 2: Focus & Concentration.
 ## Phase 2: Generate Grids (Python Script)
 Run the word search grid generator script:
 ```bash
-python scripts/generate_word_search.py \
+python products/brain-health/scripts/generate_word_search.py \
   --input workspace/[THEME]/activities/2-1-word-search-lists.md \
   --output workspace/[THEME]/activities/2-1-word-search-grids/ \
   --cell-size 12
@@ -37,7 +37,7 @@ python scripts/generate_word_search.py \
 - All words are 4–15 letters
 - No ambiguous or obscure words
 - 30 words fit comfortably in the grid
-- Answer key shows word locations
+- Completed grid (upside-down) printed at bottom of puzzle page shows word locations
 
 ## Tone & Presentation
 See `products/brain-health/skills/activity-tone.md` for full guidelines. Activity-specific notes:

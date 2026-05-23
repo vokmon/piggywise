@@ -63,7 +63,7 @@ Use etsy-listing skill to generate:
 - No screen required — print at home, use with a pencil
 - 90 activities across 9 types (word search, crossword, trivia, logic puzzles, and more)
 - 4-week guided schedule included
-- Answer key included
+- Answers printed discreetly on each page — no flipping to the back
 - Great gift for a parent, grandparent, or loved one
 
 **Tags to always include:** "large print", "large print puzzle", "printable large print"

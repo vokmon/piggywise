@@ -18,16 +18,15 @@ Review all generated activity content for accuracy, quality, and consistency.
 ### Completeness
 - [ ] All 9 activity types exist
 - [ ] Each activity has exactly 10 variations
-- [ ] All answer keys are present
 - [ ] Activity 1.1: 10 questions per game × 10 games = 100 questions total
 - [ ] Activity 1.2: 15 questions per game × 10 games = 150 questions total
 - [ ] Activity 1.3: 25 sentences per game × 10 games = 250 sentences total
 
 ### Accuracy
 - [ ] Facts are accurate for the theme era
-- [ ] Answer keys match the questions
-- [ ] Puzzle activities (crossword, word search, pattern, logic, sequence, riddle): one clear correct answer per question
-- [ ] Open-answer activities (1.1, 1.2): answer key notes acceptable variations (e.g., "Queen" or "The Queen")
+- [ ] Upside-down answers match the questions/puzzle solution
+- [ ] Puzzle activities (crossword, word search, sudoku, crossnumber, logic, riddle): one clear correct answer per question or unique puzzle solution
+- [ ] Open-answer activities (1.1, 1.2): suggested answers note acceptable variations (e.g., "Queen" or "The Queen")
 
 ### Quality
 - [ ] Mix of difficulty levels (easy, medium, hard) within each activity
@@ -50,15 +49,17 @@ Review all generated activity content for accuracy, quality, and consistency.
 - [ ] Difficulty is mixed within each set — not all hard or all easy games in a row
 - [ ] Reflection prompts present on memory-based activities (1.1, 1.2, 1.3)
 
-### Answer Key
-- [ ] Every answer has a brief context line where relevant (one sentence — the "why" behind the answer)
-- [ ] Answer section header says "How Did You Go?" — not "Answer Key"
-- [ ] Answer key TOC has correct page references
+### Upside-Down Answers
+- [ ] Every puzzle game (2.1–3.3) has a small upside-down answer/solution block at the bottom of its last page
+- [ ] Memory games (1.1–1.3) have a small upside-down suggested answers block at the bottom of their last page
+- [ ] Upside-down block is labelled "Solution ↕" or "Suggested Answers ↕" in small grey text
 
 ### Format
 - [ ] Word search words are 4–15 letters
 - [ ] Crossword answers are 3–12 letters
-- [ ] Pattern sequences have logical rules with clear explanations
+- [ ] Sudoku (2.3): each puzzle has a unique solution; difficulty mix: 3 easy (38+ givens), 4 medium (28–34), 3 hard (22–26)
+- [ ] Crossnumber (3.2): all answers are digit strings only; at least 12 clues placed per puzzle
+- [ ] All crossnumber answers are factually accurate for the theme era
 
 ### Activity 1.1 (Word Recall)
 - [ ] Every question has a whisper hint (one sentence, casual tone, not a giveaway)

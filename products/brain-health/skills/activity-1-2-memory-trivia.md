@@ -10,7 +10,7 @@ Generate Memory Trivia Games for Set 1: Memory Enhancement.
 - 10 complete Memory Trivia Games
 - Each game: 15 open-ended recall questions, grouped into 3 rounds of 5
 - No multiple choice — player writes their own answer
-- Answer key at end of each game
+- Upside-down suggested answers at the bottom of the last page
 - Saved to: `workspace/[THEME]/activities/1-2-memory-trivia.md`
 
 ## Steps

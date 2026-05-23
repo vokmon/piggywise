@@ -8,7 +8,7 @@ Generate Logic Puzzles for Set 3: Logic & Problem Solving.
 
 ## Output
 - 10 Logic Puzzles
-- Each puzzle: scenario setup, 5–8 clues, 2–4 questions, answer key
+- Each puzzle: scenario setup, 5–8 clues, 2–4 questions, upside-down answers at page bottom
 - Saved to: `workspace/[THEME]/activities/3-1-logic-puzzles.md`
 
 ## Steps

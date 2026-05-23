@@ -9,9 +9,6 @@ Research and confirm 10 topics for a given theme.
 - Confirmed list of 10 diverse, senior-appropriate topics for the theme
 - Saved to: `workspace/[THEME]/topics.md`
 
-## Skills Used
-- `skills/research.md`
-
 ## Steps
 1. Use research skill to find the most iconic aspects of the theme era
 2. Draft 10 topic candidates covering a range of categories:

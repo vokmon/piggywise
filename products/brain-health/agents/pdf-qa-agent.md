@@ -18,7 +18,7 @@ This is a second QA pass — runs after assembly-agent, before marketing-agent.
 
 ### Structure & Completeness
 - [ ] PDF opens without errors
-- [ ] Page count is plausible (minimum 60 pages for 90 activities + front matter + answer key)
+- [ ] Page count is plausible (minimum 50 pages for 90 activities + front matter — no separate answer section)
 - [ ] Page 1: Cover page present with pack name and era imagery
 - [ ] Page 2: "How to use this pack" page present
 - [ ] Page 3: "My Progress" page present — includes Name field, Date started field, 28-day tick grid
@@ -27,16 +27,11 @@ This is a second QA pass — runs after assembly-agent, before marketing-agent.
 - [ ] All 3 Set opener pages present with warm intro blurbs
 - [ ] All 9 activity types present (1.1 through 3.3), each with 10 games/puzzles
 - [ ] End-of-set celebration lines present after each set
-- [ ] Completion certificate page present before the answer section
-- [ ] Answer section separator page present ("How Did You Go?")
-- [ ] Answer key TOC present with page references
-- [ ] Answer pages present for all 9 activity types
+- [ ] Completion certificate page present at the end
 
 ### Headers & Footers
 - [ ] Every activity page has a running header: `[Pack Name]  |  [Set Name]`
-- [ ] Every activity page footer has: `Answers → p.[X]` (left) and `Page [N]` (right)
-- [ ] Answer pages footer shows only `Page [N]` — no answer reference
-- [ ] No footer answer references are blank (all filled in)
+- [ ] Every activity page footer has: `Page [N]` (right)
 
 ### Content Spot-Check (Sample 5 Random Pages)
 - [ ] Game intro line present (warm, scene-setting)
@@ -47,11 +42,7 @@ This is a second QA pass — runs after assembly-agent, before marketing-agent.
 - [ ] No age labels: "senior", "elderly", "older adult"
 - [ ] Difficulty label present (★ Warm Up / ★★ Getting Going / ★★★ Brain Stretcher) on question-based games
 - [ ] If page is a memory activity (1.1, 1.2, 1.3): round headers visible between question groups — no unbroken numbered list
-
-### Answer Key Spot-Check (Sample 3 Random Answer Pages)
-- [ ] Header says "How Did You Go?" — not "Answer Key"
-- [ ] Each answer has a brief context line
-- [ ] Page references match the activity pages
+- [ ] Every activity's last page has a small upside-down answer block at the bottom, labelled "Solution ↕" or "Suggested Answers ↕"
 
 ---
 
@@ -100,7 +91,7 @@ Open the PDF and work through this list. Takes about 5–10 minutes.
 - [ ] Read the intro line of 3 random games — do they feel warm and inviting?
 - [ ] Read the end-of-set celebration lines — do they feel genuine, not cheesy?
 - [ ] Read the completion certificate — does it feel dignified and worth keeping?
-- [ ] Read 3 random answer context lines — do they feel like a friend sharing a story?
+- [ ] Flip to the bottom of a puzzle page — is the upside-down answer block small, unobtrusive, and clearly labelled?
 
 ### My Progress Page
 - [ ] Name and Date started fields are large enough to write in

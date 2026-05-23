@@ -1,7 +1,7 @@
 # assemble-pdf
 
 Compile all generated activities into a complete A4 PDF ready for delivery.
-Includes activity pages, answer key section, running headers, and page references.
+Includes activity pages, running headers, and upside-down answer blocks on each game page.
 
 ## Input
 - Theme name (e.g., "1970s")
@@ -24,11 +24,9 @@ Example: `1970s Memory Lane Brain Health Pack  |  Set 1: Memory Enhancement`
 
 **Footer (bottom of every page):**
 ```
-Answers → p.[X]                                    Page [N]
+Page [N]
 ```
-- Left: reference to answer key page for this activity
-- Right: current page number
-- Answer key pages: footer shows only `Page [N]` (no answer reference needed)
+- Right-aligned page number only
 
 ---
 
@@ -53,36 +51,15 @@ Pages 6+    ── ACTIVITY SECTION ──
                 Warm intro blurb — what this set trains
                 Activity 2.1 · Word Search · Puzzles 1–10
                 Activity 2.2 · Crossword · Puzzles 1–10
-                Activity 2.3 · Pattern Recognition · Grids 1–10
+                Activity 2.3 · Sudoku · Puzzles 1–10
               [End-of-set line] "Set 2 done — your focus is sharp! Take a breather before Set 3."
               [Set opener page] Set 3: Logic & Problem Solving
                 Warm intro blurb — what this set trains
                 Activity 3.1 · Logic Puzzles · 1–10
-                Activity 3.2 · Sequence Challenges · 1–10
+                Activity 3.2 · The Number Puzzle (Crossnumber) · 1–10
                 Activity 3.3 · Riddle & Deduction · 1–10
               [End-of-pack page] "You've completed the full pack! Every puzzle, every challenge — well done. 🎉"
               [Completion certificate page] (see below)
-[Sep. page] ── HOW DID YOU GO? ──
-              [Pack Name] — How Did You Go?
-[TOC page]  Answer Key Table of Contents
-              Set 1: Memory Enhancement
-                1.1 Word Recall Games 1–10 ............. p.XX
-                1.2 Memory Trivia Games 1–10 ........... p.XX
-                1.3 Fill-in-the-Blank Games 1–10 ....... p.XX
-              Set 2: Focus & Concentration
-                2.1 Word Search Puzzles 1–10 ........... p.XX
-                2.2 Crossword Puzzles 1–10 ............. p.XX
-                2.3 Pattern Recognition 1–10 ........... p.XX
-              Set 3: Logic & Problem Solving
-                3.1 Logic Puzzles 1–10 ................. p.XX
-                3.2 Sequence Challenges 1–10 ........... p.XX
-                3.3 Riddle & Deduction 1–10 ............ p.XX
-[Ans. pages] Answer pages — one activity per page or split as needed
-              Header on every answer page:
-              "[Pack Name] — How Did You Go?"
-              "─── p.[activity page] · [Set] · [Activity] · [Game N] ───"
-              Each answer followed by a brief context line where helpful
-              (see activity-tone.md — Answer Key Tone)
 ```
 
 ---
@@ -139,7 +116,7 @@ Week 1 — Getting Started
   Day 3   Set 1 · Finish the Line: [Topic 3]                       p.X
   Day 4   Set 2 · The [Topic 4] Word Hunt                          p.X
   Day 5   Set 2 · The [Topic 5] Crossword                          p.X
-  Day 6   Set 2 · Spot the Pattern: [Topic 6]                      p.X
+  Day 6   Set 2 · The [Era] Sudoku — Puzzle 1                       p.X
   Day 7   ☕ Rest day — or revisit a favourite from the week
 ...
 ```
@@ -179,23 +156,25 @@ A simple, warm full-page certificate printed at the back of the activity section
 
 ---
 
-## Assembly Process (Two-Pass)
+## Upside-Down Answer Block
 
-### Pass 1 — Assemble Activity Pages
+Every activity's last page ends with a small upside-down answer block — rotated 180° — printed in a smaller font (9pt) in light grey:
+
+```
+Solution ↕          [for puzzle activities: crossword, word search, sudoku, crossnumber, logic, riddle]
+Suggested Answers ↕ [for memory activities: word recall, trivia, fill-blank]
+```
+
+- Puzzle grids (sudoku, crossword, crossnumber, word search): print the completed grid reduced to ~30% size, rotated 180°
+- Text answers (logic puzzles, riddles, word recall, trivia, fill-blank): list answers in compact 2-column format, rotated 180°
+- Label in 8pt grey text only — no border, no header box
+- Positioned in the bottom 15mm of the page — well below the score box
+
+## Assembly Process
+
 1. Confirm QA report shows APPROVED — do not proceed if NEEDS FIXES
 2. Build all activity pages in order with running headers
-3. Leave footer answer references blank for now (page numbers not yet known)
-4. Note each activity's starting page number in a reference map:
-   ```
-   Activity 1.1 Game 1 → p.5
-   Activity 1.1 Game 2 → p.7
-   ...
-   ```
-
-### Pass 2 — Build Answer Key + Fill References
-1. Build answer key section using the reference map
-2. Build answer key TOC with correct page numbers
-3. Go back and fill in `Answers → p.[X]` in each activity page footer
+3. Add upside-down answer block to the bottom of each game's last page
 4. Assign final page numbers throughout
 
 ---
