@@ -5,6 +5,10 @@
       "command": "npx",
       "args": ["-y", "mcp-remote@latest", "https://mcp.canva.com/mcp"],
       "env": {}
+    },
+    "etsy": {
+      "type": "http",
+      "url": "https://mcp.api.etsycloud.com/mcp"
     }
   }
 }

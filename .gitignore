@@ -1,5 +1,8 @@
 # OS files
 .DS_Store
+
+# Local workspaces
+products/brain-health/workspace/
 temp
 images
 # Local secrets

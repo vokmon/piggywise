@@ -1,0 +1,139 @@
+# activity-tone
+
+Tone and presentation guidelines for all brain health activity pages.
+Apply these to every game/puzzle across all 9 activity types.
+
+---
+
+## Core Principle
+Every page should feel like a relaxed game night with friends, not a classroom test.
+Warm, encouraging, comfortable, no-pressure, a little nostalgic — never clinical or formal.
+
+The reader should feel:
+- **Safe** — there are no wrong answers that matter, only fun ones
+- **Comfortable** — pace yourself, skip if you like, come back anytime
+- **Nostalgic** — this is a trip down memory lane, not a performance review
+- **Celebrated** — every attempt is worth something
+
+Language to avoid: "You must", "Complete all", "Score", "Pass", "Fail", "Test", "Exercise", "Task"
+Language to use: "Give it a go", "Take your time", "No peeking!", "Ready when you are", "How did you do?"
+
+---
+
+## Typography & Readability
+- **Font:** Arial or Helvetica (sans-serif only) — never Times New Roman or other serif fonts; sans-serif is significantly easier to read for aging eyes
+- **Question/sentence length:** Max 15–18 words per sentence. If a question needs more, split it into two sentences
+- **Vocabulary:** Plain English only. Avoid jargon, acronyms, or words unlikely to be known by someone who grew up in the era. If a term needs explaining, add a one-line note in brackets
+- **Line length:** No more than 70 characters per line — long lines cause readers to lose their place
+- **B&W print rule:** Never convey meaning through color alone. "Circle the red option" is wrong — it breaks when printed in black and white. Use position, shape, or labels instead
+
+---
+
+## Never Use Age Labels Inside the Pack
+Do not use "Senior", "Elderly", "Older Adult", or any age label anywhere inside the pack — not in headers, game titles, instructions, or the answer key.
+
+The era name (e.g., "1970s") already signals who this is for without labelling them.
+These words belong only in Etsy titles and tags for search — never in the product the reader holds in their hands.
+
+**Wrong:** "Senior Memory Game — Game 3"
+**Right:** "Do You Remember...? 1970s TV Shows — Game 3"
+
+---
+
+## Game Intro (Every Game/Puzzle)
+Start every game with 1–2 lines that set the scene and spark a memory:
+
+> "Cast your mind back to 1973 — bell-bottoms were in and disco was king. How much do you remember?"
+
+> "This one takes you straight back to Saturday night telly in the 1970s. Ready?"
+
+- Tone: warm, conversational, inviting
+- Reference the era, a feeling, or a shared cultural moment
+- Never start with "In this exercise..." or "This test measures..."
+
+---
+
+## Instructions Language
+- Use: **"Here's how to play:"**
+- Never use: "Instructions:", "Directions:", "Task:"
+
+---
+
+## Difficulty Labels
+Replace Easy / Medium / Hard with:
+
+| Level | Label |
+|-------|-------|
+| Easy | ★ ☆ ☆ · Warm Up |
+| Medium | ★ ★ ☆ · Getting Going |
+| Hard | ★ ★ ★ · Brain Stretcher |
+
+Show the label at the top right of the game page, next to the game name.
+
+---
+
+## Score Box (Bottom of Every Game Page)
+Add a friendly score box at the bottom of each game:
+
+```
+┌─────────────────────────────────────────┐
+│  How did I do?   ___ / [TOTAL]          │
+│  ★ ☆ ☆  Just warming up                │
+│  ★ ★ ☆  Getting there!                 │
+│  ★ ★ ★  Brilliant!                     │
+└─────────────────────────────────────────┘
+```
+
+- Total is the number of questions/words/clues in that game
+- Keep it light — no pass/fail language
+- Add a small "No peeking at the answers yet! 😄" line just above the score box to keep it playful
+
+---
+
+## Reflection Prompt (Memory-Based Activities)
+Add one soft optional prompt after trivia and fill-in-the-blank games:
+
+> "Does any of this bring back a memory? Jot it down:"
+> _______________________________________________
+> _______________________________________________
+
+This is optional for the reader — do not frame it as a required task.
+Skip for puzzle-based activities (word search, crossword, pattern, logic).
+
+---
+
+## Game Naming Convention
+Name games warmly, not by number alone:
+
+| Activity Type | Name Format | Example |
+|--------------|-------------|---------|
+| Word Recall | "Remember When: [Topic]" | "Remember When: 1970s Music" |
+| Memory Trivia | "Do You Remember...? [Topic]" | "Do You Remember...? 1970s TV" |
+| Fill-in-the-Blank | "Finish the Line: [Topic]" | "Finish the Line: 1970s Song Lyrics" |
+| Word Search | "The [Topic] Word Hunt" | "The 1970s Music Word Hunt" |
+| Crossword | "The [Topic] Crossword" | "The 1970s TV Crossword" |
+| Pattern Recognition | "Spot the Pattern: [Topic]" | "Spot the Pattern: Chart Hits" |
+| Logic Puzzles | "The [Scenario] Mystery" | "The Disco Night Mystery" |
+| Sequence Challenges | "Put It in Order: [Topic]" | "Put It in Order: 1970s Number Ones" |
+| Riddle & Deduction | "Who or What Am I? [Topic]" | "Who or What Am I? 1970s Icons" |
+
+Include the game number small and secondary: e.g., **Game 3 · The 1970s Music Word Hunt**
+
+---
+
+## End-of-Set Celebration
+After the last game in each Set, add a short celebration line:
+
+- Set 1: "You've finished Set 1 — Memory Enhancement complete! Time for a well-earned cuppa. ☕"
+- Set 2: "Set 2 done — your focus is sharp! Take a breather before Set 3."
+- Set 3: "You've completed the full pack! Every puzzle, every challenge — well done. 🎉"
+
+---
+
+## Answer Key Tone
+- Header: **"How Did You Go?"** (not "Answer Key")
+- After each answer, add a brief context line where helpful:
+  > "1977 — the year Star Wars changed cinema forever."
+  > "ABBA — 'Dancing Queen' reached No. 1 in 15 countries."
+- Keep context lines to one sentence — it's a reward, not a lecture
+- Tone: like a friend confirming the answer and sharing the story behind it
