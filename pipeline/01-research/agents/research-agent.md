@@ -216,6 +216,8 @@ mcp__playwright__browser_close
 find .playwright-mcp -delete
 ```
 
+If you take any screenshots or save intermediate files during this run, save them directly to `pipeline/01-research/output/` — never to the project root.
+
 ---
 
 ## Notes

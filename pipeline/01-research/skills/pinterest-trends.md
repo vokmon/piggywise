@@ -20,14 +20,15 @@ Run `skills/pinterest-lookup.md`. If it returns `{ "logged_in": false }`: procee
 
 Navigate directly to:
 ```
-https://trends.pinterest.com/detail/?country=US&terms={url-encoded-keyword}
+https://trends.pinterest.com/detail/?country=US&terms={keyword}
 ```
+Encode spaces as `%20` (not `+`) — Pinterest treats `%20` as a single phrase chip, while `+` splits each word into a separate chip.
 
 Take a **screenshot** to read the trend chart. Extract:
 - `trend_direction` — shape of the solid line: rising = `growing`, flat = `stable`, falling = `declining`
 - `peak_season` — x-axis label at the highest point (e.g. `"January–February"`)
 
-Then take a **snapshot** to extract the related trend chips shown below the chart. Record all visible chip text as `related_interests`.
+Take a **snapshot** to extract the related trend chips shown below the chart. Record all visible chip text as `related_interests`.
 
 If the page returns 404 or shows no chart data: proceed to Step 3.
 

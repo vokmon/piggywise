@@ -34,6 +34,8 @@ find .playwright-mcp -delete
 
 Run this as the final step in every agent that uses Playwright skills.
 
+If you need to save any intermediate files to disk, save them directly to the calling agent's output folder — never to the project root.
+
 ---
 
 ## General Rules
