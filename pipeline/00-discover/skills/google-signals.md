@@ -2,12 +2,15 @@
 
 Use Gemini CLI to identify broad trending categories in the digital products and productivity tools space. This is a lightweight signal check — not the deep per-seed analysis done in Stage 01. Goal: find which broad niches have Google search momentum right now, so the seed-ranker can prioritise candidates that have demand from outside Etsy too.
 
+## Input
+- `niche_description` — plain-English description of the target product space
+
 ## Steps
 
 ### 1. Run Gemini broad trend query
 
 ```bash
-gemini -p "Using Google Search, what are the most searched and fastest-growing categories in digital productivity tools, templates, and planners right now? I'm looking for Google Sheets templates, Notion templates, digital planners, trackers, and similar digital download products. Tell me: (1) which categories are growing in search interest, (2) which are declining or saturated, (3) any emerging niches showing rising queries. Be specific — name the actual product types, not just broad categories like 'productivity'."
+gemini -p "Using Google Search, what are the most searched and fastest-growing categories right now for: {niche_description}. Tell me: (1) which categories are growing in search interest, (2) which are declining or saturated, (3) any emerging niches showing rising queries. Be specific — name the actual product types, not just broad categories like 'productivity'."
 ```
 
 **Evaluate the response — does it contain ALL of the following?**
@@ -21,13 +24,13 @@ gemini -p "Using Google Search, what are the most searched and fastest-growing c
 ### 2. Fallback — WebSearch
 
 Run three WebSearch queries in sequence:
-1. `trending digital download products Etsy last 12 months`
-2. `growing Google Sheets template niches`
-3. `best selling Notion templates trends`
+1. `trending {niche_description} Etsy last 12 months`
+2. `growing niches {niche_description}`
+3. `best selling {niche_description} trends`
 
 Synthesize results to extract trending categories and directions. Note `"source": "web_search"`.
 
-If WebSearch also returns no useful data: return `{ "source": "unavailable", "raw_seed_candidates": [] }` and stop — discover-agent will continue without Google signals.
+If WebSearch also returns no useful data: return `{ "source": "unavailable", "raw_seed_candidates": [] }` and stop — the calling agent will continue without Google signals.
 
 ### 3. Classify each category
 
@@ -45,7 +48,7 @@ Set top-level `confidence` based on the quality of data received:
 
 ## Output
 
-Return a JSON object to the calling agent (`discover-agent`):
+Return a JSON object to the calling agent:
 
 ```json
 {

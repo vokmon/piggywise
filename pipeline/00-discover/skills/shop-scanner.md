@@ -5,6 +5,7 @@ Study top-performing Etsy shops in the digital templates / spreadsheets niche. G
 Follows `skills/playwright.md` for screenshot vs snapshot usage, block handling, and cleanup.
 
 ## Input
+
 - `etsy_bestsellers` — output from etsy-bestsellers skill (provides top product types to search)
 
 ---
@@ -30,14 +31,16 @@ For each shop, navigate to their shop page:
 `https://www.etsy.com/shop/{shop-name}`
 
 Extract:
+
 - Total shop sales count
 - Number of listings
 - Shop join date (shown as "Member since..." on the shop page) — used to calculate velocity
 - Shop-level star rating (visible on shop page)
-- Top 3–5 listings (by position or Star Seller / bestseller badge): title, price_usd, review count, star rating, last review date, `in_carts` count if shown (click through to listing — take a **snapshot** first; if `in_carts` is not visible, take a **screenshot**)
+- Top 3–5 listings (by position or Star Seller / bestseller badge): title, price, review count, star rating, last review date, `in_carts` count if shown (click through to listing — take a **snapshot** first; if `in_carts` is not visible, take a **screenshot**)
 - Any visible niche focus (e.g. "finance templates", "Notion dashboards")
 
 Classify `demand_recency` for each listing based on `last_review_date`:
+
 - `active` — last review within 3 months
 - `slowing` — last review 3–6 months ago
 - `stale` — last review more than 6 months ago
@@ -48,14 +51,15 @@ If a shop page is blocked or unavailable: note it and move to the next — do no
 `velocity = total_sales ÷ months_since_joining`
 
 Classify each shop:
+
 - `growing` — high velocity (> 200 sales/month) regardless of total sales
 - `established` — moderate velocity (50–200 sales/month), steady performer
 - `legacy` — low velocity (< 50 sales/month) but high total sales — accumulated over years, not a current trend signal
 
-
 ### 3. Identify patterns
 
 From all shops studied, extract:
+
 - Which product types appear most in top listings
 - Which topics (finance, productivity, business, etc.) dominate
 - Price range of their bestsellers
@@ -67,7 +71,7 @@ When building `raw_seed_candidates`: include patterns from `growing` and `establ
 
 ## Output
 
-Return a JSON object to the calling agent (`discover-agent`):
+Return a JSON object to the calling agent:
 
 ```json
 {
@@ -85,7 +89,7 @@ Return a JSON object to the calling agent (`discover-agent`):
       "top_listings": [
         {
           "title": "Monthly Budget Tracker Google Sheets",
-          "price_usd": 7.99,
+          "price": 7.99,
           "reviews": 1840,
           "star_rating": 4.9,
           "in_carts": 14,
@@ -94,7 +98,7 @@ Return a JSON object to the calling agent (`discover-agent`):
         },
         {
           "title": "Savings Goal Tracker Google Sheets",
-          "price_usd": 5.99,
+          "price": 5.99,
           "reviews": 920,
           "star_rating": 4.8,
           "in_carts": 3,

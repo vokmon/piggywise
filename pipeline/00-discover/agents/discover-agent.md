@@ -2,13 +2,43 @@
 
 Orchestrates the full Stage 00 discovery pipeline. Runs data collection skills in sequence, feeds results into seed-ranker, and produces a ranked list of seed candidates ready for Stage 01 research.
 
-## Input
-None — this agent takes no arguments. It scans broadly across all digital downloads.
+## Configuration
+
+Declare the scope here. Update these lists when expanding to new niches or formats — skills pick them up automatically.
+
+**`format_anchors`** — fixed Etsy autocomplete queries (passed to `autocomplete-harvest`):
+- `google sheets`
+- `notion template`
+- `digital download`
+- `spreadsheet template`
+
+**`pinterest_terms`** — terms to search on Pinterest Trends (passed to `pinterest-signals`):
+- `digital planner`
+- `google sheets template`
+- `notion template`
+- `budget tracker`
+- `habit tracker`
+
+**`niche_description`** — plain-English description of the target product space (passed to `google-signals`):
+> "Google Sheets templates, Notion templates, digital planners, trackers, and similar digital download products"
 
 ## Invoke with
+
 ```
 /discover
 ```
+
+---
+
+## Step 0 — Confirm configuration
+
+Before running the pipeline, ask the user if they want to use the defaults or override any values:
+
+1. **`format_anchors`** — ask: "Which Etsy search terms should I use as format anchors for autocomplete? (default: google sheets, notion template, digital download, spreadsheet template)" — accept a comma-separated list or press Enter to use the default.
+2. **`pinterest_terms`** — ask: "Which terms should I search on Pinterest Trends? (default: digital planner, google sheets template, notion template, budget tracker, habit tracker)" — accept a comma-separated list or press Enter to use the default.
+3. **`niche_description`** — ask: "How would you describe the target product space for Google search signals? (default: Google Sheets templates, Notion templates, digital planners, trackers, and similar digital download products)" — accept a description or press Enter to use the default.
+
+Once all three values are confirmed, proceed to Step 1.
 
 ---
 
@@ -29,15 +59,18 @@ pinterest-signals ────────────────────�
 
 Run skills in this order — do not stop if one fails, continue with remaining skills.
 
-1. Run `etsy-bestsellers` — must run first
-2. Run `autocomplete-harvest` with `etsy_bestsellers` output as input
-3. Run `shop-scanner` with `etsy_bestsellers` output as input
-4. Run `google-signals`
-5. Run `pinterest-signals`
+1. Run these in parallel immediately:
+   - `etsy-bestsellers`
+   - `google-signals` with `niche_description` from Configuration
+   - `pinterest-signals` with `pinterest_terms` from Configuration
+2. Once `etsy-bestsellers` completes, run these in parallel:
+   - `autocomplete-harvest` with `etsy_bestsellers` output and `format_anchors` from Configuration
+   - `shop-scanner` with `etsy_bestsellers` output as input
 
 For each skill, if it returns `"source": "blocked"` or `"source": "unavailable"`: note it, continue with remaining skills. Do not stop the pipeline unless all five fail.
 
 **If all five fail:**
+
 ```json
 {
   "status": "stopped",
@@ -45,6 +78,7 @@ For each skill, if it returns `"source": "blocked"` or `"source": "unavailable"`
   "recommendation": "Try again later or check Playwright and Gemini CLI connectivity."
 }
 ```
+
 Save and stop.
 
 ---
@@ -52,6 +86,7 @@ Save and stop.
 ## Step 2 — Run seed-ranker
 
 Pass all five outputs to `seed-ranker`:
+
 - `etsy_bestsellers` = Step 1 output (or `null` if blocked)
 - `shop_scanner` = Step 1 output (or `null` if blocked)
 - `autocomplete_harvest` = Step 1 output (or `null` if blocked)
@@ -65,6 +100,7 @@ seed-ranker will score and rank candidates from whichever sources succeeded.
 ## Step 3 — Cross-check existing research
 
 Scan `pipeline/01-research/output/` for files matching `research-*.json`. For each file found:
+
 - Read the file and extract the `seed` field from the JSON — do not reconstruct the keyword from the filename (hyphens in the filename are ambiguous)
 - Match the `seed` value against `seed_ranker.seeds[].seed`
 - Mark the matching seed with `"already_researched": true`
@@ -119,7 +155,7 @@ Save to:
 }
 ```
 
-Populate `summary_text` with the actual content from Step 5 before saving — replace the placeholder values with real numbers and seed names from this run.
+Build the summary text using actual data from this run (same format as Step 5), replace all placeholder values with real numbers and seed names, then save the file.
 
 ---
 
@@ -168,7 +204,7 @@ mcp__playwright__browser_close
 ```
 
 ```bash
-find .playwright-mcp -type f -delete
+find .playwright-mcp -delete
 ```
 
 ---

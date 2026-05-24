@@ -5,7 +5,7 @@ Check search trend momentum, seasonality, and keyword variants for a topic. Uses
 Follows `skills/playwright.md` for screenshot vs snapshot usage, block handling, and cleanup.
 
 ## Input
-- `keyword` — same keyword used in etsy-scan (e.g. `"budget tracker google sheets"`)
+- `keyword` — keyword to research (e.g. `"budget tracker google sheets"`)
 - `related_keywords` — autocomplete suggestions from etsy-scan output
 
 ---
@@ -49,15 +49,17 @@ Synthesize the results to extract trend direction, peak months, and related quer
 
 ### 4. Keyword comparison
 
-Using whichever source succeeded above, run a comparison of the top 3 terms from the `related_keywords` input against the main keyword:
+Using whichever source succeeded above, run a comparison of the top 3 terms from the `related_keywords` input against the main keyword. If `related_keywords` has fewer than 3 terms, use all available. If none are available, skip this step and omit `keyword_comparison` from the output.
 
-- **If Gemini**: run a second prompt:
+When fewer than 3 related keywords are available, include only the ones you have — adjust the prompt and URL accordingly (e.g. with 1 related keyword, compare just that term against the main keyword).
+
+- **If Gemini**: run a second prompt listing the available keywords:
 ```bash
-gemini -p "Using Google Search, compare worldwide search interest for these keywords over the last 12 months: '{kw1}', '{kw2}', '{kw3}', '{keyword}'. Which has the highest and most consistent interest? Which is best to use as an Etsy product title keyword? Be brief."
+gemini -p "Using Google Search, compare worldwide search interest for these keywords over the last 12 months: [list available related keywords], '{keyword}'. Which has the highest and most consistent interest? Which is best to use as an Etsy product title keyword? Be brief."
 ```
 
-- **If Playwright**: navigate to the comparison URL:
-`https://trends.google.com/trends/explore?q={kw1},{kw2},{kw3},{keyword}&date=today%2012-m`
+- **If Playwright**: navigate to the comparison URL with only the available keywords:
+`https://trends.google.com/trends/explore?q={kw1},{kw2},{keyword}&date=today%2012-m`
 
 - **If WebSearch**: ask which keyword variant has the most search results and articles.
 
@@ -73,7 +75,7 @@ Set `best_launch_window` as a human-readable string: 1–2 months before the pea
 
 ## Output
 
-Return a JSON object to the calling agent (`research-agent`):
+Return a JSON object to the calling agent:
 
 ```json
 {
@@ -122,4 +124,4 @@ Return a JSON object to the calling agent (`research-agent`):
 
 - Always attempt Gemini first — it's the fastest and requires no browser.
 - Do not fabricate scores — if a number is unavailable, omit the field rather than guessing.
-- If all three methods fail, set `"source": "unavailable"` and return — the research-agent will proceed without trend data rather than block the pipeline.
+- If all three methods fail, set `"source": "unavailable"` and return — the calling agent will proceed without trend data rather than block the pipeline.

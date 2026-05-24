@@ -14,8 +14,9 @@ Navigate to:
 Take a **snapshot** to extract the filter chips — they appear in the DOM. Then take a **screenshot** to extract listing tiles — tiles render via JavaScript and may not appear in the accessibility tree.
 
 Extract:
+
 - From snapshot: the **filter chips** shown below the search bar — these are Etsy's signal of what buyers actually filter by (e.g. `Planner`, `Tracker`, `Business`, `Calendar`, `Habit Tracking`). Collect all visible chips.
-- From screenshot: up to 20 listings: title, price_usd, star rating, review count, badges (`Bestseller`, `Star Seller`, `Popular now`), shop name.
+- From screenshot: up to 20 listings: title, price, star rating, review count, badges (`Bestseller`, `Star Seller`, `Popular now`), shop name.
 
 If Etsy blocks or shows a captcha: note `"source": "blocked"` and stop — do not continue.
 
@@ -28,17 +29,18 @@ For each selected chip, navigate to the search URL with that chip as an added qu
 
 Take a screenshot and extract up to 20 listings per chip using the same fields.
 
-
 ### 3. Demand recency check
 
 For the top 10 listings by review count across all searches, click through to the listing page. Take a **snapshot** to extract DOM-accessible fields. If `in_carts` is not visible in the snapshot, take a **screenshot** to locate it visually.
 
 Check:
+
 - `last_review_date` — date of the most recent visible review
 - `listing_published` — "Listed on..." or "Last updated..." on the listing page
 - `in_carts` — "X people have this in their carts" if shown
 
 Classify each:
+
 - `active` — last review within 3 months
 - `slowing` — last review 3–6 months ago
 - `stale` — last review more than 6 months ago
@@ -52,6 +54,7 @@ Prioritise `active` listings when identifying `raw_seed_candidates`.
 From all collected listings, identify:
 
 **Product types** — group titles by format keyword:
+
 - `google_sheets` / `spreadsheet` / `excel`
 - `notion_template` / `notion_dashboard`
 - `planner` / `journal` / `worksheet`
@@ -61,6 +64,7 @@ From all collected listings, identify:
 - `other`
 
 **Topic themes** — group by subject matter:
+
 - `finance` (budget, savings, expense, income)
 - `business` (invoice, client tracker, project management)
 - `health` (habit tracker, meal plan, fitness)
@@ -69,19 +73,27 @@ From all collected listings, identify:
 - `personal` (wedding, travel, home)
 - `other`
 
-**Price bands** (convert to USD for consistency):
-- Under $5 / $5–$10 / $10–$20 / Over $20
+**Price bands** (use relative labels — prices shown in local currency):
+
+- `low` / `mid` / `high` / `premium` — judge relative to the range of prices seen across all listings collected
 
 ---
 
 ## Output
 
-Return a JSON object to the calling agent (`discover-agent`):
+Return a JSON object to the calling agent:
 
 ```json
 {
   "source": "playwright",
-  "chips_found": ["Planner", "Tracker", "Business", "Calendar", "Habit Tracking", "Savings"],
+  "chips_found": [
+    "Planner",
+    "Tracker",
+    "Business",
+    "Calendar",
+    "Habit Tracking",
+    "Savings"
+  ],
   "chips_used_for_expansion": ["Planner", "Tracker", "Business", "Calendar"],
   "listings_collected": 98,
   "product_types": {
@@ -102,15 +114,15 @@ Return a JSON object to the calling agent (`discover-agent`):
     "other": 16
   },
   "price_bands": {
-    "under_5": 10,
-    "5_to_10": 38,
-    "10_to_20": 32,
-    "over_20": 18
+    "low": 10,
+    "mid": 38,
+    "high": 32,
+    "premium": 18
   },
   "top_listings": [
     {
       "title": "Monthly Budget Tracker Google Sheets Template",
-      "price_usd": 7.99,
+      "price": 7.99,
       "reviews": 1840,
       "star_rating": 4.9,
       "is_bestseller": true,
@@ -137,4 +149,4 @@ Return a JSON object to the calling agent (`discover-agent`):
 ## Notes
 
 - `raw_seed_candidates` are drawn from the most frequent title patterns among `active` listings only.
-- If all chip expansions are blocked, return what was collected in Step 1 only — partial data is still useful.
+- If all chip expansions are blocked, return what was collected in Step 1 only and set `"source": "partial"` — partial data is still useful. seed-ranker will weight it accordingly.

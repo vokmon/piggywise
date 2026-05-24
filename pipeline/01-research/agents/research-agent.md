@@ -4,11 +4,25 @@ Orchestrates the full Stage 1 research pipeline for a given seed keyword. Runs s
 
 ## Input
 - `seed` — the niche or keyword to research (e.g. `"budget tracker google sheets"`)
+- `target_formats` — product formats gap-finder should generate ideas for (default: `Google Sheets`, `Notion`)
+- `max_listings` — how many Etsy listings to analyze per search (default: `20`)
 
 ## Invoke with
 ```
 /research "budget tracker google sheets"
 ```
+
+---
+
+## Step 0 — Collect inputs
+
+Before running the pipeline, ask the user for any inputs not already provided:
+
+1. **`seed`** — required. If not provided in the invocation, ask: "What keyword or niche do you want to research?"
+2. **`target_formats`** — optional. If not provided, ask: "Which product formats should I generate ideas for? (default: Google Sheets, Notion)" — accept a comma-separated list or press Enter to use the default.
+3. **`max_listings`** — optional. If not provided, ask: "How many Etsy listings should I analyze? (default: 20)" — accept a number or press Enter to use the default.
+
+Once all three values are confirmed (user-provided or default), proceed to Step 1.
 
 ---
 
@@ -22,7 +36,7 @@ etsy-scan → [Gate 1] → google-trends → [Gate 2] → pinterest-trends → g
 
 ## Step 1 — Run etsy-scan
 
-Run the `etsy-scan` skill with `keyword = seed`.
+Run the `etsy-scan` skill with `keyword = seed` and `max_listings` from Input.
 
 ### Gate 1: Is there any demand?
 
@@ -59,7 +73,7 @@ Run the `google-trends` skill with:
 
 **STOP if ALL of the following are true:**
 - `trend_direction = "declining"`
-- `confidence = "low"`
+- `confidence = "high"`
 - No `rising_queries` found
 
 **If stopped:**
@@ -95,6 +109,7 @@ Run the `gap-finder` skill with:
 - `etsy_scan` = Step 1 output
 - `google_trends` = Step 2 output
 - `pinterest_trends` = Step 3 output
+- `target_formats` from Input
 
 ### Gate 3: Are there any viable ideas?
 
@@ -198,7 +213,7 @@ mcp__playwright__browser_close
 ```
 
 ```bash
-find .playwright-mcp -type f -delete
+find .playwright-mcp -delete
 ```
 
 ---

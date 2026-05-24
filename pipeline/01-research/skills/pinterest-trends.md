@@ -5,7 +5,7 @@ Check Pinterest Trends for a keyword to identify early demand signals and adjace
 Follows `skills/playwright.md` for screenshot vs snapshot usage, block handling, and cleanup.
 
 ## Input
-- `keyword` — same keyword used in etsy-scan (e.g. `"budget tracker google sheets"`)
+- `keyword` — keyword to research (e.g. `"budget tracker google sheets"`)
 
 ---
 
@@ -41,22 +41,17 @@ Use the current year (from today's date) in place of `{current_year}` when runni
 
 1. `Pinterest trending "{keyword}" {current_year}`
 2. `Pinterest search trend "{keyword}" growing declining {current_year}`
-3. `"{keyword}" Pinterest saves interest trend`
+3. `"{keyword}" Pinterest saves interest trend {current_year}`
 
 Synthesize results to extract trend direction, peak season, and related interests. Note `"source": "web_search"`.
 
-If WebSearch returns no useful data: return `{ "available": false, "source": "unavailable" }` and stop — research-agent will continue without Pinterest data.
-
-### 3. Check data availability
-Pinterest Trends does not cover every niche. If Step 1 found no meaningful data and Step 2 returned nothing useful:
-- Set `available: false`
-- Note it and return — do not guess or fill with assumptions
+If WebSearch returns no useful data: return `{ "available": false, "source": "unavailable" }` and stop — the calling agent will continue without Pinterest data.
 
 ---
 
 ## Output
 
-Return a JSON object to the calling agent (`research-agent`):
+Return a JSON object to the calling agent:
 
 **If data available (Playwright):**
 ```json

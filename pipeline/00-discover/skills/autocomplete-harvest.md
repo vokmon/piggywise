@@ -8,6 +8,7 @@ Uses two types of terms: fixed format anchors (always run) + dynamic topic terms
 
 ## Input
 - `etsy_bestsellers` — output from etsy-bestsellers skill (provides dynamic topic terms)
+- `format_anchors` — list of fixed Etsy search terms to query for autocomplete
 
 ---
 
@@ -15,11 +16,7 @@ Uses two types of terms: fixed format anchors (always run) + dynamic topic terms
 
 ### 1. Build the query list
 
-**Fixed format anchors** — always run these, no matter what:
-- `google sheets`
-- `notion template`
-- `digital download`
-- `spreadsheet template`
+**Fixed format anchors** — use the `format_anchors` list passed from the calling agent. Run all of them, no matter what.
 
 **Dynamic topic terms** — derived from `etsy_bestsellers` output:
 - Take the top 5 keys from `etsy_bestsellers.topic_themes` (by count)
@@ -34,12 +31,12 @@ Example: if etsy-bestsellers found `topic_themes: { finance: 18, productivity: 1
 
 If `etsy_bestsellers` is null or blocked: use only the fixed anchors.
 
-Final query list = 4 fixed anchors + up to 8 dynamic terms = up to 12 queries total.
+Final query list = all format anchors + up to 8 dynamic terms.
 
 ### 2. Trigger autocomplete for each term
 
 For each term in the query list, navigate to:
-`https://www.etsy.com/search?q={term}&explicit=1`
+`https://www.etsy.com/search?q={term}&explicit=1&sort_order=most_relevant`
 
 Take a snapshot immediately after the page loads — autocomplete suggestions appear in the search bar dropdown before results render.
 
@@ -69,7 +66,7 @@ Organize surviving suggestions into groups based on what the buyer is looking fo
 
 ## Output
 
-Return a JSON object to the calling agent (`discover-agent`):
+Return a JSON object to the calling agent:
 
 ```json
 {
@@ -125,4 +122,4 @@ Return a JSON object to the calling agent (`discover-agent`):
 
 - `raw_seed_candidates` should be the most specific and actionable suggestions — exclude vague format-only terms like "notion template" or "digital download".
 - Dynamic terms make this skill adaptive: if Etsy bestsellers show fitness content rising, the autocomplete harvest will pick up fitness-related queries automatically.
-- If Etsy blocks across all terms: return `{ "source": "blocked", "raw_seed_candidates": [] }` — discover-agent continues with data from other skills.
+- If Etsy blocks across all terms: return `{ "source": "blocked", "raw_seed_candidates": [] }` — the calling agent continues with data from other skills.

@@ -6,6 +6,7 @@ Synthesize outputs from etsy-scan, google-trends, and pinterest-trends to identi
 - `etsy_scan` — full JSON output from etsy-scan skill
 - `google_trends` — full JSON output from google-trends skill
 - `pinterest_trends` — full JSON output from pinterest-trends skill (may be unavailable)
+- `target_formats` — product formats to generate ideas for (e.g. `Google Sheets`, `Notion`)
 
 ---
 
@@ -52,7 +53,7 @@ Look specifically at `rising_queries` and `autocomplete_suggestions` — these o
 For each gap identified, write one product idea. Each idea must:
 - Have a clear target buyer (who exactly is this for?)
 - Have a specific differentiator (what makes it better than what's already there?)
-- Be buildable as a Google Sheets, Notion, or similar digital template
+- Be buildable in one of the `target_formats`
 - Be grounded in at least one signal from the collected data
 
 Aim for 3–5 ideas. Rank them by opportunity score (see below).
@@ -77,7 +78,7 @@ Ideas scoring < 5 = deprioritise
 
 ## Output
 
-Return a JSON object to the calling agent (`research-agent`):
+Return a JSON object to the calling agent:
 
 ```json
 {

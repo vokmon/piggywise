@@ -35,7 +35,7 @@ Rate each seed across four dimensions (1–3 scale):
 | **Etsy demand** | Not seen in bestsellers or shops | Appeared in autocomplete or 1 shop | Bestseller pattern or 2+ shops |
 | **Google momentum** | `direction: declining` in google-signals, or not found | `direction: stable` | `direction: growing` or emerging |
 | **Competition fit** | Saturated (high Etsy volume, many bestsellers) | Medium (beatable) | Low (clear gap visible) |
-| **Format fit** | Poor fit for Google Sheets / Notion / digital template | Moderate fit | Natural fit — buyers clearly want a digital file |
+| **Format fit** | Poor fit for any digital template format | Moderate fit | Natural fit — buyers clearly want a digital file |
 
 `seed_score` = Etsy demand + Google momentum + Competition fit + Format fit (base max 12, before autocomplete multiplier)
 
@@ -57,6 +57,8 @@ Multipliers stack: autocomplete × Pinterest = ×1.2 × ×1.1 = ×1.32. Round fi
 
 **When an input is null or blocked:** score that dimension as 1 (worst case) — do not skip the seed entirely. Note the missing source in `rationale`. If `pinterest_signals` is null or unavailable, treat `pinterest_multiplier` as false for all seeds.
 
+**When an input has `source: "partial"`:** use the data as-is but note the limited coverage in each seed's `rationale` (e.g. "shop-scanner data is partial — fewer than 3 shops reachable").
+
 ### 5. Add a one-line rationale per seed
 
 For each seed, write one sentence explaining why it scored the way it did — grounded in the actual data collected.
@@ -65,7 +67,7 @@ For each seed, write one sentence explaining why it scored the way it did — gr
 
 ## Output
 
-Return a JSON object to the calling agent (`discover-agent`):
+Return a JSON object to the calling agent:
 
 ```json
 {
