@@ -1,0 +1,112 @@
+# pinterest-signals
+
+Identify broad trending categories on Pinterest Trends. Pinterest data typically leads Etsy by 3–6 months — useful for spotting what's coming before it appears in Etsy search volume.
+
+Follows `skills/playwright.md` for screenshot vs snapshot usage, block handling, and cleanup.
+
+## Steps
+
+### 1. Search Pinterest Trends for broad categories
+
+Navigate to `https://trends.pinterest.com/` and search for each of these fixed terms in sequence:
+- `digital planner`
+- `google sheets template`
+- `notion template`
+- `budget tracker`
+- `habit tracker`
+
+For each search, take a **screenshot** to read the trend chart (direction and peak season). Then take a **snapshot** to extract related topics from the sidebar if present.
+
+Record for each:
+- `direction` — growing / stable / declining (from chart shape)
+- `peak_season` — time of year with highest activity
+- `related_topics` — any adjacent trends listed in the sidebar
+
+If Pinterest Trends shows no data for a term: note it and continue to the next.
+
+If the page is blocked or unavailable for 3+ terms: proceed to Step 2.
+
+### 2. Fallback — WebSearch
+
+Run these queries in sequence:
+1. `Pinterest trending digital planners templates 2026`
+2. `Pinterest rising search trends google sheets notion 2026`
+3. `what is trending on Pinterest for digital downloads`
+
+Synthesize results to identify trending categories and directions. Note `"source": "web_search"`.
+
+If WebSearch returns no useful data: return `{ "source": "unavailable", "raw_seed_candidates": [] }` and stop — discover-agent will continue without Pinterest signals.
+
+### 3. Classify categories
+
+Group findings into broad categories. For each:
+- `direction`: `growing` / `stable` / `declining`
+- `signal_strength`: `strong` / `moderate` / `weak`
+- `peak_season`: time of year with highest activity
+- `notes`: one sentence on why
+- `examples`: 2–3 specific keyword examples from the trend
+
+Set top-level `confidence`:
+- `high` — Playwright data from 4+ terms with clear directions
+- `medium` — Partial Playwright data, or WebSearch fallback used
+- `low` — Fewer than 3 terms returned data, or data was vague
+
+---
+
+## Output
+
+Return a JSON object to the calling agent (`discover-agent`):
+
+```json
+{
+  "source": "playwright",
+  "confidence": "medium",
+  "trending_categories": [
+    {
+      "category": "personal finance trackers",
+      "examples": ["budget tracker google sheets", "savings challenge tracker", "paycheck budget planner"],
+      "direction": "growing",
+      "peak_season": "January–February",
+      "signal_strength": "strong",
+      "notes": "Strong January spike — aligns with New Year financial resolutions"
+    },
+    {
+      "category": "aesthetic notion templates",
+      "examples": ["notion dashboard aesthetic", "notion student planner dark mode"],
+      "direction": "stable",
+      "peak_season": "August–September",
+      "signal_strength": "moderate",
+      "notes": "Back-to-school drives seasonal interest; stable year-round baseline"
+    },
+    {
+      "category": "digital planners",
+      "examples": ["digital planner goodnotes", "digital planner ipad"],
+      "direction": "growing",
+      "peak_season": "December–January",
+      "signal_strength": "moderate",
+      "notes": "Rising interest in app-based planning tools"
+    }
+  ],
+  "raw_seed_candidates": [
+    "budget tracker google sheets",
+    "savings challenge tracker",
+    "notion dashboard aesthetic",
+    "paycheck budget planner"
+  ]
+}
+```
+
+### `source` values
+| Value | Meaning |
+|---|---|
+| `playwright` | Scraped Pinterest Trends directly |
+| `web_search` | Synthesized from WebSearch — lower confidence |
+| `unavailable` | Both methods failed |
+
+---
+
+## Notes
+
+- Pinterest leads Etsy by 3–6 months. A growing Pinterest category with low Etsy competition is the strongest early-mover signal in the discover pipeline.
+- `raw_seed_candidates` should come from `growing` categories only — do not include stable or declining.
+- Include `declining` categories in output so seed-ranker can deprioritise matching seeds.
