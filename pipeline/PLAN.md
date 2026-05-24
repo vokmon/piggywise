@@ -6,6 +6,18 @@ End-to-end system for finding, building, and launching digital products (Google 
 
 ---
 
+## Pipeline Design Rules
+
+These rules apply to every agent and skill across all stages:
+
+- **No hardcoded thresholds.** Every threshold, limit, or cutoff must be derived from pipeline inputs or upstream output data — never a fixed number written into the skill itself.
+- **No magic numbers.** If a constant is needed (e.g. `max_reviews_per_listing = 20`), it must be defined and explained in the agent that owns the stage, then passed explicitly to skills as a named parameter.
+- **All inputs flow from upstream.** Skills receive their inputs from the agent that calls them. Skills never re-read upstream output files directly.
+- **All field references must match the actual output schema.** When a skill or agent references a field from another stage's output (e.g. `etsy_scan.competition_level`), the field name must exactly match what that stage actually writes — verify against the real output file, not assumptions.
+- **No currency conversion in skills.** If prices need normalizing, the user handles it. Skills receive prices as-is and work with whatever unit they're given.
+
+---
+
 ## How It Works
 
 ```
@@ -110,11 +122,12 @@ No seed needed — runs broad across all Etsy digital downloads. Goal: surface 1
 Deeper Etsy search on the specific product idea. Confirms real buyer demand, price range, and keyword to use in title.
 
 **Skills:**
-- [ ] `skills/etsy-deep-dive.md` — Search for the specific product (not just seed), extract top 10 listings, price range (min/max/sweet spot), review sentiment (what buyers love/complain about)
-- [ ] `skills/price-check.md` — Extract pricing from top listings, recommend price based on competition and positioning
+- [x] `skills/etsy-deep-dive.md` — Targeted search for the specific product angle, confirms gap, finds best title keyword
+- [x] `skills/review-miner.md` — Read reviews from closest competitors, extract buyer language, unmet needs, complaints
+- [x] `skills/price-check.md` — Map price landscape, find sweet spot, recommend launch and target price
 
 **Agent:**
-- [ ] `agents/validate-agent.md` — Orchestrates Stage 2, outputs validate JSON, prompts human for go/no-go
+- [x] `agents/validate-agent.md` — Reads 01-research output, orchestrates all 3 skills, outputs go/no-go with evidence
 
 ---
 
@@ -216,7 +229,7 @@ Ongoing optimization after launch. Run periodically — not a one-time step.
 
 - Stage 00 — Discover: **complete** ✅
 - Stage 01 — Research: **complete** ✅
-- Stage 02 — Validate: not started
+- Stage 02 — Validate: **complete** ✅
 - Stage 03 — POC: not started
 - Stage 04 — Build: not started
 - Stage 05 — QA: not started

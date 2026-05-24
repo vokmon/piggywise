@@ -20,6 +20,7 @@ Complete listing JSON with all fields below — ready to post manually or via th
 - Comma-separate keyword clusters; each targets a different search query
 - Max 140 characters
 - No emojis, no filler words ("ultimate", "amazing")
+- No years (e.g. "2026") — they date the listing and require annual edits; use evergreen descriptors instead
 - Allowed characters: letters, numbers, punctuation, ™, ©, ® — %, :, &, + can only appear once each
 - Example: `AI Portfolio Tracker Google Sheets Template, Stock and Crypto DCA System, Investment Dashboard for Beginners`
 
