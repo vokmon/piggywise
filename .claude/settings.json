@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__playwright__*",
+      "WebSearch",
+      "WebFetch",
+      "Bash(gemini *)",
+      "Bash(find .playwright-mcp *)",
+      "Bash(find pipeline/*/output *)",
+      "Bash(grep *)",
+      "Bash(mkdir -p *)",
+      "Bash(find .playwright-mcp -type f -delete)",
+      "Write(pipeline/*)"
+    ]
+  }
+}

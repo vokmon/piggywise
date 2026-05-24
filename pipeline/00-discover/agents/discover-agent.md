@@ -141,6 +141,12 @@ Pick seeds from the list above and run:
 
 ## Step 6 — Cleanup
 
+Close the browser, then delete temp files:
+
+```
+mcp__playwright__browser_close
+```
+
 ```bash
 find .playwright-mcp -type f -delete
 ```
