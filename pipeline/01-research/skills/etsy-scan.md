@@ -13,7 +13,7 @@ Follows `skills/playwright.md` for screenshot vs snapshot usage, block handling,
 ## Steps
 
 ### 1. Capture autocomplete suggestions
-Navigate to `https://www.etsy.com/search?q={keyword}&explicit=1&sort_order=most_relevant` and take a **snapshot** immediately after the page loads — autocomplete suggestions appear in the search bar dropdown and are captured in the DOM. These are real buyer search terms — record all of them.
+Navigate to `https://www.etsy.com/search?q={keyword}&explicit=1&sort_order=most_relevant&currency=USD` and take a **snapshot** immediately after the page loads — autocomplete suggestions appear in the search bar dropdown and are captured in the DOM. These are real buyer search terms — record all of them.
 
 If suggestions are not visible in the snapshot: click the search bar element and take a second snapshot. If still nothing: skip autocomplete and continue to Step 2.
 

@@ -84,6 +84,24 @@ Save to:
 {
   "run_date": "2026-05-24",
   "status": "completed",
+  "summary_text": `✅ Discovery complete
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📦 Etsy bestsellers scanned · 52 listings
+🏪 Shops studied · 6 shops
+🔍 Autocomplete suggestions · 48 unique terms
+📈 Google signals · 5 trending categories
+📌 Pinterest signals · 3 trending categories
+
+🏆 Top seed candidates:
+  1. budget tracker google sheets          (score: 14.5) ⭐ priority
+  2. freelance invoice template google sheets (score: 13.2) ⭐ priority
+  3. notion habit tracker                  (score: 10.8) ⭐ priority ✓ researched
+
+💡 Recommended starting seeds:
+   → budget tracker google sheets
+   → freelance invoice template google sheets
+   → notion habit tracker (already researched — skip or re-validate)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`,
   "etsy_bestsellers": { ... },
   "shop_scanner": { ... },
   "autocomplete_harvest": { ... },
@@ -100,6 +118,8 @@ Save to:
   }
 }
 ```
+
+Populate `summary_text` with the actual content from Step 5 before saving — replace the placeholder values with real numbers and seed names from this run.
 
 ---
 

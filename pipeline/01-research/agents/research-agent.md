@@ -191,6 +191,12 @@ Review the ideas above and pick 1–2 to take into Stage 2 (validate).
 
 ## Step 7 — Cleanup
 
+Close the browser, then delete temp files:
+
+```
+mcp__playwright__browser_close
+```
+
 ```bash
 find .playwright-mcp -type f -delete
 ```

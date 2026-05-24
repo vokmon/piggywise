@@ -8,7 +8,18 @@ Follows `skills/playwright.md` for screenshot vs snapshot usage, block handling,
 
 ### 1. Search Pinterest Trends for broad categories
 
-Navigate to `https://trends.pinterest.com/` and search for each of these fixed terms in sequence:
+Navigate to `https://trends.pinterest.com/`.
+
+**If a login wall appears:**
+1. Check for credentials:
+   ```bash
+   echo $PINTEREST_EMAIL
+   echo $PINTEREST_PASSWORD
+   ```
+2. If both are set: navigate to `https://www.pinterest.com/login/`, enter the credentials and log in. Then return to `https://trends.pinterest.com/`.
+3. If credentials are not set: proceed to Step 2 (WebSearch fallback).
+
+**Once on Pinterest Trends**, search for each of these fixed terms in sequence:
 - `digital planner`
 - `google sheets template`
 - `notion template`
@@ -28,9 +39,10 @@ If the page is blocked or unavailable for 3+ terms: proceed to Step 2.
 
 ### 2. Fallback — WebSearch
 
-Run these queries in sequence:
-1. `Pinterest trending digital planners templates 2026`
-2. `Pinterest rising search trends google sheets notion 2026`
+Use the current year (from today's date) in place of `{current_year}` when running these queries:
+
+1. `Pinterest trending digital planners templates {current_year}`
+2. `Pinterest rising search trends google sheets notion {current_year}`
 3. `what is trending on Pinterest for digital downloads`
 
 Synthesize results to identify trending categories and directions. Note `"source": "web_search"`.
