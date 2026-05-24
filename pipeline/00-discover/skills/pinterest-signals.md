@@ -3,39 +3,35 @@
 Identify broad trending categories on Pinterest Trends. Pinterest data typically leads Etsy by 3–6 months — useful for spotting what's coming before it appears in Etsy search volume.
 
 Follows `skills/playwright.md` for screenshot vs snapshot usage, block handling, and cleanup.
+Follows `skills/pinterest-lookup.md` for Pinterest authentication.
 
 ## Input
 - `pinterest_terms` — list of terms to search on Pinterest Trends
 
 ## Steps
 
-### 1. Search Pinterest Trends for broad categories
+### 1. Login
 
-Navigate to `https://trends.pinterest.com/`.
+Run `skills/pinterest-lookup.md`. If it returns `{ "logged_in": false }`: proceed to Step 3 (WebSearch fallback).
 
-**If a login wall appears:**
-1. Check for credentials:
-   ```bash
-   echo $PINTEREST_EMAIL
-   echo $PINTEREST_PASSWORD
-   ```
-2. If both are set: navigate to `https://www.pinterest.com/login/`, enter the credentials and log in. Then return to `https://trends.pinterest.com/`.
-3. If credentials are not set: proceed to Step 2 (WebSearch fallback).
+### 2. Get trend data via Playwright
 
-**Once on Pinterest Trends**, search for each term in the `pinterest_terms` list in sequence.
+For each term in `pinterest_terms`, navigate directly to:
+```
+https://trends.pinterest.com/detail/?country=US&terms={url-encoded-term}
+```
 
-For each search, take a **screenshot** to read the trend chart (direction and peak season). Then take a **snapshot** to extract related topics from the sidebar if present.
+Take a **screenshot** to read the trend chart. Extract:
+- `direction` — shape of the solid line: rising = `growing`, flat = `stable`, falling = `declining`
+- `peak_season` — x-axis label at the highest point (e.g. `"January–February"`)
 
-Record for each:
-- `direction` — growing / stable / declining (from chart shape)
-- `peak_season` — time of year with highest activity
-- `related_topics` — any adjacent trends listed in the sidebar
+Then take a **snapshot** to extract the related trend chips shown below the chart. Record all visible chip text as `related_topics`.
 
-If Pinterest Trends shows no data for a term: note it and continue to the next.
+If a term returns 404 or no chart data: note it and continue to the next term.
 
-If the page is blocked or unavailable for all terms: proceed to Step 2.
+If all terms return no data: proceed to Step 3.
 
-### 2. Fallback — WebSearch
+### 3. Fallback — WebSearch
 
 Use the current year (from today's date) in place of `{current_year}` when running these queries:
 
@@ -48,9 +44,9 @@ Also run one broad query:
 
 Synthesize results to identify trending categories and directions. Note `"source": "web_search"`.
 
-If WebSearch returns no useful data: return `{ "source": "unavailable", "raw_seed_candidates": [] }` and stop — the calling agent will continue without Pinterest signals.
+If WebSearch returns no useful data: return `{ "source": "unavailable", "raw_seed_candidates": [] }` and stop.
 
-### 3. Classify categories
+### 4. Classify categories
 
 Group findings into broad categories. For each:
 - `direction`: `growing` / `stable` / `declining`
@@ -60,9 +56,9 @@ Group findings into broad categories. For each:
 - `examples`: 2–3 specific keyword examples from the trend
 
 Set top-level `confidence`:
-- `high` — All terms returned Playwright data with clear directions
-- `medium` — Some terms returned data, or WebSearch fallback used
-- `low` — Fewer than half the terms returned data, or data was vague
+- `high` — Playwright data for most terms with clear directions
+- `medium` — Some terms returned Playwright data, or WebSearch fallback used
+- `low` — Fewer than half the terms returned meaningful data
 
 ---
 
@@ -73,7 +69,7 @@ Return a JSON object to the calling agent:
 ```json
 {
   "source": "playwright",
-  "confidence": "medium",
+  "confidence": "high",
   "trending_categories": [
     {
       "category": "personal finance trackers",
@@ -90,14 +86,6 @@ Return a JSON object to the calling agent:
       "peak_season": "August–September",
       "signal_strength": "moderate",
       "notes": "Back-to-school drives seasonal interest; stable year-round baseline"
-    },
-    {
-      "category": "digital planners",
-      "examples": ["digital planner goodnotes", "digital planner ipad"],
-      "direction": "growing",
-      "peak_season": "December–January",
-      "signal_strength": "moderate",
-      "notes": "Rising interest in app-based planning tools"
     }
   ],
   "raw_seed_candidates": [

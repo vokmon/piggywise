@@ -161,8 +161,9 @@ Build the summary text using actual data from this run (same format as Step 5), 
 
 ## Step 5 — Print summary to conversation
 
-After saving, print a readable summary:
+After saving, print the summary **inside a triple-backtick code block** so newlines and alignment render correctly:
 
+````
 ```
 ✅ Discovery complete
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -192,6 +193,9 @@ Pick seeds from the list above and run:
   /research "budget tracker google sheets"
   /research "freelance invoice template google sheets"
 ```
+````
+
+Replace all placeholder values with real numbers and seed names from this run.
 
 ---
 

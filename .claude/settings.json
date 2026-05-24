@@ -9,6 +9,7 @@
       "Bash(find pipeline/*/output *)",
       "Bash(grep *)",
       "Bash(mkdir -p *)",
+      "Bash(rm -rf *)",
       "Bash(find .playwright-mcp -type f -delete)",
       "Write(pipeline/*)"
     ]
