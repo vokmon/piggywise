@@ -24,17 +24,25 @@ Default to screenshot when reading page content. Use snapshot only when targetin
 
 ---
 
+## File Saving Rules
+
+**Never write files to the project root.** All file output goes to the calling agent's designated output folder.
+
+**Never write snapshot output to disk.** Snapshots are processed directly from tool output — do not save them as `.txt`, `.md`, or any other file format.
+
+**Screenshots** are only saved when the calling agent explicitly requests a saved artifact. Otherwise, read them visually and discard.
+
+---
+
 ## Cleanup
 
-Playwright saves screenshots, snapshots, and console logs to `.playwright-mcp/`. Individual skills do not clean up — the calling **agent** runs cleanup after all skills complete:
+Playwright saves console logs to `.playwright-mcp/`. Individual skills do not clean up — the calling **agent** runs cleanup after all skills complete:
 
 ```bash
 find .playwright-mcp -delete
 ```
 
 Run this as the final step in every agent that uses Playwright skills.
-
-If you need to save any intermediate files to disk, save them directly to the calling agent's output folder — never to the project root.
 
 ---
 

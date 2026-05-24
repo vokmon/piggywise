@@ -14,6 +14,16 @@ Orchestrates the full Stage 1 research pipeline for a given seed keyword. Runs s
 
 ---
 
+## File Saving Rules
+
+These rules apply for the entire pipeline — before any skill runs:
+
+- **Never write files to the project root.** All output goes to `pipeline/01-research/output/`.
+- **Never write snapshot data to disk.** Process snapshot tool output directly in context — do not save it as `.txt`, `.md`, or any other file.
+- **Screenshots** are only saved when explicitly needed as a pipeline artifact. Read them visually and discard otherwise.
+
+---
+
 ## Step 0 — Collect inputs
 
 Before running the pipeline, ask the user for any inputs not already provided:
@@ -215,8 +225,6 @@ mcp__playwright__browser_close
 ```bash
 find .playwright-mcp -delete
 ```
-
-If you take any screenshots or save intermediate files during this run, save them directly to `pipeline/01-research/output/` — never to the project root.
 
 ---
 

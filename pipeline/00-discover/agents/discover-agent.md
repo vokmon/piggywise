@@ -30,6 +30,16 @@ Declare the scope here. Update these lists when expanding to new niches or forma
 
 ---
 
+## File Saving Rules
+
+These rules apply for the entire pipeline — before any skill runs:
+
+- **Never write files to the project root.** All output goes to `pipeline/00-discover/output/`.
+- **Never write snapshot data to disk.** Process snapshot tool output directly in context — do not save it as `.txt`, `.md`, or any other file.
+- **Screenshots** are only saved when explicitly needed as a pipeline artifact. Read them visually and discard otherwise.
+
+---
+
 ## Step 0 — Confirm configuration
 
 Before running the pipeline, ask the user if they want to use the defaults or override any values:
@@ -210,8 +220,6 @@ mcp__playwright__browser_close
 ```bash
 find .playwright-mcp -delete
 ```
-
-If you take any screenshots or save intermediate files during this run, save them directly to `pipeline/00-discover/output/` — never to the project root.
 
 ---
 
