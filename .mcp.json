@@ -8,7 +8,11 @@
     },
     "playwright": {
       "command": "npx",
-      "args": ["@playwright/mcp@latest"]
+      "args": ["@playwright/mcp@latest", "--isolated"]
+    },
+    "playwright-recorder": {
+      "command": "npx",
+      "args": ["@playwright/mcp@latest", "--sandbox", "--caps=devtools"]
     },
     "etsy": {
       "type": "http",

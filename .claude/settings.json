@@ -5,7 +5,8 @@
       "WebSearch",
       "WebFetch",
       "Bash(*)",
-      "Write(pipeline/*)"
+      "Write(pipeline/*)",
+      "mcp__playwright-recorder__*"
     ]
   }
 }
