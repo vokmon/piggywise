@@ -184,30 +184,47 @@ Deeper Etsy search on the specific product idea. Confirms real buyer demand, pri
 
 ## Stage 03 — POC (pipeline/03-poc/)
 
-Study what works on Etsy, find free templates, collect visual inspiration, then build a rough prototype. Internal checkpoint only — not shown to buyers. Output is `poc-brief.json` which feeds Stage 04.
+Study what works on Etsy, find free templates, collect visual inspiration, then build a rough prototype. Internal checkpoint only — not shown to buyers. Output is `{slug}-poc-brief.json` which feeds Stage 04.
 
-**Study skills used (from `skills/study/`):**
-All three study skills follow the same pattern: a general skill file describes the overall intent and routes to the product-type-specific file which handles the actual steps.
+**No stage-specific skills** — all work is done by shared skills. The agent is the only stage-specific file.
 
-- [ ] `skills/study/product-teardown.md` → `skills/study/product-teardown/{type}.md` — Study top 3–5 competitors: screenshots, features, formula/logic/database structure, pricing, reviews AND visual style (palette, fonts, layout). Output feeds `competitors`, `feature_spec`, `structure`, `logic_map`, and `visual_inspiration` (competitor styles) in poc-brief.
-- [ ] `skills/study/template-hunt.md` → `skills/study/template-hunt/{type}.md` — Find free templates, copy/duplicate one as the starting point. Output feeds `templates` in poc-brief.
-- [ ] `skills/study/design-swipe.md` → `skills/study/design-swipe/{type}.md` — Collect broader visual inspiration from Pinterest + Etsy beyond direct competitors. Output adds to `visual_inspiration` in poc-brief.
+**Stage structure:**
+```
+pipeline/03-poc/
+  agents/
+    poc-agent.md               ← orchestrates the whole stage
+  output/                      ← gitignored
+    {slug}-poc-brief.json      ← handoff to Stage 04
+    {slug}-screenshots/        ← Playwright visual check screenshots
+```
 
-Together, `product-teardown` (competitor styles) + `design-swipe` (broader trends) populate `visual_inspiration`, which the poc-agent synthesises into the confirmed `style` after the rough build.
+**Shared skills used:**
 
-**Build skills used (from `skills/build/`):**
-- [ ] `skills/build/notion.md` — Duplicate + lightly modify a Notion template: pages, databases, views, basic formulas
-- [ ] `skills/build/google-sheets.md` — Copy + lightly modify a Google Sheets template: formulas, formatting, tabs
-- [ ] `skills/build/canva.md` — Rough build of product design in Canva
+Study skills (all follow the pattern: general `.md` routes to `/{type}.md`):
+- [ ] `skills/study/product-teardown.md` → `/{type}.md` — Study top 3–5 competitors: features, formula/logic/database structure, pricing, reviews + visual style (palette, fonts, layout). Feeds `competitors`, `feature_spec`, `structure`, `logic_map`, `visual_inspiration.competitor_styles`.
+- [ ] `skills/study/template-hunt.md` → `/{type}.md` — Find free templates, copy/duplicate one as starting point. Feeds `templates`.
+- [ ] `skills/study/design-swipe.md` → `/{type}.md` — Broader visual inspiration from Pinterest + Etsy. Feeds `visual_inspiration.pinterest_boards` and `visual_inspiration.etsy_listings`.
 
-**Visual check (Playwright):**
-After building the rough draft, take screenshots of the product to confirm it renders correctly before committing:
-- Google Sheets / Notion: navigate to the live URL, screenshot each tab/page
-- Canva: screenshot the Canva editor view of each page
-- Screenshots saved to `pipeline/03-poc/output/{slug}-screenshots/` and referenced in `poc-brief.json`
+Build skills (same skills used by Stage 04, but rough depth here):
+- [ ] `skills/build/{type}.md` — Build the rough prototype from the copied template
+
+Visual check:
+- `skills/playwright.md` — After building, screenshot every tab/page/frame to confirm it renders correctly. Screenshots saved to `pipeline/03-poc/output/{slug}-screenshots/`.
+
+**Agent flow:**
+1. Infer `product_type` from validate output → confirm with human
+2. Run `product-teardown/{type}` → functional + visual intel on competitors
+3. Run `template-hunt/{type}` → find and copy a free template as starting point
+4. Run `design-swipe/{type}` → broader visual inspiration
+5. Run `skills/build/{type}` (rough) → build prototype from the template
+6. Playwright visual check → screenshots
+7. Synthesise everything → confirmed `style` from the built POC
+8. Write `{slug}-poc-brief.json`
+9. Create `products/{slug}/`, initialise `product.json`
+10. Present to human: commit / abandon
 
 **Agent:**
-- [ ] `agents/poc-agent.md` — Orchestrates Stage 3: infers `product_type` from validate output and confirms with human, runs study skills, builds rough draft via `skills/build/{type}.md`, runs Playwright visual check, saves `{slug}-poc-brief.json` to `pipeline/03-poc/output/`, creates `products/{slug}/` folder, initializes `product.json`, prompts human for commit/abandon decision
+- [ ] `agents/poc-agent.md` — Orchestrates all steps above, saves output to `pipeline/03-poc/output/`
 
 **POC Brief output (`{slug}-poc-brief.json`):**
 
@@ -299,36 +316,53 @@ After building the rough draft, take screenshots of the product to confirm it re
 
 ## Stage 04 — Build (pipeline/04-build/)
 
-Polish the POC into a shippable product. Reads `poc-brief.json` from Stage 03. Routes to the correct product-type build skill. Adds instruction tab / setup guide, buyer-facing UI, delivery format.
+Polish the POC into a shippable product. Reads `{slug}-poc-brief.json` from Stage 03. Routes to the correct product-type build skill. Adds instruction tab / setup guide, buyer-facing UI, delivery format. Creates all product-specific docs used by downstream stages.
+
+**Stage structure:**
+```
+pipeline/04-build/
+  agents/
+    build-agent.md             ← orchestrates the whole stage
+  skills/
+    setup-guide.md             ← generate buyer setup guide
+    delivery-prep.md           ← prepare final delivery files
+```
+
+**Shared skills used:**
+
+Build skills (same skills as Stage 03, but full polished depth):
+- [ ] `skills/build/notion.md` — Full Notion build: complete pages, databases, views, formulas, instruction page, buyer UX
+- [ ] `skills/build/google-sheets.md` — Full Google Sheets build: clean formulas, consistent styling, instruction tab, named ranges, error handling
+- [ ] `skills/build/canva.md` — Full Canva product: polished design, all pages, exportable format
+
+Visual check:
+- `skills/playwright.md` — Final screenshot pass of finished product. Screenshots saved to `products/{slug}/screenshots/` and fed into Stage 06 as mockup source material.
 
 **Build-time checks (inline, during construction):**
-Each `skills/build/{type}.md` skill must verify each major step before moving to the next — catch issues immediately, not after the whole product is built. This is not a replacement for Stage 05 QA; it prevents Stage 05 from surfacing fundamental build problems. After each major action:
-- Added a formula or tab → verify 2–3 key formulas compute correctly via MCP API
+Each `skills/build/{type}.md` must verify each major step before moving on — catch issues immediately, not after the whole product is built. This is not a replacement for Stage 05 QA.
+- Added a formula or tab → verify 2–3 key formulas via MCP API, fix before continuing
 - Built a database or view in Notion → create a test entry, read it back, delete it
 - Designed a page in Canva → screenshot to confirm it renders correctly
-If a check fails, fix it before continuing to the next step.
-
-**Build skills used (from `skills/build/`):**
-- [ ] `skills/build/notion.md` — Full Notion build: complete pages, databases, views, formulas, instruction page, buyer UX — with inline checks after each major step
-- [ ] `skills/build/google-sheets.md` — Full Google Sheets build: clean formulas, consistent styling, instruction tab, named ranges, error handling — with inline checks after each major step
-- [ ] `skills/build/canva.md` — Full Canva product: polished design, all pages, exportable format — with screenshot check after each major step
-
-**Stage-specific skills (`pipeline/04-build/skills/`):**
-- [ ] `skills/setup-guide.md` — Generate buyer setup guide → saved to `products/{slug}/docs/setup-guide.md`
-- [ ] `skills/delivery-prep.md` — Decide delivery format, prepare final files → saved to `products/{slug}/delivery/`
 
 **Product docs created (saved to `products/{slug}/docs/`):**
-- `formula-spec.md` — document every formula/logic block: what it calculates, input cells/fields, output cells/fields, edge case behaviour
-- `test-plan.json` — test cases derived from the formula spec: input values, expected outputs, edge cases (empty, zero, negative, max)
-- `style-guide.json` — finalised palette, fonts, spacing (refined from `style` in poc-brief)
+- `formula-spec.md` — every formula/logic block: what it calculates, input cells/fields, output cells/fields, edge case behaviour (Sheets/Notion only)
+- `test-plan.json` — test cases derived from formula-spec: input values, expected outputs, edge cases (empty, zero, negative, max)
+- `style-guide.json` — finalised palette, fonts, spacing (refined from `style` in poc-brief) — consumed by Stage 06 Marketing
+- `setup-guide.md` — buyer instructions for using the product — included in delivery
 
-**Visual check (Playwright) — final pass:**
-After the full build is complete, take a screenshot pass of the finished product. Screenshots saved to `products/{slug}/screenshots/` — these feed directly into Stage 06 marketing mockups:
-- Google Sheets / Notion: navigate to live URL, screenshot every tab/page in order
-- Canva: screenshot editor view of every page, then export and screenshot the exported file
+**Agent flow:**
+1. Read `{slug}-poc-brief.json`, confirm `product_type`
+2. Run `skills/build/{type}.md` (full polish) — with inline checks after each major step
+3. Write `products/{slug}/docs/formula-spec.md` from the built formulas/logic
+4. Write `products/{slug}/docs/test-plan.json` derived from formula-spec
+5. Write `products/{slug}/docs/style-guide.json` finalised from poc-brief `style`
+6. Run `setup-guide.md` → write `products/{slug}/docs/setup-guide.md`
+7. Run `delivery-prep.md` → prepare files in `products/{slug}/delivery/`
+8. Playwright final visual pass → save screenshots to `products/{slug}/screenshots/`
+9. Update `product.json` pipeline status
 
 **Agent:**
-- [ ] `agents/build-agent.md` — Reads `{slug}-poc-brief.json`, determines product type, runs full build via `skills/build/{type}.md` (with inline checks), runs final Playwright visual pass, saves screenshots to `products/{slug}/screenshots/`, updates `product.json` pipeline status
+- [ ] `agents/build-agent.md` — Orchestrates all steps above, creates all product docs, updates `product.json`
 
 ---
 
