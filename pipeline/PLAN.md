@@ -29,6 +29,7 @@ These rules apply to every agent and skill across all stages:
 - `product.json` inside each product folder tracks pipeline state across stages 04–08
 - `/status "product-slug"` prints current stage at any time
 - `product_type` is determined at the start of Stage 03 — the agent infers it from validate output and suggests; human confirms or overrides. Can be changed by re-running `/poc "slug"` with a different type.
+- `pipeline/workspace-setup.md` — shared reference for all agents: working folder paths (Study/POC/Products per platform), file naming conventions, file operations (copy/create/move/delete per platform), delivery formats per product type, schema shapes per product type, new product type checklist. All agents reference this file instead of repeating per-type steps inline.
 
 ---
 
@@ -129,23 +130,23 @@ Study sources per product type (used by both `reverse-engineer` and `template-hu
 - **reverse-engineer**: study multiple products deeply — Etsy listing for sentiment + surface visual; free template galleries for actual structure + logic/formulas
 - **template-hunt**: find ONE free template to copy as a starting scaffold to build from
 
-- [ ] `skills/study/template-hunt.md` — general process: search type-specific free template galleries, evaluate candidates, copy the best one as starting scaffold, routes to product-specific skill
-- [ ] `skills/study/template-hunt/notion.md` — Search notion.so/templates + NotionPages.com, evaluate candidates, duplicate best one
-- [ ] `skills/study/template-hunt/google-sheets.md` — Search Google Sheets gallery + Vertex42 + Smartsheet, evaluate candidates, copy best one
-- [ ] `skills/study/template-hunt/canva.md` — Search canva.com/templates, evaluate candidates, copy best one
-- [ ] `skills/study/design-swipe.md` — general process: collect broader visual inspiration beyond direct competitors, routes to product-specific skill
-- [ ] `skills/study/design-swipe/notion.md` — Sources: Pinterest (Notion aesthetic boards) + NotionPages.com. Collect: page layouts, database views, icons, cover images, property styling
-- [ ] `skills/study/design-swipe/google-sheets.md` — Sources: Pinterest (spreadsheet/finance/budget boards) + Vertex42 + Smartsheet. Collect: cell styling, color schemes, chart styles, tab layouts
-- [ ] `skills/study/design-swipe/canva.md` — Sources: Pinterest + Behance + Dribbble. Collect: design aesthetic, typography, illustration style, frame layout
-- [ ] `skills/study/reverse-engineer.md` — general process: two-source study (Etsy listing + free equivalent from template galleries), routes to product-specific skill
-- [ ] `skills/study/reverse-engineer/notion.md` — Etsy listing → reviews, preview images, feature list; notion.so/templates + NotionPages.com → actual structure, database schema, formulas, views; Pinterest → visual style. Study: database properties, views, relations, rollups, page hierarchy, formulas + visual: palette, layout style, icon usage, cover design + buyer reviews: complaints, wishes, praise
-- [ ] `skills/study/reverse-engineer/google-sheets.md` — Etsy listing → reviews, preview images, feature list; Google Sheets gallery + Vertex42 → actual tab structure, formulas, named ranges, charts; Pinterest → visual style. Study: formulas, tab structure, named ranges, charts, conditional formatting + visual: color scheme, font, cell styling, chart design + buyer reviews: complaints, wishes, praise
-- [ ] `skills/study/reverse-engineer/canva.md` — Etsy listing → reviews, preview images, feature list; canva.com/templates → actual layout, frames, element structure; Pinterest + Behance → visual style. Study: design elements, layout, frame structure, export format + visual: overall aesthetic, typography, illustration style, colour palette + buyer reviews: complaints, wishes, praise
+- [x] `skills/study/template-hunt.md` — router: delegates to type-specific skill. Evaluates up to `max_templates` candidates, picks best scaffold candidate. Does NOT copy — records the choice only. Returns `null` if no suitable template.
+- [x] `skills/study/template-hunt/notion.md` — Search notion.so/templates + NotionPages.com, evaluate candidates, pick best one
+- [x] `skills/study/template-hunt/google-sheets.md` — Search Google Sheets gallery + Vertex42 + Smartsheet, evaluate candidates, pick best one
+- [x] `skills/study/template-hunt/canva.md` — Search canva.com/templates + Pinterest + Behance, evaluate candidates, pick best one
+- [x] `skills/study/design-swipe.md` — router: delegates to type-specific skill. Collects broader visual inspiration beyond direct competitors.
+- [x] `skills/study/design-swipe/notion.md` — Sources: Pinterest (Notion aesthetic boards) + NotionPages.com. Collect: page layouts, database views, icons, cover images, property styling
+- [x] `skills/study/design-swipe/google-sheets.md` — Sources: Pinterest (spreadsheet/finance/budget boards) + Vertex42 + Smartsheet. Collect: cell styling, color schemes, chart styles, tab layouts
+- [x] `skills/study/design-swipe/canva.md` — Sources: Pinterest + Behance + Dribbble. Collect: design aesthetic, typography, illustration style, frame layout
+- [x] `skills/study/reverse-engineer.md` — router: delegates to type-specific skill. Two-source study per competitor: (1) Etsy listing for buyer sentiment; (2) free template from type-specific galleries for actual structure + logic.
+- [x] `skills/study/reverse-engineer/notion.md` — Etsy listing → reviews, preview images, feature list; notion.so/templates + NotionPages.com → actual structure, database schema, formulas, views; Pinterest → visual style. Study copies placed in Study folder, deleted before returning.
+- [x] `skills/study/reverse-engineer/google-sheets.md` — Etsy listing → reviews, preview images, feature list; Google Sheets gallery + Vertex42 → actual tab structure, formulas, named ranges, charts; Pinterest → visual style. Study copies placed in Study folder, deleted before returning.
+- [x] `skills/study/reverse-engineer/canva.md` — Etsy listing → reviews, preview images, feature list; canva.com/templates → actual layout, frames, element structure; Pinterest + Behance → visual style. No logic_map (visual-only product). Study copies placed in Study folder, deleted before returning.
 
 **Build (skills/build/) — used by Stage 03 (rough) and Stage 04 (polished):**
-- [ ] `skills/build/notion.md` — duplicate + modify Notion template: pages, databases, views, formulas (uses `mcp__notion__*`)
-- [ ] `skills/build/google-sheets.md` — copy + modify Google Sheets: formulas, formatting, tabs (uses `mcp__claude_ai_Google_Drive__*`)
-- [ ] `skills/build/canva.md` — build product design in Canva (uses `mcp__canva__*`)
+- [x] `skills/build/notion.md` — duplicate + modify Notion template: pages, databases, views, formulas (uses `mcp__notion__*`). Accepts `depth: "rough" | "full"`.
+- [x] `skills/build/google-sheets.md` — copy + modify Google Sheets: formulas, formatting, tabs (uses `mcp__claude_ai_Google_Drive__*`). Accepts `depth: "rough" | "full"`.
+- [x] `skills/build/canva.md` — build product design in Canva (uses `mcp__canva__*`). Accepts `depth: "rough" | "full"`.
 
 ---
 
@@ -208,19 +209,24 @@ pipeline/03-poc/
     {slug}-screenshots/        ← Playwright visual check screenshots
 ```
 
+**Working folders** (all agents reference `pipeline/workspace-setup.md` for paths and platform-specific steps):
+- **Study folder** — temporary study copies (`[study] {original title}`). Deleted by `reverse-engineer` before returning. Empty when Step 3 completes.
+- **POC folder** — rough prototype (`[poc] {keyword}`). Copied from scaffold in Step 7 (or created blank). Survives until commit/abandon decision in Step 13.
+- **Products folder** — final polished product (`{keyword}`, no prefix). Created by build-agent in Stage 04.
+
 **Shared skills used:**
 
 Study skills (all follow the pattern: general `.md` routes to `/{type}.md`):
-- [ ] `skills/study/reverse-engineer.md` → `/{type}.md` — Two-source study per competitor: (1) Etsy listing page → reviews, preview images, description (buyer sentiment + surface visual); (2) free equivalent from type-specific template galleries → actual structure, logic, formulas (deep internals). Feeds `competitors[]` in poc-brief — including `key_features`, `structure`, `logic_notes`, `buyer_complaints`, `buyer_wishes`, `visual_style`, `free_equivalent_urls` per competitor. Does NOT write the top-level `structure` or `logic_map` fields — those document our built POC, not competitors.
-- [ ] `skills/study/template-hunt.md` → `/{type}.md` — Search type-specific free template galleries (same sources as `reverse-engineer/{type}`), evaluate up to `max_templates` candidates, pick the best one as scaffold candidate (copying happens later in the build step). Study copies are temporary — deleted after evaluation. If no suitable template found, return `null` and note "build from scratch". Feeds `templates[]`.
-- [ ] `skills/study/design-swipe.md` → `/{type}.md` — Broader visual inspiration from Pinterest + type-specific design platforms beyond direct competitors. Feeds `visual_inspiration`.
+- [x] `skills/study/reverse-engineer.md` → `/{type}.md` — Two-source study per competitor: (1) Etsy listing page → reviews, preview images, description (buyer sentiment + surface visual); (2) free equivalent from type-specific template galleries → actual structure, logic, formulas (deep internals). Feeds `competitors[]` in poc-brief — including `key_features`, `structure`, `logic_notes`, `buyer_complaints`, `buyer_wishes`, `visual_style`, `free_equivalent_urls` per competitor. Does NOT write the top-level `structure` or `logic_map` fields — those document our built POC, not competitors.
+- [x] `skills/study/template-hunt.md` → `/{type}.md` — Search type-specific free template galleries (same sources as `reverse-engineer/{type}`), evaluate up to `max_templates` candidates, pick the best one as scaffold candidate (copying happens later in the build step). Do NOT copy yet — just record the choice. If no suitable template found, return `null` and note "build from scratch". Feeds `templates[]`.
+- [x] `skills/study/design-swipe.md` → `/{type}.md` — Broader visual inspiration from Pinterest + type-specific design platforms beyond direct competitors. Feeds `visual_inspiration`.
 
 `reverse-engineer` (competitor study: sentiment + internals) + `design-swipe` (broader visual trends) inform the synthesis step. Top-level `structure` and `logic_map` in poc-brief are written from the **actual built POC** in step 9, not from competitor study.
 
 **Copy isolation rule (study phase):** Every template or free product opened for study must be copied into a temporary workspace first. Study the copy, record findings, then delete it. Never study the original. The only copy that survives is the scaffold copied at the start of the build step (step 7) — it becomes the POC being built.
 
 Build skills (same skills used by Stage 04, but rough depth here):
-- [ ] `skills/build/{type}.md` — Build the rough prototype from the copied template
+- [x] `skills/build/{type}.md` — Build the rough prototype from the copied template (`depth: "rough"`)
 
 Visual check:
 - `skills/playwright.md` — After building, screenshot every tab/page/frame to confirm it renders correctly. Screenshots saved to `pipeline/03-poc/output/{slug}-screenshots/`.
@@ -231,29 +237,29 @@ Visual check:
 
 **Agent flow:**
 1. Read validate output → extract competitor URLs, buyer complaints, pricing, keyword
-2. Confirm `product_type` with human (inferred from validate context)
-3. Run `reverse-engineer/{type}` on top `max_competitors` competitor URLs from validate output → for each: (a) study Etsy listing for reviews, preview images, features; (b) find a free equivalent from type-specific template galleries, copy it, study actual structure + logic/formulas, then delete the copy. Populates `competitors[]` in poc-brief.
-4. Run `template-hunt/{type}` — search type-specific free template galleries, evaluate up to `max_templates` candidates, pick the best one. Do not copy yet — record the choice in `templates[]` as the scaffold candidate. If no suitable template found, record `null` and note "build from scratch".
+2. Confirm `product_type` — infer from validate output context (keyword, competitor listings, product category). If cannot infer, ask human directly. Hint: supported types listed in `skills/study/reverse-engineer.md` routing table. Wait for confirmation before proceeding.
+3. Run `reverse-engineer/{type}` on top `max_competitors` competitor URLs from validate output → for each: (a) study Etsy listing for reviews, preview images, features; (b) find a free equivalent from type-specific template galleries, copy it to Study folder (`[study] {title}`), study actual structure + logic/formulas, then delete the copy. Populates `competitors[]` in poc-brief. Study folder is empty when step 3 completes.
+4. Run `template-hunt/{type}` — search type-specific free template galleries, evaluate up to `max_templates` candidates, pick the best one. Do NOT copy yet — record the choice in `templates[]` as the scaffold candidate. If no suitable template found, record `null` and note "build from scratch".
 5. Run `design-swipe/{type}` → broader visual inspiration. Populates `visual_inspiration`.
 6. **Synthesise** — reviews are the primary driver of what gets built:
    - **`feature_spec`**: buyer wishes + unmet needs → what to build. If buyers consistently ask for something no competitor has, we build it.
    - **`differentiation`**: buyer complaints + wishes → specific things we do better than every competitor. Each item must be delivered in the final product — Stage 04 treats this as a build checklist. The gap between what buyers hate about competitors and what they ask for.
    - **`gaps`**: features buyers want but deferred from this POC (too complex, out of scope, or needs more data). Stage 04 fills these after delivering every `differentiation[]` item first.
-   - **`delivery_format`**: decide based on `product_type` and competitor patterns.
+   - **`delivery_format`**: see `pipeline/workspace-setup.md` delivery formats table — based on `product_type` and competitor patterns.
    - **`style`**: confirmed palette/font/layout before building — combine competitor styles + design-swipe inspiration. Build uses this style from the start.
-   - **`structure`** (planned): planned tab/page/frame layout based on `feature_spec`. Used as blueprint for step 7.
-7. Run `skills/build/{type}` (rough) — copy the scaffold candidate from step 4 (or start from scratch if none), then build using confirmed `style` and planned `structure` from step 6. Document `known_issues` as they're discovered.
-8. Playwright visual check → screenshots. Add any visual issues to `known_issues`.
-9. Write actual `structure` and `logic_map` from what was **actually built** (may differ from the plan in step 6).
+   - **`structure`** (planned): planned tab/page/frame layout based on `feature_spec`. Use schema shape from `pipeline/workspace-setup.md` schema shapes table. Used as blueprint for step 7.
+7. Run `skills/build/{type}` (`depth: "rough"`) — if scaffold found in step 4: copy it to **POC folder**, named `[poc] {keyword}` (see `pipeline/workspace-setup.md` for platform-specific copy + move steps); if no scaffold: create a new blank file in **POC folder** (see workspace-setup.md). Then build using confirmed `style` and planned `structure` from step 6. Document `known_issues` as they're discovered.
+8. Playwright visual check → screenshots saved to `pipeline/03-poc/output/{slug}-screenshots/`. Add any visual issues to `known_issues`.
+9. Write actual `structure` and `logic_map` from what was **actually built** (may differ from the plan in step 6). Use schema shapes from `pipeline/workspace-setup.md`.
 10. Write `buyer_flow` — step-by-step of how a buyer would use the built POC.
 11. Refine `style` if the built result revealed any adjustments needed.
 12. Write `{slug}-poc-brief.json` with all fields populated.
-13. Present to human: commit / abandon.
-14. If **commit** → create `products/{slug}/`, initialise `product.json`, proceed to Stage 04.
-15. If **abandon** → delete the built product from its workspace (Google Drive / Notion / Canva), clean up `pipeline/03-poc/output/`, end.
+13. Present to human: product type, keyword, top 3 `feature_spec`, top 3 `differentiation`, key `known_issues`, screenshots, `poc_result.link`. Ask: commit / abandon.
+14. If **commit** → create `products/{slug}/`, write `product.json` (stage: 03-poc, status: complete), proceed to Stage 04.
+15. If **abandon** → delete the built product from **POC folder** (see `pipeline/workspace-setup.md` for platform-specific delete steps), clean up `pipeline/03-poc/output/`, end.
 
 **Agent:**
-- [ ] `agents/poc-agent.md` — Orchestrates all steps above, saves output to `pipeline/03-poc/output/`
+- [x] `agents/poc-agent.md` — Orchestrates all steps above, saves output to `pipeline/03-poc/output/`
 
 **POC Brief output (`{slug}-poc-brief.json`):**
 
@@ -378,7 +384,7 @@ Visual check:
 
 ## Stage 04 — Build (pipeline/04-build/)
 
-Polish the POC into a shippable product. Reads `{slug}-poc-brief.json` from Stage 03. Routes to the correct product-type build skill. Adds instruction tab / setup guide, buyer-facing UI, delivery format. Creates all product-specific docs used by downstream stages.
+Polish the POC into a shippable product. Reads `{slug}-poc-brief.json` from Stage 03. Routes to the correct product-type build skill. Adds instruction tab / setup guide, buyer-facing UI, delivery format. Creates all product-specific docs used by downstream stages. **Self-tests before handing off** — Stage 04 runs its own test-plan and fixes all failures before Stage 05 ever sees the product. Stage 05 is an independent sign-off, not a debugging session.
 
 **Stage structure:**
 ```
@@ -387,15 +393,16 @@ pipeline/04-build/
     build-agent.md             ← orchestrates the whole stage
   skills/
     setup-guide.md             ← generate buyer setup guide
-    delivery-prep.md           ← prepare final delivery files
+    delivery-prep.md           ← prepare final delivery files + set correct sharing/access permissions
+    test-plan.md               ← generate test-plan.json from formula-spec + differentiation + gaps
 ```
 
 **Shared skills used:**
 
 Build skills (same skills as Stage 03, but full polished depth):
-- [ ] `skills/build/notion.md` — Full Notion build: complete pages, databases, views, formulas, instruction page, buyer UX
-- [ ] `skills/build/google-sheets.md` — Full Google Sheets build: clean formulas, consistent styling, instruction tab, named ranges, error handling
-- [ ] `skills/build/canva.md` — Full Canva product: polished design, all pages, exportable format
+- [x] `skills/build/notion.md` — Full Notion build: complete pages, databases, views, formulas, instruction page, buyer UX (`depth: "full"`)
+- [x] `skills/build/google-sheets.md` — Full Google Sheets build: clean formulas, consistent styling, instruction tab, named ranges, error handling (`depth: "full"`)
+- [x] `skills/build/canva.md` — Full Canva product: polished design, all pages, exportable format (`depth: "full"`)
 
 Visual check:
 - `skills/playwright.md` — Final screenshot pass of finished product. Screenshots saved to `products/{slug}/screenshots/` and fed into Stage 06 as mockup source material.
@@ -414,29 +421,36 @@ Each `skills/build/{type}.md` must verify each major step before moving on — c
 
 **Product docs created (saved to `products/{slug}/docs/`):**
 - `formula-spec.md` — every formula/logic block: what it calculates, input cells/fields, output cells/fields, edge case behaviour (Sheets/Notion only)
-- `test-plan.json` — test cases from formula-spec + **dedicated tests for each differentiation item** (e.g. if differentiation says "mobile-safe formulas", test on mobile viewport; if it says "clear instructions", verify instruction tab covers every step) + **one test per filled gap** (verify each deferred feature was implemented correctly)
+- `test-plan.json` — 6 test categories written by `test-plan.md` skill:
+  1. **Logic** (Sheets/Notion only): formula correctness, cross-tab data flows, relations, rollups
+  2. **Edge cases** (Sheets/Notion only): empty input, zero, negative, max values don't break logic
+  3. **Style** (all types): palette, fonts, layout match `style-guide.json`
+  4. **Buyer flow** (all types): buyer can follow setup guide and use every tab/page/frame
+  5. **Differentiation** (all types): one test per item in `differentiation[]`
+  6. **Gaps filled** (all types): one test per filled gap from poc-brief
 - `style-guide.json` — finalised palette, fonts, spacing (from poc-brief `style`) — consumed by Stage 06 Marketing
 - `setup-guide.md` — buyer instructions written with `buyer_complaints` in mind: anywhere competitors confuse buyers, we explain it clearly and proactively
 
 **Agent flow:**
-1. Read `{slug}-poc-brief.json` → confirm `product_type`, load `poc_result.link` (starting point), `known_issues`, `feature_spec`, `differentiation`, `gaps`, `style`, `competitors[].buyer_complaints` (aggregated across all competitors), `delivery_format`
-2. Open `poc_result.link` and run `skills/build/{type}.md` (full polish) — fix `known_issues` first, then polish `feature_spec[]` to full quality, then verify every `differentiation[]` item exists, then fill `gaps[]`, with inline checks after each major step
-3. Write `products/{slug}/docs/formula-spec.md` from the built formulas/logic (Sheets/Notion only — skip for Canva)
-4. Write `products/{slug}/docs/test-plan.json` — formula tests + one test per differentiation item + one test per filled gap
-5. Write `products/{slug}/docs/style-guide.json` finalised from poc-brief `style`
-6. Run `setup-guide.md` with `buyer_complaints` as input → write `products/{slug}/docs/setup-guide.md`
-7. Run `delivery-prep.md` with `poc-brief.delivery_format` → prepare files in `products/{slug}/delivery/`
-8. Playwright final visual pass → save screenshots to `products/{slug}/screenshots/`
-9. Update `product.json` pipeline status
+1. Read `{slug}-poc-brief.json` → confirm `product_type`, load `known_issues`, `feature_spec`, `differentiation`, `gaps`, `style`, `competitors[].buyer_complaints` (aggregated across all competitors), `delivery_format`, `poc_result.link`. Copy the POC into the **Products folder**, named `{keyword}` (no prefix) — see `pipeline/workspace-setup.md` for platform-specific copy + move steps. All subsequent steps work on this Products/ copy. Update `working_link`.
+2. Open `working_link` (Products/ copy) and run `skills/build/{type}.md` (`depth: "full"`) — fix `known_issues` first, then polish `feature_spec[]` to full quality, then verify every `differentiation[]` item exists, then fill `gaps[]`, with inline checks after each major step
+3. Write `products/{slug}/docs/formula-spec.md` from the built formulas/logic (Sheets/Notion only — skip for Canva, set `formula_spec_path: null`)
+4. Write `products/{slug}/docs/style-guide.json` finalised from poc-brief `style`, updated to reflect any adjustments made during the build
+5. Run `test-plan.md` with `formula-spec.md` + `style-guide.json` + `differentiation` + `gaps` + `buyer_flow` + `structure` as input → write `products/{slug}/docs/test-plan.json` (6 test categories: logic, edge cases, style, buyer flow, differentiation, gaps filled)
+6. **Run all tests from `test-plan.json` against the built product** — for each test: copy the product (`[test-{id}] {slug}`), run test steps on the copy, record result, delete the copy. Fix every failure in the production product, re-run only failed tests, repeat until all pass. Do not proceed to step 7 until clean.
+7. Run `setup-guide.md` with `buyer_complaints` + `buyer_flow` + `feature_spec` + `structure` as input → write `products/{slug}/docs/setup-guide.md`
+8. Run `delivery-prep.md` → set correct sharing/access permissions, generate download files where required → write `products/{slug}/delivery/delivery.json`
+9. Playwright final visual pass → screenshot every tab/page/frame → save to `products/{slug}/screenshots/`. Fix any visual issues found.
+10. Update `product.json` pipeline status (stage: 04-build, status: complete)
 
 **Agent:**
-- [ ] `agents/build-agent.md` — Orchestrates all steps above, creates all product docs, updates `product.json`
+- [x] `agents/build-agent.md` — Orchestrates all steps above, self-tests until clean, creates all product docs, updates `product.json`
 
 ---
 
 ## Stage 05 — QA (pipeline/05-qa/)
 
-Test everything before marketing spend. QA is product-type aware — checks differ by type. Must pass before Stage 06 can begin.
+Independent verification before marketing spend. Stage 04 already self-tested — Stage 05 is a fresh pass by a different agent with no knowledge of how it was built. QA is product-type aware — checks differ by type. Must pass before Stage 06 can begin.
 
 **Stage structure:**
 ```
@@ -474,10 +488,16 @@ Simulate the buyer opening the product for the first time. Screenshot each step:
 3. Playwright visual check → screenshot every tab/page as first-time buyer
 4. MCP functional check (copy → test → record → delete) per product type
 5. Run `formula-checker.md` (Sheets only) — audit every formula in `formula-spec.md`
-6. Run `qa-checklist.md` — buyer experience walkthrough, instruction tab, no broken links
+6. Run `qa-checklist.md` — 4-area quality rubric (see below)
 7. Write `products/{slug}/qa/results.json` with pass/fail per check + screenshot refs
 8. If all pass → update `product.json` status, proceed to Stage 06
 9. If any fail → list failures, block Stage 06, wait for fix then re-run
+
+**`qa-checklist.md` covers 4 areas (all product types unless noted):**
+- **Visual quality**: style consistent across all tabs/pages, no placeholder text remaining, no clashing colours, no broken visual elements
+- **Usability**: first impression when opened — is it obvious what to do? Are labels clear? Is navigation intuitive without needing instructions?
+- **Instructions tab/page**: does it exist, is it complete, does it cover every step in `buyer_flow`, is it written for the buyer (not the builder)?
+- **Compatibility**: mobile viewport renders correctly (Sheets/Notion); export file size within Etsy limits and no corrupted pages (Canva)
 
 **Agent:**
 - [ ] `agents/qa-agent.md` — Orchestrates all steps above, gates Stage 06
@@ -625,8 +645,8 @@ pipeline/08-iterate/
 - Stage 00 — Discover: **complete** ✅
 - Stage 01 — Research: **complete** ✅
 - Stage 02 — Validate: **complete** ✅
-- Stage 03 — POC: architecture planned, skills not started
-- Stage 04 — Build: not started
+- Stage 03 — POC: **complete** ✅
+- Stage 04 — Build: **complete** ✅
 - Stage 05 — QA: not started
 - Stage 06 — Marketing: not started
 - Stage 07 — Launch: not started
