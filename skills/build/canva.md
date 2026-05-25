@@ -8,7 +8,7 @@ Uses Canva MCP for all Canva operations.
 
 ## Input
 
-- `working_link` — Canva design link to build on (scaffold copy or existing POC)
+- `working_link` — Canva design link to build on (blank design or existing POC)
 - `feature_spec` — array of features/pages to implement
 - `structure` — planned page/frame names and their purpose
 - `style` — confirmed palette, font pairing, layout_style
@@ -104,7 +104,6 @@ Export every page via `mcp__canva__export-design` (PNG). Verify:
 ## Notes
 
 - Canva MCP handles all design operations. Use `mcp__canva__export-design` for visual checks (PNG export) instead of Playwright.
-- Never edit the original scaffold — always work on the copy.
 - If a Canva MCP operation fails, export the current design state and retry once before noting in `known_issues`.
 - For `rough` depth: placeholder images and approximate alignment are acceptable. Document gaps in `known_issues`.
 - Page names in Canva must match `structure` — buyers see these in the exported PDF.

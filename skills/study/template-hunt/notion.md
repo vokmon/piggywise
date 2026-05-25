@@ -1,13 +1,13 @@
 # template-hunt/notion
 
-Search free Notion template galleries to find the best scaffold candidate for the POC. Evaluate up to `max_templates` candidates. Pick the best one. Do NOT duplicate — just record the choice. Duplication happens in poc-agent after synthesis confirms the planned structure.
+Study free Notion template galleries to harvest structural and UX patterns for the POC. Study up to `max_templates` candidates. Extract the best pattern(s) from each. Build fresh from these patterns — do not copy any single template wholesale.
 
 Follows `skills/playwright.md` for screenshot/snapshot rules.
 
 ## Input
 
-- `feature_spec` — always `null` at call time (synthesis happens after this skill runs); evaluation is done against the keyword and competitor structures from the reverse-engineer step instead
-- `max_templates` — maximum number of candidates to evaluate
+- `feature_spec` — always `null` at call time (synthesis happens after this skill runs); pattern extraction is done against the keyword and competitor structures from the reverse-engineer step instead
+- `max_templates` — maximum number of candidates to study
 - `keyword` — the validated keyword (used as search seed)
 
 ---
@@ -20,7 +20,7 @@ Run `skills/notion-login.md`. If `logged_in: false`: stop and ask the human to s
 
 ### 1. Search for candidates
 
-Search these sources in order. Collect up to `max_templates` candidates across all sources (stop when you have enough to evaluate):
+Search these sources in order. Collect up to `max_templates` candidates across all sources:
 
 1. **Notion official gallery** — `https://www.notion.so/templates`
    Search for `{keyword}` or browse the relevant category. Filter to free templates — skip any that require a paid Notion plan to duplicate.
@@ -32,25 +32,25 @@ Search these sources in order. Collect up to `max_templates` candidates across a
 
 For each candidate found: take a **screenshot** of the listing/preview page.
 
-### 2. Evaluate each candidate
+### 2. Study each candidate
 
-For each candidate, assess:
-- **Structural fit** — how closely does the page/database structure match the keyword and competitor structures from the reverse-engineer step?
-- **Database complexity** — are the databases, properties, and relations at the right level to adapt?
-- **Visual starting point** — is it neutral enough to restyle, or too heavily customised?
-- **Freely available** — does "Duplicate" work without a paid Notion plan? If it requires a paid plan: skip immediately — do not score or record.
+For each candidate, browse the preview or description (do NOT duplicate). Extract:
 
-Score each candidate: `strong_fit` / `partial_fit` / `poor_fit`.
+- **Page structure** — what top-level pages exist? What is the navigation model?
+- **Database design** — what databases are present, what properties, what views (table/board/gallery/calendar)?
+- **Dashboard layout** — how is the main hub page organised? Linked views, callouts, columns?
+- **Formulas and relations** — any notable computed properties or cross-database relations?
+- **UX patterns** — what makes this template easy or hard to use? Callout usage, toggles, inline databases, embed blocks?
+- **Visual style** — cover style, icon choices, colour palette, layout density
+- **Specific patterns worth borrowing** — the 1–2 things this template does better than others
 
-### 3. Pick the best candidate
+Take a **screenshot** of each template's main page or most distinctive view.
 
-Select the single candidate with the strongest structural fit to the keyword and competitor structures from the reverse-engineer step. If two candidates are equal, prefer the one from an earlier source (Notion gallery > NotionPages > Pinterest).
+### 3. Compile pattern library
 
-If no candidate scores at least `partial_fit`: return `null` and note "build from scratch — no suitable scaffold found".
+Across all studied candidates, compile a `pattern_library[]`: one entry per candidate with the specific pattern(s) worth borrowing. Also write a `structure_summary` identifying the most common structural patterns and any differentiation opportunities.
 
-### 4. Record result
-
-Record the chosen candidate (and all evaluated candidates) in the output. Do NOT duplicate the template — just record the URL and decision.
+Do NOT select a single "best" template to copy. The build step assembles patterns from multiple sources into a fresh product.
 
 ---
 
@@ -58,45 +58,34 @@ Record the chosen candidate (and all evaluated candidates) in the output. Do NOT
 
 ```json
 {
-  "templates": [
+  "pattern_library": [
     {
       "url": "https://www.notion.so/templates/...",
       "source": "notion-gallery",
-      "title": "Personal Finance Dashboard",
-      "fit": "strong_fit",
-      "used_as_scaffold": true,
-      "notes": "Has Income and Expenses databases with category properties. Dashboard page with rollups. Matches keyword and competitor structure well. Clean design easy to restyle."
+      "title": "ADHD Daily Planner by X",
+      "patterns_to_borrow": [
+        "3-column dashboard layout with Today / This Week / Brain Dump columns",
+        "Habit tracker with streak formula using dateBetween()"
+      ],
+      "notes": "Best dashboard layout of all candidates. Overcomplicated elsewhere — ignore tab structure outside the dashboard."
     },
     {
       "url": "https://notionpages.com/...",
       "source": "notionpages",
-      "title": "Budget Tracker Notion Template",
-      "fit": "partial_fit",
-      "used_as_scaffold": false,
-      "notes": "Single database only — no dashboard. Too simple for keyword and competitor structure."
+      "title": "Focus Flow Template",
+      "patterns_to_borrow": [
+        "Embedded Pomodoro timer (pomofocus.io embed block) directly on the focus page"
+      ],
+      "notes": "Weak overall structure but the embed approach is clean and easy to replicate."
     }
   ],
-  "scaffold_url": "https://www.notion.so/templates/...",
-  "scaffold_source": "notion-gallery"
-}
-```
-
-If no suitable scaffold:
-
-```json
-{
-  "templates": [
-    {
-      "url": "https://notionpages.com/...",
-      "source": "notionpages",
-      "title": "Basic Expense Log",
-      "fit": "poor_fit",
-      "used_as_scaffold": false,
-      "notes": "Just a simple table — no properties, no views, no relations. Does not match keyword or competitor structure."
-    }
-  ],
-  "scaffold_url": null,
-  "scaffold_source": null
+  "structure_summary": {
+    "common_pages": ["Dashboard", "Tasks", "Habits", "Notes/Brain Dump", "Setup Guide"],
+    "common_databases": ["Tasks/To-Do", "Habits", "Mood/Journal"],
+    "common_features": ["Daily focus view", "Habit streak tracking", "Quick capture"],
+    "visual_patterns": ["Emoji icons dominant", "Callout boxes as visual anchors", "Gallery view feels more premium than table view"],
+    "differentiation_opportunities": ["Pre-filled sample data (none of the studied templates include this)", "Built-in Notion onboarding (all assume Notion familiarity)"]
+  }
 }
 ```
 
@@ -104,8 +93,8 @@ If no suitable scaffold:
 
 ## Notes
 
-- Do NOT duplicate the scaffold template yet — that happens in poc-agent after synthesis.
-- `used_as_scaffold: true` on exactly one entry (or none if `scaffold_url` is null).
-- Evaluate all candidates before picking — do not stop at the first `strong_fit`.
-- If a template requires a paid Notion plan to duplicate: skip immediately — do not score or record.
+- Do NOT duplicate any template — study only (preview pages and screenshots).
+- Study all `max_templates` candidates before compiling — do not stop at the first strong match.
+- If a template requires a paid Notion plan to view or duplicate: skip immediately — do not record.
+- `patterns_to_borrow` must be specific and actionable — not "good design" but "3-column layout with linked database views of Tasks and Habits".
 - If a source is blocked or returns no useful results: skip it and note it, continue to next source.

@@ -8,7 +8,7 @@ Uses Notion MCP for all Notion operations.
 
 ## Input
 
-- `working_link` — Notion page link to build on (scaffold duplicate or existing POC)
+- `working_link` — Notion page link to build on (blank page or existing POC)
 - `feature_spec` — array of features to implement
 - `structure` — planned pages/databases and their types
 - `style` — confirmed palette, cover style, icon style, layout_style
@@ -73,6 +73,33 @@ Apply `style` consistently:
 - **Layout**: use callout blocks, dividers, and column blocks to create visual structure. Avoid long unbroken text blocks.
 - **Linked databases**: where the same database is embedded on multiple pages, use linked database views (not duplicates).
 
+### 5a. Embed external tools (when specified in feature_spec)
+
+Notion supports embedding external web apps via embed blocks. Use these when the product includes interactive tools not available natively in Notion.
+
+**Reliable embed sources:**
+
+| Tool | Embed URL |
+|------|-----------|
+| Pomodoro timer | `https://pomofocus.io` |
+| Team Pomodoro | `https://cuckoo.team/{room-name}` |
+| Google Calendar | Use the embed URL from Google Calendar → Settings → Integrate calendar |
+
+**How to add an embed via Notion MCP:**
+
+Use `mcp__notion__notion-update-page` with `insert_content` and the following markdown:
+
+```
+<embed url="https://pomofocus.io"/>
+```
+
+**Embed placement:** Put embeds on the most relevant feature page (e.g. a Pomodoro timer on the Today/Focus page, not the dashboard). Embed height is not controllable via MCP — it renders at Notion's default height.
+
+**Notes:**
+- Always note in the Start Here page that embeds require desktop or browser Notion — the mobile app may show a link instead of the live embed.
+- Test the embed URL in a browser first to confirm it loads without a login wall.
+- If the source requires login: use a styled link button (`[Open timer →](url)`) instead of an embed.
+
 ### 6. Verify `differentiation` checklist (Stage 04 only)
 
 For each item in `differentiation[]`: confirm it exists in the built product. Mark it verified or note what's missing. Do not close this step until every item is confirmed present.
@@ -111,7 +138,6 @@ Use Playwright to take a **screenshot** of each major page/view.
 ## Notes
 
 - Notion MCP handles all data operations (fetch, create, update, delete). Playwright is used for screenshots only.
-- Never edit the original scaffold — always work on the duplicate.
 - Notion formula syntax differs from spreadsheet formulas — test every formula with actual data before moving on.
 - If a relation or rollup can't be made to work on the first attempt, note it in `known_issues` and continue.
 - For `rough` depth: placeholder content is acceptable in non-critical pages. Document in `known_issues`.

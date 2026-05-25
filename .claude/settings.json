@@ -6,7 +6,8 @@
       "WebFetch",
       "Bash(*)",
       "Write(pipeline/*)",
-      "mcp__playwright-recorder__*"
+      "mcp__playwright-recorder__*",
+      "mcp__notion__*"
     ]
   }
 }

@@ -26,14 +26,12 @@ Search these sources. Collect 6–10 strong visual references across all sources
 3. **Notion official gallery** — `https://www.notion.so/templates`
    Browse for visually distinctive templates — focus on layout, cover style, and colour usage, not just feature match.
 
-4. **NotionPages.com** — `https://notionpages.com/`
-   Browse for premium-looking free templates worth studying visually.
-
 For each reference: take a **screenshot** of the preview. Do not duplicate any templates at this stage.
 
 ### 2. Analyse visual patterns
 
 Across all collected references, identify:
+
 - **Dominant palettes** — what colour combinations appear most? Warm neutrals, dark mode, pastel, bold?
 - **Cover image style** — gradient, solid colour, illustration, photography, none?
 - **Icon usage** — emoji icons, custom icons, no icons?
@@ -56,9 +54,7 @@ Select the 3–5 most useful visual references (most instructive for our planned
       "https://pinterest.com/pin/...",
       "https://pinterest.com/pin/..."
     ],
-    "etsy_listings": [
-      "https://www.etsy.com/listing/..."
-    ],
+    "etsy_listings": ["https://www.etsy.com/listing/..."],
     "other_references": [
       "https://www.notion.so/templates/...",
       "https://notionpages.com/..."
