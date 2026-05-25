@@ -28,14 +28,16 @@ See `pipeline/workspace-setup.md` for folder paths, file naming conventions, pla
 
 Read `validate_output`.
 
+Check `decision.verdict`. If not `"go"`: stop and ask the human whether to proceed anyway.
+
 Extract:
-- `slug` — product identifier, used to name all output artefacts
-- `competitor_urls` — top-ranked Etsy listing URLs (take top `max_competitors` by rank)
-- `buyer_complaints` — aggregated complaints from review-miner output
-- `buyer_wishes` — aggregated wishes from review-miner output
-- `unmet_needs` — needs that no competitor currently addresses
-- `pricing` — `{ launch_price, target_price, price_range, source }`
-- `keyword` — the validated search keyword
+- `keyword` — `decision.recommended_title_keyword`
+- `slug` — derive from `keyword`: lowercase, spaces to hyphens, remove special characters (e.g. `"Simple ADHD Notion Planner"` → `"simple-adhd-notion-planner"`)
+- `competitor_urls` — `review_miner.listings_mined[].listing_url` (take top `max_competitors` by order)
+- `buyer_complaints` — `review_miner.top_complained`
+- `buyer_wishes` — `review_miner.top_praised`
+- `unmet_needs` — `review_miner.unmet_needs`
+- `pricing` — from `price_check.recommendations`: `{ launch_price, target_price }`
 
 ### Step 2 — Confirm product type
 
