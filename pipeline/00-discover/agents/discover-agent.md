@@ -7,12 +7,14 @@ Orchestrates the full Stage 00 discovery pipeline. Runs data collection skills i
 Declare the scope here. Update these lists when expanding to new niches or formats — skills pick them up automatically.
 
 **`format_anchors`** — fixed Etsy autocomplete queries (passed to `autocomplete-harvest`):
+
 - `google sheets`
 - `notion template`
 - `digital download`
 - `spreadsheet template`
 
 **`pinterest_terms`** — terms to search on Pinterest Trends (passed to `pinterest-signals`):
+
 - `digital planner`
 - `google sheets template`
 - `notion template`
@@ -20,6 +22,7 @@ Declare the scope here. Update these lists when expanding to new niches or forma
 - `habit tracker`
 
 **`niche_description`** — plain-English description of the target product space (passed to `google-signals`):
+
 > "Google Sheets templates, Notion templates, digital planners, trackers, and similar digital download products"
 
 ## Invoke with
@@ -56,12 +59,12 @@ Once all three values are confirmed, proceed to Step 1.
 
 ```
 etsy-bestsellers ──┬→ autocomplete-harvest ─┐
-                   └→ shop-scanner ──────────┤→ seed-ranker → output
+                   └→ shop-scanner ──────────┤→ seed-ranker → profittree-scan (top 3) → output
 google-signals ─────────────────────────────┤
 pinterest-signals ───────────────────────────┘
 ```
 
-`autocomplete-harvest` and `shop-scanner` both depend on `etsy-bestsellers` output — run etsy-bestsellers first. `google-signals` and `pinterest-signals` are independent.
+`autocomplete-harvest` and `shop-scanner` both depend on `etsy-bestsellers` output — run etsy-bestsellers first. `google-signals` and `pinterest-signals` are independent. `profittree-scan` runs after seed-ranker, once the top candidates are known.
 
 ---
 
@@ -107,7 +110,19 @@ seed-ranker will score and rank candidates from whichever sources succeeded.
 
 ---
 
-## Step 3 — Cross-check existing research
+## Step 3 — Validate top seeds with ProfitTree
+
+Run `skills/profittree-scan.md` for each of the top 3 seeds in `seed_ranker.recommended_seeds`.
+
+- If `status: "no_credentials"`: skip this step entirely, set `profittree_scans: null` in output, continue to Step 4.
+- If the scan succeeds: record `niche_score`, `monthly_revenue_estimate`, `related_keywords`, `top_products` (names + prices), `top_shops` (names + monthly revenue) for that seed.
+- If the scan fails for any other reason (login error, network failure, page error): note the failure for that seed, continue to the next seed. Do not stop the pipeline.
+
+Run scans sequentially — ProfitTree may rate-limit rapid consecutive searches.
+
+---
+
+## Step 4 — Cross-check existing research
 
 Scan `pipeline/01-research/output/` for files matching `research-*.json`. For each file found:
 
@@ -121,7 +136,7 @@ If the output directory does not exist or is empty: skip this step, no seeds are
 
 ---
 
-## Step 4 — Save output
+## Step 5 — Save output
 
 Save to:
 `pipeline/00-discover/output/discover-{YYYY-MM-DD}.json`
@@ -130,46 +145,41 @@ Save to:
 {
   "run_date": "2026-05-24",
   "status": "completed",
-  "summary_text": `✅ Discovery complete
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📦 Etsy bestsellers scanned · 52 listings
-🏪 Shops studied · 6 shops
-🔍 Autocomplete suggestions · 48 unique terms
-📈 Google signals · 5 trending categories
-📌 Pinterest signals · 3 trending categories
-
-🏆 Top seed candidates:
-  1. budget tracker google sheets          (score: 14.5) ⭐ priority
-  2. freelance invoice template google sheets (score: 13.2) ⭐ priority
-  3. notion habit tracker                  (score: 10.8) ⭐ priority ✓ researched
-
-💡 Recommended starting seeds:
-   → budget tracker google sheets
-   → freelance invoice template google sheets
-   → notion habit tracker (already researched — skip or re-validate)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`,
-  "etsy_bestsellers": { ... },
-  "shop_scanner": { ... },
-  "autocomplete_harvest": { ... },
-  "google_signals": { ... },
-  "pinterest_signals": { ... },
+  "summary_text": "...",
+  "etsy_bestsellers": { "...": "..." },
+  "shop_scanner": { "...": "..." },
+  "autocomplete_harvest": { "...": "..." },
+  "google_signals": { "...": "..." },
+  "pinterest_signals": { "...": "..." },
   "seed_ranker": {
     "total_candidates_evaluated": 24,
-    "seeds": [ ... ],
+    "seeds": [],
     "recommended_seeds": [
       "budget tracker google sheets",
       "freelance invoice template google sheets",
       "notion habit tracker"
     ]
-  }
+  },
+  "profittree_scans": [
+    {
+      "keyword": "budget tracker google sheets",
+      "niche_score": 88,
+      "monthly_revenue_estimate": "$42K",
+      "related_keywords": [],
+      "top_products": [],
+      "top_shops": []
+    }
+  ]
 }
 ```
 
-Build the summary text using actual data from this run (same format as Step 5), replace all placeholder values with real numbers and seed names, then save the file.
+If Step 3 was skipped (no credentials): set `"profittree_scans": null`.
+
+Build the summary text using actual data from this run (same format as Step 6), replace all placeholder values with real numbers and seed names, then save the file.
 
 ---
 
-## Step 5 — Print summary to conversation
+## Step 6 — Print summary to conversation
 
 After saving, print the summary **inside a triple-backtick code block** so newlines and alignment render correctly:
 
@@ -184,9 +194,9 @@ After saving, print the summary **inside a triple-backtick code block** so newli
 📌 Pinterest signals · 3 trending categories
 
 🏆 Top seed candidates:
-  1. budget tracker google sheets          (score: 14.5) ⭐ priority
-  2. freelance invoice template google sheets (score: 13.2) ⭐ priority
-  3. notion habit tracker                  (score: 10.8) ⭐ priority ✓ researched
+  1. budget tracker google sheets          (score: 14.5, niche: 88, $42K/mo) ⭐ priority
+  2. freelance invoice template google sheets (score: 13.2, niche: 76, $28K/mo) ⭐ priority
+  3. notion habit tracker                  (score: 10.8, niche: 91, $59K/mo) ⭐ priority ✓ researched
   4. savings goal tracker google sheets    (score: 9.6)
   5. social media content calendar notion  (score: 8.4)
   ...
@@ -199,17 +209,20 @@ After saving, print the summary **inside a triple-backtick code block** so newli
 📁 Saved: pipeline/00-discover/output/discover-2026-05-24.json
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✓ = already has a research output file
+niche = ProfitTree Niche Score · $X/mo = estimated monthly revenue
 Pick seeds from the list above and run:
   /research "budget tracker google sheets"
   /research "freelance invoice template google sheets"
 ```
 ````
 
-Replace all placeholder values with real numbers and seed names from this run.
+- For seeds scanned by ProfitTree, append `(niche: {score}, ${revenue}/mo)` after the seed-ranker score.
+- For seeds not scanned, omit the niche fields.
+- Replace all placeholder values with real numbers and seed names from this run.
 
 ---
 
-## Step 6 — Cleanup
+## Step 7 — Cleanup
 
 Close the browser, then delete temp files:
 

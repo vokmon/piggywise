@@ -6,6 +6,7 @@ Synthesize outputs from etsy-scan, google-trends, and pinterest-trends to identi
 - `etsy_scan` — full JSON output from etsy-scan skill
 - `google_trends` — full JSON output from google-trends skill
 - `pinterest_trends` — full JSON output from pinterest-trends skill (may be unavailable)
+- `profittree_scan` — full JSON output from profittree-scan skill (may be null if credentials not set)
 - `target_formats` — product formats to generate ideas for (e.g. `Google Sheets`, `Notion`)
 
 ---
@@ -37,6 +38,13 @@ For each data point collected, assign a signal strength:
 **Pinterest signal (if `pinterest_trends.available: true`):**
 - `pinterest_trends.trend_direction: growing` + medium Etsy competition = early opportunity ✅
 - `pinterest_trends.related_interests` containing topics not seen in Etsy autocomplete = whitespace idea ✅
+
+**ProfitTree signal (if `profittree_scan` is not null):**
+- `niche_score` (0–100) — composite demand signal across all Etsy listings for this keyword. Use it as a confirmatory signal alongside etsy-scan: a high score strengthens confidence in strong demand; a low score alongside weak Etsy signals is a caution flag. Do not use it as a standalone gate.
+- `monthly_revenue_estimate` — total addressable revenue in the niche. Use to size the opportunity and set realistic per-product revenue expectations.
+- `related_keywords` — cross-check against `etsy_scan.autocomplete_suggestions`; any keywords present in ProfitTree but absent from Etsy autocomplete may reveal underserved sub-niches worth exploring.
+- `top_products` pricing — pricing range for top-performing listings; use to calibrate idea pricing.
+- `top_shops` monthly revenue — if a small number of shops capture most revenue alongside medium Etsy competition, a differentiated entrant has room to take share ✅
 
 ### 2. Identify gaps
 
@@ -146,5 +154,6 @@ Return a JSON object to the calling agent:
 - This skill reasons only — it does not browse or call external tools.
 - `seed_keyword` in output is taken from `etsy_scan.keyword` — not a separate input.
 - If `pinterest_trends` is unavailable, skip Pinterest-based signals and note it in `signal_basis`.
+- If `profittree_scan` is null, skip ProfitTree signals entirely — absence of ProfitTree data does not lower any idea's score.
 - `differentiator` must be specific and grounded in data — never generic ("better design", "easier to use"). Always tie it to a gap observed in the collected data.
 - The output of this skill feeds directly into `02-validate` — the `recommended_next` field is what the human reviews to decide what to validate first.

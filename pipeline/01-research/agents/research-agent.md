@@ -39,14 +39,24 @@ Once all three values are confirmed (user-provided or default), proceed to Step 
 ## Pipeline
 
 ```
-etsy-scan → [Gate 1] → google-trends → [Gate 2] → pinterest-trends → gap-finder → [Gate 3] → output
+etsy-scan ──→ [Gate 1] → google-trends → [Gate 2] → pinterest-trends → gap-finder → [Gate 3] → output
+                                                                             ↑
+profittree-scan ─────────────────────────────────────────────────────────────┘
 ```
+
+`profittree-scan` runs in parallel with `etsy-scan`. Its output feeds **gap-finder only** — it does not affect any gate.
 
 ---
 
-## Step 1 — Run etsy-scan
+## Step 1 — Run etsy-scan and profittree-scan
 
-Run the `etsy-scan` skill with `keyword = seed` and `max_listings` from Input.
+Run both skills in parallel with `keyword = seed`:
+
+- `etsy-scan` with `keyword = seed` and `max_listings` from Input
+- `skills/profittree-scan.md` with `keyword = seed`
+  - If `status: "no_credentials"`: note it, continue with `profittree_scan = null`. Do not stop.
+  - If the scan succeeds: store the result for use in gap-finder (Step 4).
+  - If the scan fails for any other reason (login error, network failure, page error): note the failure, continue with `profittree_scan = null`. Do not stop.
 
 ### Gate 1: Is there any demand?
 
@@ -119,6 +129,7 @@ Run the `gap-finder` skill with:
 - `etsy_scan` = Step 1 output
 - `google_trends` = Step 2 output
 - `pinterest_trends` = Step 3 output
+- `profittree_scan` = Step 1 output (or `null` if skipped)
 - `target_formats` from Input
 
 ### Gate 3: Are there any viable ideas?
@@ -155,6 +166,8 @@ Build the `summary` block from skill outputs:
 - `trend_direction` — from `google_trends.trend_direction` (or `"unavailable"` if google_trends.source = "unavailable")
 - `seasonality` — from `google_trends.seasonality` (omit if google_trends.source = "unavailable")
 - `best_launch_window` — from `google_trends.best_launch_window` (omit if google_trends.source = "unavailable")
+- `niche_score` — from `profittree_scan.niche_score` (omit if profittree_scan is null)
+- `monthly_revenue_estimate` — from `profittree_scan.monthly_revenue_estimate` (omit if profittree_scan is null)
 - `top_ideas` — from `gap_finder.product_ideas`: take the top 3 by `opportunity_score`, format each as `"{name} — opportunity score {opportunity_score}"`
 - `recommended_next` — from `gap_finder.recommended_next`
 
@@ -164,6 +177,13 @@ Build the `summary` block from skill outputs:
   "run_date": "2026-05-23",
   "status": "completed",
   "etsy_scan": { ... },
+  "profittree_scan": {
+    "niche_score": 88,
+    "monthly_revenue_estimate": "$42K",
+    "related_keywords": [],
+    "top_products": [],
+    "top_shops": []
+  },
   "google_trends": { ... },
   "pinterest_trends": { ... },
   "gap_finder": {
@@ -176,6 +196,8 @@ Build the `summary` block from skill outputs:
     "trend_direction": "growing",
     "seasonality": "seasonal",
     "best_launch_window": "November–December",
+    "niche_score": 88,
+    "monthly_revenue_estimate": "$42K",
     "top_ideas": [
       "Freelancer Budget Tracker — opportunity score 8",
       "Aesthetic Budget Tracker with Savings Goals — opportunity score 7",
@@ -196,6 +218,7 @@ After saving, print a readable summary so the human can review without opening t
 ✅ Research complete: "budget tracker google sheets"
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📊 Market: 3,200 Etsy results · competition: medium
+🌳 ProfitTree: niche score 88 · $42K/mo estimated revenue
 📈 Trend: growing · peak: January, September
 🗓  Best launch window: November–December
 
@@ -211,6 +234,8 @@ After saving, print a readable summary so the human can review without opening t
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Review the ideas above and pick 1–2 to take into Stage 2 (validate).
 ```
+
+If `profittree_scan` is null, omit the `🌳 ProfitTree` line from the summary.
 
 ---
 
