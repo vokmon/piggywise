@@ -49,9 +49,14 @@ Repeat the following for each URL, up to `max_competitors`:
 
 6. Take a **screenshot** of the template gallery page showing the candidate.
 
-7. Copy the template into the Notion workspace using `mcp__notion__notion-duplicate-page` with the template URL.
+7. Copy the template into the Notion workspace using Playwright:
+   - Navigate to the template URL (notion.site or notion.so/templates)
+   - Take a **screenshot** to confirm the page loaded
+   - Click "Start with this template" (or "Duplicate" / "Get template")
+   - Wait for the page to open in the workspace (~3s)
+   - Take a **screenshot** of the new workspace page and note its URL/ID
 
-8. **Study the copy** using `mcp__notion__notion-fetch` on the duplicated page — do not modify:
+8. **Study the copy** using `mcp__claude_ai_Notion__notion-fetch` on the copied page — do not modify:
    - List all top-level pages and databases
    - For each database: list properties (name, type) and any views (table, board, calendar, gallery, list)
    - Identify formula properties: what they calculate, which fields they depend on
@@ -65,7 +70,7 @@ Repeat the following for each URL, up to `max_competitors`:
    - `key_formulas` — formula properties and rollups (name, property type, depends_on, logic)
    - `free_equivalent_urls` — URLs where this free template was found
 
-10. **Archive the copy** using `mcp__notion__notion-update-page` (set `archived: true`). Confirm it is removed before continuing.
+10. **Trash the copy** using `mcp__claude_ai_Notion__notion-update-data-source` with `in_trash: true` and the page ID noted in Step 7. Confirm it is removed before continuing.
 
 ---
 
@@ -135,7 +140,7 @@ Repeat the following for each URL, up to `max_competitors`:
 
 - If a listing has fewer than 5 reviews, note it — skip buyer_complaints and buyer_wishes rather than inferring.
 - Notion formulas can be complex — record the intent and dependencies, not the full formula syntax.
-- If duplicating a template requires a paid Notion plan and fails: note `"free_equivalent_urls"` found but `"structure": null`, `"logic_notes": "template requires paid plan — could not duplicate"`.
+- If copying a template via "Start with this template" requires a paid Notion plan and fails: note `"free_equivalent_urls"` found but `"structure": null`, `"logic_notes": "template requires paid plan — could not copy"`.
 - If blocked on Etsy (captcha/bot screen): note `"source": "blocked"`, skip this URL, continue to next.
 - If no free equivalent can be found after checking all sources: record `"free_equivalent_urls": []` and set `"structure": null`, `"logic_notes": "no free equivalent found"`.
-- Always archive study copies before moving to the next competitor.
+- Always trash study copies before moving to the next competitor.

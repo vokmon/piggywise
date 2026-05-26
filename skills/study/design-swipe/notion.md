@@ -26,7 +26,7 @@ Search these sources. Collect 6–10 strong visual references across all sources
 3. **Notion official gallery** — `https://www.notion.so/templates`
    Browse for visually distinctive templates — focus on layout, cover style, and colour usage, not just feature match.
 
-For each reference: take a **screenshot** of the preview. Do not duplicate any templates at this stage.
+For each reference: take a **screenshot** of the preview. Do not copy any templates into the workspace at this stage.
 
 ### 2. Analyse visual patterns
 
@@ -68,7 +68,7 @@ Select the 3–5 most useful visual references (most instructive for our planned
 
 ## Notes
 
-- Do not duplicate any templates — screenshots and visual observation only.
+- Do not copy any templates into the workspace — screenshots and visual observation only.
 - `style_notes` should be actionable: specific observations the synthesis step can use to form palette/cover/icon decisions.
 - If `style_signals` from reverse-engineer suggest a specific direction: use the search to either confirm or find a contrasting direction worth noting.
 - If any source is blocked or returns irrelevant results: skip it, note it, continue with remaining sources.

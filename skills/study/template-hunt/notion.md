@@ -23,10 +23,10 @@ Run `skills/notion-login.md`. If `logged_in: false`: stop and ask the human to s
 Search these sources in order. Collect up to `max_templates` candidates across all sources:
 
 1. **Notion official gallery** — `https://www.notion.so/templates`
-   Search for `{keyword}` or browse the relevant category. Filter to free templates — skip any that require a paid Notion plan to duplicate.
+   Search for `{keyword}` or browse the relevant category. Filter to free templates — skip any that require a paid Notion plan to copy.
 
 2. **NotionPages.com** — search `site:notionpages.com {keyword}` or browse `https://notionpages.com/`
-   All templates here are free to duplicate.
+   All templates here are free to copy.
 
 3. **Pinterest** — search `{keyword} notion template free`
 
@@ -34,17 +34,24 @@ For each candidate found: take a **screenshot** of the listing/preview page.
 
 ### 2. Study each candidate
 
-For each candidate, browse the preview or description (do NOT duplicate). Extract:
+For each candidate:
 
-- **Page structure** — what top-level pages exist? What is the navigation model?
-- **Database design** — what databases are present, what properties, what views (table/board/gallery/calendar)?
-- **Dashboard layout** — how is the main hub page organised? Linked views, callouts, columns?
-- **Formulas and relations** — any notable computed properties or cross-database relations?
-- **UX patterns** — what makes this template easy or hard to use? Callout usage, toggles, inline databases, embed blocks?
-- **Visual style** — cover style, icon choices, colour palette, layout density
-- **Specific patterns worth borrowing** — the 1–2 things this template does better than others
+1. Copy the template into the Notion workspace using Playwright:
+   - Navigate to the template URL
+   - Click "Start with this template" (or "Duplicate" / "Get template")
+   - Wait for the copy to appear in the workspace (~3s)
+   - Note the new page URL/ID
 
-Take a **screenshot** of each template's main page or most distinctive view.
+2. Study the copy using `mcp__claude_ai_Notion__notion-fetch`. Extract:
+   - **Page structure** — what top-level pages exist? What is the navigation model?
+   - **Database design** — what databases are present, what properties (name and type), what views (table/board/gallery/calendar)?
+   - **Dashboard layout** — how is the main hub page organised? Linked views, callouts, columns?
+   - **Formulas and relations** — any notable computed properties or cross-database relations?
+   - **UX patterns** — what makes this template easy or hard to use? Callout usage, toggles, inline databases, embed blocks?
+   - **Visual style** — cover style, icon choices, colour palette, layout density
+   - **Specific patterns worth borrowing** — the 1–2 things this template does better than others
+
+3. **Trash the copy** using `mcp__claude_ai_Notion__notion-update-data-source` with `in_trash: true` and the page ID noted in sub-step 1 above. Always clean up before moving to the next candidate.
 
 ### 3. Compile pattern library
 
@@ -93,8 +100,8 @@ Do NOT select a single "best" template to copy. The build step assembles pattern
 
 ## Notes
 
-- Do NOT duplicate any template — study only (preview pages and screenshots).
+- Always trash each study copy before moving to the next candidate — keep the workspace clean.
 - Study all `max_templates` candidates before compiling — do not stop at the first strong match.
-- If a template requires a paid Notion plan to view or duplicate: skip immediately — do not record.
+- If a template requires a paid Notion plan to copy: skip immediately — do not record.
 - `patterns_to_borrow` must be specific and actionable — not "good design" but "3-column layout with linked database views of Tasks and Habits".
 - If a source is blocked or returns no useful results: skip it and note it, continue to next source.

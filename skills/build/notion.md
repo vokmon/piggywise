@@ -27,7 +27,7 @@ Run `skills/notion-login.md`. If `logged_in: false`: stop and ask the human to s
 
 ### 1. Open the working page
 
-Use `mcp__notion__notion-fetch` with `working_link` to read the current page structure and confirm the starting state. Take a Playwright **screenshot** for visual reference.
+Use `mcp__claude_ai_Notion__notion-fetch` with `working_link` to read the current page structure and confirm the starting state. Take a Playwright **screenshot** for visual reference.
 
 ### 2. Fix known issues (Stage 04 only)
 
@@ -87,7 +87,7 @@ Notion supports embedding external web apps via embed blocks. Use these when the
 
 **How to add an embed via Notion MCP:**
 
-Use `mcp__notion__notion-update-page` with `insert_content` and the following markdown:
+Use `mcp__claude_ai_Notion__notion-update-page` with `insert_content` and the following markdown:
 
 ```
 <embed url="https://pomofocus.io"/>
@@ -110,7 +110,7 @@ Implement each feature in `gaps[]` after all `differentiation[]` items are verif
 
 ### 8. Final page review
 
-Use `mcp__notion__notion-fetch` on each top-level page to verify:
+Use `mcp__claude_ai_Notion__notion-fetch` on each top-level page to verify:
 - No broken relations, empty formula outputs, or missing views
 - All views show data correctly with sample entries
 - Instructions page covers the final structure
