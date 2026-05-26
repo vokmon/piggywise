@@ -8,8 +8,7 @@ Follows `skills/playwright.md` for screenshot vs snapshot usage, block handling,
 
 ### 1. Start with a broad search
 
-Navigate to:
-`https://www.etsy.com/search?q=digital+download&explicit=1&sort_order=most_relevant`
+Navigate to `https://www.etsy.com`, type `digital download` in the search box and press Enter.
 
 Take a **snapshot** to extract the filter chips — they appear in the DOM. Then take a **screenshot** to extract listing tiles — tiles render via JavaScript and may not appear in the accessibility tree.
 
@@ -24,8 +23,7 @@ If Etsy blocks or shows a captcha: note `"source": "blocked"` and stop — do no
 
 From the filter chips collected in Step 1, pick the top 4–5 that suggest a product category (skip chips like `Ships from TH`, `Under THB 1,500`, `Customizable` — these are attributes, not categories).
 
-For each selected chip, navigate to the search URL with that chip as an added query term:
-`https://www.etsy.com/search?q=digital+download+{chip}&explicit=1&sort_order=most_relevant`
+For each selected chip, navigate to `https://www.etsy.com`, type `digital download {chip}` in the search box and press Enter.
 
 Take a screenshot and extract up to 20 listings per chip using the same fields.
 

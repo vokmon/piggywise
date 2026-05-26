@@ -20,7 +20,7 @@ Search these sources. Collect 6–10 strong visual references across all sources
 1. **Pinterest** — search `{keyword} canva template` and `{keyword} design`
    Also try mood/aesthetic directions: `{keyword} minimal design`, `{keyword} luxury branding`, `{keyword} editorial layout`
 
-2. **Etsy** — search `{keyword} canva template`
+2. **Etsy** — navigate to `https://www.etsy.com`, type `{keyword} canva template` in the search box and press Enter.
    Browse listing preview images for visual style — palette, typography, layout density. Do not open listings for reviews; this is visual reference only.
 
 3. **Canva template gallery** — `https://www.canva.com/templates/`

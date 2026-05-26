@@ -26,10 +26,7 @@ These should be more specific than `seed_keyword` — you're looking for direct 
 
 ### 2. Search Etsy for each query
 
-For each query, navigate to:
-`https://www.etsy.com/search?q={query}&explicit=1&sort_order=most_relevant`
-
-Take a **screenshot** to read the results. For each query record:
+For each query, navigate to `https://www.etsy.com`, type `{query}` in the search box and press Enter. Take a **screenshot** to read the results. For each query record:
 - `total_results` — the X results count shown
 - `listings` — up to `max_listings` listings: title, price, reviews, star_rating, is_bestseller, is_star_seller, shop_name
 
@@ -59,10 +56,7 @@ Flag any direct competitors found. If none: note as gap confirmed.
 
 ### 4. Check autocomplete for the specific angle
 
-Navigate to:
-`https://www.etsy.com/search?q={main keywords from product_idea}&explicit=1&sort_order=most_relevant`
-
-Click the search bar and take a **screenshot**. Record any autocomplete suggestions — these are real buyer search terms and confirm search demand for the specific angle.
+Navigate to `https://www.etsy.com`, click the search box, type `{main keywords from product_idea}` slowly (character by character), and take a **snapshot before pressing Enter** to capture autocomplete suggestions. Record any suggestions — these are real buyer search terms and confirm search demand for the specific angle.
 
 ### 5. Identify the best title keyword
 

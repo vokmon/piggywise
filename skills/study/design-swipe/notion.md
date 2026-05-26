@@ -20,7 +20,7 @@ Search these sources. Collect 6–10 strong visual references across all sources
 1. **Pinterest** — search `{keyword} notion template` and `{keyword} notion dashboard`
    Also try aesthetic directions: `{keyword} notion aesthetic`, `notion dashboard design inspiration`
 
-2. **Etsy** — search `{keyword} notion template`
+2. **Etsy** — navigate to `https://www.etsy.com`, type `{keyword} notion template` in the search box and press Enter.
    Browse listing preview images for visual style — palette, cover style, icon choices, layout. Do not open listings for reviews; this is visual reference only.
 
 3. **Notion official gallery** — `https://www.notion.so/templates`

@@ -20,7 +20,7 @@ Search these sources. Collect 6–10 strong visual references across all sources
 1. **Pinterest** — search `{keyword} google sheets template` and `{keyword} spreadsheet design`
    Also try broader visual directions: `{keyword} dashboard design`, `{keyword} tracker aesthetic`
 
-2. **Etsy** — search `{keyword} spreadsheet template`
+2. **Etsy** — navigate to `https://www.etsy.com`, type `{keyword} spreadsheet template` in the search box and press Enter.
    Browse listing preview images for visual style — palette, header design, layout density. Do not open listings for reviews; this is visual reference only.
 
 3. **Vertex42** — `https://vertex42.com/ExcelTemplates/` — browse for interesting visual styles. Screenshots of listing/preview pages only — do not download any templates.

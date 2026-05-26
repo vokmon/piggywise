@@ -18,7 +18,7 @@ Follows `skills/playwright.md` for screenshot/snapshot rules.
 
 Search these sources in order. Collect up to `max_templates` references across all sources:
 
-1. **Etsy** — search `{keyword} spreadsheet` or `{keyword} google sheets template`
+1. **Etsy** — navigate to `https://www.etsy.com`, type `{keyword} spreadsheet` in the search box and press Enter. If results are thin, repeat with `{keyword} google sheets template`.
    Browse listing pages and preview images. Look at what tabs/sections are shown in listing photos, what features are highlighted in descriptions.
 
 2. **Pinterest** — search `{keyword} google sheets template` or `{keyword} spreadsheet layout`

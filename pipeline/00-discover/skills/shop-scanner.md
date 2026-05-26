@@ -16,8 +16,7 @@ Follows `skills/playwright.md` for screenshot vs snapshot usage, block handling,
 
 If `etsy_bestsellers` is null or blocked: return `{ "source": "blocked", "raw_seed_candidates": [] }` — there are no product types to search from.
 
-Take the top 3 product types from `etsy_bestsellers.product_types` (by count), excluding the `other` key. Replace underscores with spaces in the key before using it in the URL (e.g. `google_sheets` → `google sheets`):
-`https://www.etsy.com/search?q={product_type}&explicit=1&sort_order=most_relevant`
+Take the top 3 product types from `etsy_bestsellers.product_types` (by count), excluding the `other` key. Replace underscores with spaces (e.g. `google_sheets` → `google sheets`). For each, navigate to `https://www.etsy.com`, type `{product_type}` in the search box and press Enter.
 
 Take a **screenshot** per search — listing tiles may not appear in the accessibility tree.
 

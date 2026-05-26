@@ -15,9 +15,9 @@ Follows `skills/playwright.md` for screenshot vs snapshot usage, block handling,
 
 ### 1. Capture autocomplete suggestions
 
-Navigate to `https://www.etsy.com/search?q={keyword}&explicit=1&sort_order=most_relevant` and take a **snapshot** immediately after the page loads — autocomplete suggestions appear in the search bar dropdown and are captured in the DOM. These are real buyer search terms — record all of them.
+Navigate to `https://www.etsy.com`, click the search box, type `{keyword}` slowly (character by character), and take a **snapshot before pressing Enter** — autocomplete suggestions appear in the search bar dropdown while typing. These are real buyer search terms — record all of them. After recording, press Enter to submit.
 
-If suggestions are not visible in the snapshot: click the search bar element and take a second snapshot. If still nothing: skip autocomplete and continue to Step 2.
+If suggestions are not visible in the snapshot: take a second snapshot with the search box focused. If still nothing: skip autocomplete and continue to Step 2.
 
 If Etsy blocks with a bot/CAPTCHA screen, note it and continue to step 2 anyway — partial data is still useful.
 

@@ -35,14 +35,11 @@ Final query list = all format anchors + up to 8 dynamic terms.
 
 ### 2. Trigger autocomplete for each term
 
-For each term in the query list, navigate to:
-`https://www.etsy.com/search?q={term}&explicit=1&sort_order=most_relevant`
-
-Take a snapshot immediately after the page loads — autocomplete suggestions appear in the search bar dropdown before results render.
+For each term in the query list, navigate to `https://www.etsy.com`, click the search box, type `{term}` slowly (character by character), and take a **snapshot before pressing Enter** — autocomplete suggestions appear in the search bar dropdown while typing. After recording suggestions, press Enter to submit.
 
 Extract all suggestions shown (typically 6–10 per term).
 
-If suggestions are not visible in the snapshot: try clicking the search bar element and taking a second snapshot. If still nothing: skip this term and continue.
+If suggestions are not visible in the snapshot: take a second snapshot with the search box focused. If still nothing: skip this term and continue.
 
 ### 3. Deduplicate and clean
 
