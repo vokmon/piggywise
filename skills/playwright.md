@@ -46,6 +46,16 @@ Run this as the final step in every agent that uses Playwright skills.
 
 ---
 
+## Stealth Mode
+
+For bot-protected sites (Etsy, etc.), use `browser_run_code_unsafe` to apply stealth before any navigation:
+1. `addInitScript` — patch `navigator.webdriver`, `navigator.plugins`, `navigator.languages`, and `window.chrome`
+2. `setExtraHTTPHeaders` — set `Accept-Language` and `Accept`
+3. `setViewportSize` — use a real browser size (e.g. 1280×800)
+4. Navigate to the **homepage first**, wait ~3s — this establishes session cookies before hitting a search or listing URL. Skipping this causes 429.
+
+---
+
 ## General Rules
 
 - Always include `explicit=1` in Etsy URLs to avoid safe-search filtering affecting results.
