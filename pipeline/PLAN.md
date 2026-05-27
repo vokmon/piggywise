@@ -24,7 +24,7 @@ These rules apply to every agent and skill across all stages:
 00-discover → 01-research → 02-validate → 03-poc → [human: commit?] → 04-build → 05-qa → 06-marketing → 07-launch → 08-iterate
 ```
 
-- Stages 00–03: pipeline work, outputs saved to `pipeline/{stage}/output/` (gitignored)
+- Stages 00–03: pipeline work, outputs saved to `output/_discover/` (Stage 00) or `output/{slug}/{stage}/` (Stages 01–03) — all gitignored
 - Stages 04–08: product work, all assets saved to `products/{slug}/`
 - `product.json` inside each product folder tracks pipeline state across stages 04–08
 - `/status "product-slug"` prints current stage at any time
@@ -69,9 +69,9 @@ Each product under `products/{slug}/` has a `product.json` tracking pipeline pro
     }
   },
   "product_type": "google-sheets",
-  "research_ref": "pipeline/01-research/output/...",
-  "validate_ref": "pipeline/02-validate/output/...",
-  "poc_ref": "pipeline/03-poc/output/{slug}-poc-brief.json",
+  "research_ref": "output/{slug}/01-research/...",
+  "validate_ref": "output/{slug}/02-validate/...",
+  "poc_ref": "output/{slug}/03-poc/{slug}-poc-brief.json",
   "pricing": {},
   "delivery": {},
   "etsy": {}
@@ -162,7 +162,7 @@ No seed needed — runs broad across all Etsy digital downloads. Goal: surface 1
 - [x] `skills/seed-ranker.md` — Synthesize all 4 sources, deduplicate, score each candidate (Etsy demand + Google momentum + competition + format fit), return ranked top 10–15
 
 **Agent:**
-- [x] `agents/discover-agent.md` — Orchestrates all 5 skills, saves output to `pipeline/00-discover/output/discover-{date}.json`, prints ranked seed table to conversation
+- [x] `agents/discover-agent.md` — Orchestrates all 5 skills, saves output to `output/_discover/discover-{date}.json`, prints ranked seed table to conversation
 
 ---
 
@@ -229,7 +229,7 @@ Build skills (same skills used by Stage 04, but rough depth here):
 - [x] `skills/build/{type}.md` — Build the rough prototype from the copied template (`depth: "rough"`)
 
 Visual check:
-- `skills/playwright.md` — After building, screenshot every tab/page/frame to confirm it renders correctly. Screenshots saved to `pipeline/03-poc/output/{slug}-screenshots/`.
+- `skills/playwright.md` — After building, screenshot every tab/page/frame to confirm it renders correctly. Screenshots saved to `output/{slug}/03-poc/screenshots/`.
 
 **Agent parameters** (defined in `poc-agent.md`, passed explicitly to skills — never hardcoded in the skill itself):
 - `max_competitors`: **3** — number of top-ranked competitors to deeply reverse-engineer (taken from validate output by rank)
@@ -249,17 +249,17 @@ Visual check:
    - **`style`**: confirmed palette/font/layout before building — combine competitor styles + design-swipe inspiration. Build uses this style from the start.
    - **`structure`** (planned): planned tab/page/frame layout based on `feature_spec`. Use schema shape from `pipeline/workspace-setup.md` schema shapes table. Used as blueprint for step 7.
 7. Run `skills/build/{type}` (`depth: "rough"`) — if scaffold found in step 4: copy it to **POC folder**, named `[poc] {keyword}` (see `pipeline/workspace-setup.md` for platform-specific copy + move steps); if no scaffold: create a new blank file in **POC folder** (see workspace-setup.md). Then build using confirmed `style` and planned `structure` from step 6. Document `known_issues` as they're discovered.
-8. Playwright visual check → screenshots saved to `pipeline/03-poc/output/{slug}-screenshots/`. Add any visual issues to `known_issues`.
+8. Playwright visual check → screenshots saved to `output/{slug}/03-poc/screenshots/`. Add any visual issues to `known_issues`.
 9. Write actual `structure` and `logic_map` from what was **actually built** (may differ from the plan in step 6). Use schema shapes from `pipeline/workspace-setup.md`.
 10. Write `buyer_flow` — step-by-step of how a buyer would use the built POC.
 11. Refine `style` if the built result revealed any adjustments needed.
 12. Write `{slug}-poc-brief.json` with all fields populated.
 13. Present to human: product type, keyword, top 3 `feature_spec`, top 3 `differentiation`, key `known_issues`, screenshots, `poc_result.link`. Ask: commit / abandon.
 14. If **commit** → create `products/{slug}/`, write `product.json` (stage: 03-poc, status: complete), proceed to Stage 04.
-15. If **abandon** → delete the built product from **POC folder** (see `pipeline/workspace-setup.md` for platform-specific delete steps), clean up `pipeline/03-poc/output/`, end.
+15. If **abandon** → delete the built product from **POC folder** (see `pipeline/workspace-setup.md` for platform-specific delete steps), clean up `output/{slug}/03-poc/`, end.
 
 **Agent:**
-- [x] `agents/poc-agent.md` — Orchestrates all steps above, saves output to `pipeline/03-poc/output/`
+- [x] `agents/poc-agent.md` — Orchestrates all steps above, saves output to `output/{slug}/03-poc/`
 
 **POC Brief output (`{slug}-poc-brief.json`):**
 
@@ -338,7 +338,7 @@ Visual check:
     "launch_price": 18,
     "target_price": 25,
     "price_range": { "min": 9, "max": 35 },
-    "source": "pipeline/02-validate/output/..."
+    "source": "output/{slug}/02-validate/..."
   },
 
   "delivery_format": "google-sheets-link + xlsx-download",
@@ -372,7 +372,7 @@ Visual check:
   "poc_result": {
     "type": "google-sheets",
     "link": "https://docs.google.com/...",
-    "screenshots": ["pipeline/03-poc/output/{slug}-screenshots/tab-1.png", "..."],
+    "screenshots": ["output/{slug}/03-poc/screenshots/tab-1.png", "..."],
     "notes": "..."
   },
 
@@ -531,7 +531,7 @@ pipeline/06-marketing/
 **Inputs from upstream:**
 - `products/{slug}/docs/style-guide.json` → palette, fonts for visual consistency
 - `products/{slug}/screenshots/` → source material for mockups (from Build)
-- `pipeline/02-validate/output/` → best title keyword, buyer language for listing copy
+- `output/{slug}/02-validate/` → best title keyword, buyer language for listing copy
 - `poc-brief.json` → `differentiation` and `feature_spec` for listing description
 
 **Agent flow:**
@@ -610,7 +610,7 @@ pipeline/08-iterate/
 
 **Inputs from upstream:**
 - `product.json` → Etsy listing ID, slug, keyword
-- `pipeline/02-validate/output/` → original keyword for competitive search
+- `output/{slug}/02-validate/` → original keyword for competitive search
 - `products/{slug}/iterate-log.json` → previous performance history for trend comparison
 
 **Credentials:**
@@ -647,7 +647,7 @@ pipeline/08-iterate/
 - Stage 01 — Research: **complete** ✅
 - Stage 02 — Validate: **complete** ✅
 - Stage 03 — POC: **complete** ✅
-- Stage 04 — Build: **complete** ✅
+- Stage 04 — Build: not started
 - Stage 05 — QA: not started
 - Stage 06 — Marketing: not started
 - Stage 07 — Launch: not started

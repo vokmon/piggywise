@@ -6,7 +6,7 @@ Orchestrates Stage 04: polish the POC into a shippable product, self-test until 
 
 ## Parameters
 
-- `poc_brief` — path to the Stage 03 poc-brief file (e.g. `pipeline/03-poc/output/kids-budget-planner-poc-brief.json`)
+- `poc_brief` — path to the Stage 03 poc-brief file (e.g. `output/kids-budget-planner/03-poc/kids-budget-planner-poc-brief.json`)
 
 ---
 
@@ -205,7 +205,7 @@ Update `products/{slug}/product.json`:
   "pipeline_status": {
     "stage": "04-build",
     "status": "complete",
-    "poc_brief": "pipeline/03-poc/output/{slug}-poc-brief.json",
+    "poc_brief": "output/{slug}/03-poc/{slug}-poc-brief.json",
     "test_results": "products/{slug}/docs/test-plan.json",
     "delivery": "products/{slug}/delivery/delivery.json"
   },

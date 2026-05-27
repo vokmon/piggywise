@@ -18,7 +18,7 @@ Orchestrates the full Stage 1 research pipeline for a given seed keyword. Runs s
 
 These rules apply for the entire pipeline — before any skill runs:
 
-- **Never write files to the project root.** All output goes to `pipeline/01-research/output/`.
+- **Never write files to the project root.** All output goes to `output/{slug}/01-research/`.
 - **Never write snapshot data to disk.** Process snapshot tool output directly in context — do not save it as `.txt`, `.md`, or any other file.
 - **Screenshots** are only saved when explicitly needed as a pipeline artifact. Read them visually and discard otherwise.
 
@@ -75,7 +75,7 @@ Run both skills in parallel with `keyword = seed`:
   "recommendation": "Try a broader or different seed keyword."
 }
 ```
-Save to `pipeline/01-research/output/research-{YYYY-MM-DD}-{seed-slug}.json` and stop.
+Save to `output/{slug}/01-research/research-{YYYY-MM-DD}-{seed-slug}.json` and stop.
 
 **If passed:** continue to Step 2.
 
@@ -157,7 +157,7 @@ Save and stop.
 ## Step 5 — Compile and save output
 
 Merge all skill outputs into a single research file and save to:
-`pipeline/01-research/output/research-{YYYY-MM-DD}-{seed-slug}.json`
+`output/{slug}/01-research/research-{YYYY-MM-DD}-{seed-slug}.json`
 
 Where `seed-slug` is the seed keyword lowercased with spaces replaced by hyphens (e.g. `budget-tracker-google-sheets`).
 
@@ -230,7 +230,7 @@ After saving, print a readable summary so the human can review without opening t
 💡 Recommended next: Freelancer Budget Tracker
    → Strongest signal, lowest competition, clear differentiator
 
-📁 Saved: pipeline/01-research/output/research-2026-05-23-budget-tracker-google-sheets.json
+📁 Saved: output/budget-tracker-google-sheets/01-research/research-2026-05-23-budget-tracker-google-sheets.json
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Review the ideas above and pick 1–2 to take into Stage 2 (validate).
 ```

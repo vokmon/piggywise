@@ -2,7 +2,7 @@
 
 Orchestrates Stage 03: study what works, harvest patterns from multiple templates, build a rough prototype from scratch, and produce `{slug}-poc-brief.json` as the handoff to Stage 04. Internal checkpoint only — not shown to buyers.
 
-Output is saved to `pipeline/03-poc/output/`.
+Output is saved to `output/{slug}/03-poc/`.
 
 ---
 
@@ -10,7 +10,7 @@ Output is saved to `pipeline/03-poc/output/`.
 
 Defined here and passed explicitly to every skill — never hardcoded in the skill itself:
 
-- `validate_output` — path to the Stage 02 validate output file (e.g. `pipeline/02-validate/output/kids-budget-planner-validate-output.json`)
+- `validate_output` — path to the Stage 02 validate output file (e.g. `output/kids-budget-planner/02-validate/kids-budget-planner-validate-output.json`)
 - `max_competitors`: **5** — number of top-ranked competitors to deeply reverse-engineer
 - `max_templates`: **5** — number of template candidates to study for pattern harvesting
 
@@ -146,7 +146,7 @@ Using the data from Steps 3–5, synthesise the following. Reviews from Step 3 a
 
 Run the visual review for `product_type` — see `pipeline/workspace-setup.md` visual review table.
 
-- For Canva: save all page exports to `pipeline/03-poc/output/{slug}-screenshots/`.
+- For Canva: save all page exports to `output/{slug}/03-poc/screenshots/`.
 - Review each output. Add any visual issues discovered to `known_issues`.
 
 ### Step 9 — Write actual structure and logic_map
@@ -176,7 +176,7 @@ Review the visual output from Step 8. If the built result revealed any adjustmen
 
 ### Step 12 — Write poc-brief.json
 
-Compile all fields into `pipeline/03-poc/output/{slug}-poc-brief.json`:
+Compile all fields into `output/{slug}/03-poc/{slug}-poc-brief.json`:
 
 ```json
 {
@@ -241,7 +241,7 @@ If the human chooses **commit**:
      "pipeline_status": {
        "stage": "03-poc",
        "status": "complete",
-       "poc_brief": "pipeline/03-poc/output/{slug}-poc-brief.json"
+       "poc_brief": "output/{slug}/03-poc/{slug}-poc-brief.json"
      }
    }
    ```
@@ -250,14 +250,14 @@ If the human chooses **commit**:
    - `product_type` — `{product_type}`
    - `status` — `committed`
    - `poc_page` — link to the `[poc] {keyword}` page in the POC folder
-4. Confirm to human: "Committed. Proceed to Stage 04 with `pipeline/03-poc/output/{slug}-poc-brief.json`."
+4. Confirm to human: "Committed. Proceed to Stage 04 with `output/{slug}/03-poc/{slug}-poc-brief.json`."
 
 ### Step 15 — Abandon
 
 If the human chooses **abandon**:
 
 1. Delete the POC from the **POC folder**. See `pipeline/workspace-setup.md` for platform-specific delete steps.
-2. Delete `pipeline/03-poc/output/{slug}-poc-brief.json` and `pipeline/03-poc/output/{slug}-screenshots/`.
+2. Delete `output/{slug}/03-poc/{slug}-poc-brief.json` and `output/{slug}/03-poc/screenshots/`.
 3. Confirm to human: "Abandoned. All POC artefacts removed."
 
 ---

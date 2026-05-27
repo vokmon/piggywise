@@ -4,22 +4,22 @@ Orchestrates the full Stage 02 validation pipeline. Can validate a single produc
 
 ## Input
 - `product_idea` — optional. If provided, validate only that idea. If omitted, validate all ideas in `gap_finder.product_ideas[]` from the research file, in ranked order.
-- `research_file` — optional. Path to the 01-research output JSON. If not provided, scan `pipeline/01-research/output/` for the most recent file.
+- `research_file` — optional. Path to the 01-research output JSON. If not provided, scan `output/*/01-research/` for the most recent file.
 
 ## Invoke with
 ```
 /validate "Minimal ADHD Notion Planner — The 5-Feature System"
-/validate "pipeline/01-research/output/research-2026-05-24-adhd-planner-notion-template.json"
+/validate "output/adhd-planner-notion-template/01-research/research-2026-05-24-adhd-planner-notion-template.json"
 /validate
 ```
 
-If the argument ends in `.json` or starts with `pipeline/`, treat it as `research_file`. Otherwise treat it as `product_idea`.
+If the argument ends in `.json` or starts with `output/`, treat it as `research_file`. Otherwise treat it as `product_idea`.
 
 ---
 
 ## File Saving Rules
 
-- **Never write files to the project root.** All output goes to `pipeline/02-validate/output/`.
+- **Never write files to the project root.** All output goes to `output/{slug}/02-validate/`.
 - **Never write snapshot data to disk.** Process snapshot tool output directly in context.
 - **Screenshots** are only saved when explicitly needed as a pipeline artifact.
 
@@ -30,8 +30,8 @@ If the argument ends in `.json` or starts with `pipeline/`, treat it as `researc
 Find and read the relevant 01-research output file:
 
 1. If `research_file` was provided: read it directly.
-2. If `product_idea` was provided but no `research_file`: list files in `pipeline/01-research/output/`, read the most recent one that contains the `product_idea` name in `gap_finder.product_ideas[].name` or `gap_finder.recommended_next`.
-3. If neither was provided: list files in `pipeline/01-research/output/`, read the most recent one.
+2. If `product_idea` was provided but no `research_file`: list files in `output/*/01-research/`, read the most recent one that contains the `product_idea` name in `gap_finder.product_ideas[].name` or `gap_finder.recommended_next`.
+3. If neither was provided: list files in `output/*/01-research/`, read the most recent one.
 4. If no file found: ask the user to specify which research file to use.
 
 **Determine run scope:**
@@ -125,7 +125,7 @@ Apply the gate conditions using values derived from research — not hard-coded 
 ## Step 4 — Save output
 
 Save to:
-`pipeline/02-validate/output/validate-{YYYY-MM-DD}-{product-idea-slug}.json`
+`output/{slug}/02-validate/validate-{YYYY-MM-DD}-{product-idea-slug}.json`
 
 Where `product-idea-slug` is the product idea lowercased with spaces/special chars replaced by hyphens.
 
@@ -133,7 +133,7 @@ Where `product-idea-slug` is the product idea lowercased with spaces/special cha
 {
   "product_idea": "Minimal ADHD Notion Planner — The 5-Feature System",
   "seed": "ADHD planner notion template",
-  "research_ref": "pipeline/01-research/output/research-2026-05-24-adhd-planner-notion-template.json",
+  "research_ref": "output/adhd-planner-notion-template/01-research/research-2026-05-24-adhd-planner-notion-template.json",
   "run_date": "2026-05-24",
   "status": "completed",
   "etsy_deep_dive": { ... },
@@ -178,7 +178,7 @@ Print a readable summary so the human can make a go/no-go call. Replace all plac
 {verdict emoji} Verdict: {GO / NO-GO / BORDERLINE}
    → {primary reason}
 
-📁 Saved: pipeline/02-validate/output/validate-{date}-{slug}.json
+📁 Saved: output/{slug}/02-validate/validate-{date}-{slug}.json
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 {if GO}  Proceed to Stage 03?
   /poc "{product_idea}"

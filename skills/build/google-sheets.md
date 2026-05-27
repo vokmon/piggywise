@@ -30,7 +30,7 @@ If `depth` is `full` and `working_link` is set: use `mcp__claude_ai_Google_Drive
 ### 2. Write the generation script
 
 Write the Python script to:
-- Stage 03: `pipeline/03-poc/output/{slug}-build.py`
+- Stage 03: `output/{slug}/03-poc/{slug}-build.py`
 - Stage 04: `products/{slug}/{slug}-build.py`
 
 The script uses `openpyxl`. Cover all of the following:
@@ -79,7 +79,7 @@ os.makedirs(os.path.dirname(output_path), exist_ok=True)
 ```
 
 Output file path:
-- Stage 03: `pipeline/03-poc/output/{slug}.xlsx`
+- Stage 03: `output/{slug}/03-poc/{slug}.xlsx`
 - Stage 04: `products/{slug}/delivery/{slug}.xlsx`
 
 ### 3. Run the script

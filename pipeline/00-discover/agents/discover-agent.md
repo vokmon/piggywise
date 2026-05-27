@@ -37,7 +37,7 @@ Declare the scope here. Update these lists when expanding to new niches or forma
 
 These rules apply for the entire pipeline — before any skill runs:
 
-- **Never write files to the project root.** All output goes to `pipeline/00-discover/output/`.
+- **Never write files to the project root.** All output goes to `output/_discover/`.
 - **Never write snapshot data to disk.** Process snapshot tool output directly in context — do not save it as `.txt`, `.md`, or any other file.
 - **Screenshots** are only saved when explicitly needed as a pipeline artifact. Read them visually and discard otherwise.
 
@@ -124,7 +124,7 @@ Run scans sequentially — ProfitTree may rate-limit rapid consecutive searches.
 
 ## Step 4 — Cross-check existing research
 
-Scan `pipeline/01-research/output/` for files matching `research-*.json`. For each file found:
+Scan `output/*/01-research/` for files matching `research-*.json`. For each file found:
 
 - Read the file and extract the `seed` field from the JSON — do not reconstruct the keyword from the filename (hyphens in the filename are ambiguous)
 - Match the `seed` value against `seed_ranker.seeds[].seed`
@@ -139,7 +139,7 @@ If the output directory does not exist or is empty: skip this step, no seeds are
 ## Step 5 — Save output
 
 Save to:
-`pipeline/00-discover/output/discover-{YYYY-MM-DD}.json`
+`output/_discover/discover-{YYYY-MM-DD}.json`
 
 ```json
 {
@@ -206,7 +206,7 @@ After saving, print the summary **inside a triple-backtick code block** so newli
    → freelance invoice template google sheets
    → notion habit tracker (already researched — skip or re-validate)
 
-📁 Saved: pipeline/00-discover/output/discover-2026-05-24.json
+📁 Saved: output/_discover/discover-2026-05-24.json
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✓ = already has a research output file
 niche = ProfitTree Niche Score · $X/mo = estimated monthly revenue

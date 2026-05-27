@@ -6,7 +6,7 @@ temp
 images
 
 # Pipeline outputs (generated, not committed)
-pipeline/*/output/
+output/
 
 # Local secrets
 .env
