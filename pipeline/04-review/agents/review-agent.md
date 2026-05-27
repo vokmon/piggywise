@@ -10,6 +10,16 @@ Reviews a product before marketing. You give a link or path — the agent checks
 
 ---
 
+## Before checking
+
+Always fetch fresh data — never rely on previously seen schemas, cached results, or earlier fetches in the conversation. Re-fetch everything from scratch if asked to re-check after fixes.
+
+- **Notion** — fetch the live page and every database collection via `notion-fetch` immediately before running checks; fetch actual row data (not just the schema) to verify computed properties resolve to real values
+- **Google Sheets** — download the latest file content before inspecting any formula or reference
+- **Canva** — fetch the latest design via `get-design` and retrieve all pages before running checks
+
+---
+
 ## Checks
 
 ### Google Sheets
@@ -22,11 +32,14 @@ Reviews a product before marketing. You give a link or path — the agent checks
 ### Notion
 
 **Logic checks:**
+
 - Formula properties compute a value (no `Error` state)
 - Relation properties link to a database that is inside the template root (not an external database the buyer won't receive)
 - Rollup properties are configured on a valid relation
+- Check for double emoji
 
 **Duplication checks — flag anything that breaks when the buyer duplicates the template:**
+
 - **Automations** — do not survive duplication; must be removed from the template
 - **Synced blocks** — stay synced to the original page; buyer gets a broken sync
 - **Linked database views** (databases pulled from outside the template) — buyer won't have the source database
@@ -36,6 +49,16 @@ Reviews a product before marketing. You give a link or path — the agent checks
 
 - All pages export without error
 - No placeholder text remaining on any page
+
+### Setup Guide (Notion and Google Sheets)
+
+If the product includes a Setup Guide page or sheet:
+
+- Every step is accurate — instructions match what the buyer will actually see in the template
+- No steps reference features, pages, or properties that don't exist in the template
+- No placeholder text (e.g. `[YOUR NAME]`, `TODO`, `TBD`)
+- Steps are in logical order — a buyer following them top-to-bottom can complete setup without backtracking
+- Any screenshots or embedded images are current (not outdated from an earlier version)
 
 ---
 
