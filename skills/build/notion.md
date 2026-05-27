@@ -15,6 +15,8 @@ Uses Notion MCP for all Notion operations.
 - `differentiation` — array of items that must exist in the finished product (Stage 04: treat as checklist)
 - `gaps` — features to implement after differentiation is complete (Stage 04 only)
 - `known_issues` — issues to fix before building anything new (Stage 04: fix first)
+- `logic_map` — actual formulas/relations built in the POC (Stage 04 only; null for Stage 03)
+- `confirmed_done` — items from `logic_map` and `structure` verified as correct in the actual product (Stage 04 only; null for Stage 03). Skip reimplementation for these — validate only.
 - `depth` — `rough` (Stage 03 POC) or `full` (Stage 04 polish)
 
 ---
@@ -51,16 +53,16 @@ For each item in `structure`:
 - Filter and sort views to show useful defaults (e.g. board view grouped by status, calendar view by date property).
 
 **Relations and rollups:**
-- Create relations between databases as specified in `structure`.
-- Add rollup properties to surface aggregated data.
+- Create relations between databases as specified in `structure`. If the relation already exists (check via `mcp__claude_ai_Notion__notion-fetch`), verify it is correct rather than recreating it.
+- Add rollup properties to surface aggregated data. Same — check before creating.
 
 **Inline check (required):** After building each database, create a test entry, verify it appears correctly in all views, then delete it.
 
 ### 4. Implement formula properties
 
-For each formula property:
-- Write the formula in plain language first, then implement it in Notion formula syntax.
-- Test with sample entries: create 2–3 test rows, verify formula output is correct, delete test rows.
+For each formula property in `logic_map` (Stage 04) or `feature_spec` (Stage 03):
+- If the formula is in `confirmed_done`: test it with 2–3 sample entries to confirm it still produces correct output. If it passes, move on — do not rewrite it.
+- If the formula is not in `confirmed_done` or has no entry in `logic_map`: write it in plain language first, then implement it in Notion formula syntax. Test with 2–3 sample entries, delete test rows.
 
 **Inline check (required):** Verify 2–3 key formulas after implementation before continuing.
 
