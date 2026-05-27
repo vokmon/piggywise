@@ -1,6 +1,6 @@
 # build/notion
 
-Build or polish a Notion product. Called by both Stage 03 (poc-agent — rough prototype) and Stage 04 (build-agent — full polish). The caller's instructions determine the depth. This skill describes all possible build actions; the agent instructs which depth to apply.
+Called by Stage 03 (poc-agent — `depth: "rough"`) and Stage 04 (build-agent — `depth: "verify"`). `rough`: creates the POC from scratch. `verify`: checks the POC copy against spec and fixes only what's broken.
 
 Uses Notion MCP for all Notion operations.
 
@@ -8,76 +8,75 @@ Uses Notion MCP for all Notion operations.
 
 ## Input
 
-- `working_link` — Notion page link to build on (blank page or existing POC)
-- `feature_spec` — array of features to implement
-- `structure` — planned pages/databases and their types
+- `working_link` — Notion page link to build on (blank page for rough; Products/ copy for verify)
+- `feature_spec` — array of features to implement or verify
+- `structure` — pages/databases and their types
 - `style` — confirmed palette, cover style, icon style, layout_style
-- `differentiation` — array of items that must exist in the finished product (Stage 04: treat as checklist)
-- `gaps` — features to implement after differentiation is complete (Stage 04 only)
-- `known_issues` — issues to fix before building anything new (Stage 04: fix first)
-- `logic_map` — actual formulas/relations built in the POC (Stage 04 only; null for Stage 03)
-- `confirmed_done` — items from `logic_map` and `structure` verified as correct in the actual product (Stage 04 only; null for Stage 03). Skip reimplementation for these — validate only.
-- `depth` — `rough` (Stage 03 POC) or `full` (Stage 04 polish)
+- `differentiation` — array of items that must exist in the finished product
+- `gaps` — deferred items to fill after all other checks pass
+- `known_issues` — issues flagged during POC
+- `logic_map` — formulas/relations built in the POC (`verify` only; null for `rough`)
+- `depth` — `rough` (Stage 03 POC) or `verify` (Stage 04 verify-and-fix)
 
 ---
 
-## Build steps
-
-### 0. Log in to Notion
-
-Run `skills/notion-login.md`. If `logged_in: false`: stop and ask the human to set `NOTION_EMAIL` and `NOTION_PASSWORD` in `.env` before continuing.
+## Steps
 
 ### 1. Open the working page
 
-Use `mcp__claude_ai_Notion__notion-fetch` with `working_link` to read the current page structure and confirm the starting state. Take a Playwright **screenshot** for visual reference.
+Use `mcp__notion__notion-fetch` with `working_link` to read the current page structure and confirm the starting state. Take a Playwright **screenshot** for visual reference.
 
-### 2. Fix known issues (Stage 04 only)
+### 2. Fix known issues
 
-If `depth` is `full` and `known_issues` is non-empty: fix every issue before adding anything new. After fixing each one, verify the fix works before continuing.
+For each item in `known_issues`:
+- **`rough`**: note them — do not block POC progress.
+- **`verify`**: check if it is still present. If yes, fix it before continuing. Verify the fix works.
 
-### 3. Build pages and databases per `structure`
+### 3. Pages and databases per `structure`
 
 For each item in `structure`:
-- Create the page or database if it doesn't exist.
-- Set the title, icon, and cover as specified in `style`.
+- **`rough`**: create the page or database. Set title, icon, and cover per `style`.
+- **`verify`**: check it exists and matches spec (name, icon, properties). Only create or update if something is missing or wrong.
 
 **Instructions page (always present):**
-- Always include an Instructions page (or "Start Here" / "Setup Guide").
-- Content: what the product does, step-by-step setup guide, what each database/view is for, any important notes about formulas, relations, or required steps.
-- Use callout blocks (💡 icon) for important notes.
+- **`rough`**: create an Instructions page (or "Start Here" / "Setup Guide") covering: what the product does, step-by-step setup guide, what each database/view is for, any important notes about formulas, relations, or required manual steps. Use callout blocks (💡 icon) for important notes.
+- **`verify`**: check the Instructions page exists and covers all the above. Fix or add only what is missing.
 
-**Database pages:**
-- Add all properties per `feature_spec`: name, type (text, select, multi-select, date, checkbox, number, formula, rollup, relation).
-- For select/multi-select: pre-populate with sensible default options.
-- Create appropriate views: table view for data entry, board/gallery/calendar as needed per feature.
-- Filter and sort views to show useful defaults (e.g. board view grouped by status, calendar view by date property).
+**Database properties:**
+- **`rough`**: add all properties per `feature_spec` (name, type, options). For select/multi-select, create options in the correct order (order matters for sort).
+- **`verify`**: check all properties exist with the correct name and type. Check select/multi-select options are present and in the correct order. Only add or fix what is missing or wrong.
+
+**Views:**
+- **`rough`**: create table view for data entry plus board/gallery/calendar as needed. Apply filter and sort defaults.
+- **`verify`**: check all required views exist with correct filters, sorts, and grouping. Fix only what is wrong.
 
 **Relations and rollups:**
-- Create relations between databases as specified in `structure`. If the relation already exists (check via `mcp__claude_ai_Notion__notion-fetch`), verify it is correct rather than recreating it.
-- Add rollup properties to surface aggregated data. Same — check before creating.
+- **`rough`**: create relations between databases as specified. Add rollup properties.
+- **`verify`**: check each relation exists, points to the correct database, and has the correct backlink setting. Check each rollup targets the correct property and aggregation. Only fix what is wrong.
 
-**Inline check (required):** After building each database, create a test entry, verify it appears correctly in all views, then delete it.
+**Inline check (required after each database):** Create a test entry, verify it appears correctly in all views, delete it.
 
-### 4. Implement formula properties
+### 4. Formula properties
 
-For each formula property in `logic_map` (Stage 04) or `feature_spec` (Stage 03):
-- If the formula is in `confirmed_done`: test it with 2–3 sample entries to confirm it still produces correct output. If it passes, move on — do not rewrite it.
-- If the formula is not in `confirmed_done` or has no entry in `logic_map`: write it in plain language first, then implement it in Notion formula syntax. Test with 2–3 sample entries, delete test rows.
+For each formula in `logic_map` (verify) or `feature_spec` (rough):
+- **`rough`**: implement in Notion formula syntax. Test with 2–3 sample entries, delete test rows.
+- **`verify`**: test the existing formula with 2–3 sample entries. If it produces correct output, move on — do not rewrite it. Only fix if it errors or returns wrong values.
 
-**Inline check (required):** Verify 2–3 key formulas after implementation before continuing.
+**Inline check (required):** Verify 2–3 key formulas before continuing.
 
-### 5. Apply style
+### 5. Style
 
-Apply `style` consistently:
-- **Cover images**: use the specified cover style (gradient/solid colour/none) consistently across all top-level pages.
-- **Icons**: set page icons using the specified icon style (emoji or custom).
-- **Palette**: use Notion's page colour settings where applicable. For text emphasis, use the palette's accent colour.
-- **Layout**: use callout blocks, dividers, and column blocks to create visual structure. Avoid long unbroken text blocks.
-- **Linked databases**: where the same database is embedded on multiple pages, use linked database views (not duplicates).
+- **`rough`**: set covers, icons, callout blocks, and palette on all pages.
+- **`verify`**: check that covers, icons, palette, and layout are consistent across all pages. Fix any page that deviates.
+
+Cover images: check the specified cover style is applied consistently across all top-level pages.
+Icons: check the correct icon is set on each page per `style`.
+Layout: check callout blocks, dividers, and column blocks are used appropriately.
+Linked databases: check that embedded databases use linked views, not duplicates.
 
 ### 5a. Embed external tools (when specified in feature_spec)
 
-Notion supports embedding external web apps via embed blocks. Use these when the product includes interactive tools not available natively in Notion.
+Notion supports embedding external web apps via embed blocks.
 
 **Reliable embed sources:**
 
@@ -87,60 +86,54 @@ Notion supports embedding external web apps via embed blocks. Use these when the
 | Team Pomodoro | `https://cuckoo.team/{room-name}` |
 | Google Calendar | Use the embed URL from Google Calendar → Settings → Integrate calendar |
 
-**How to add an embed via Notion MCP:**
+- **`rough`**: add embeds using `mcp__notion__notion-update-page` with `insert_content`.
+- **`verify`**: check if the embed block is already present. Only add if missing.
 
-Use `mcp__claude_ai_Notion__notion-update-page` with `insert_content` and the following markdown:
+Note in the Setup Guide page that embeds require desktop or browser Notion — the mobile app may show a link instead.
 
-```
-<embed url="https://pomofocus.io"/>
-```
+### 6. Differentiation checklist
 
-**Embed placement:** Put embeds on the most relevant feature page (e.g. a Pomodoro timer on the Today/Focus page, not the dashboard). Embed height is not controllable via MCP — it renders at Notion's default height.
+For each item in `differentiation[]`: confirm it exists in the product. Note verified or missing. Do not close this step until every item is confirmed present.
 
-**Notes:**
-- Always note in the Start Here page that embeds require desktop or browser Notion — the mobile app may show a link instead of the live embed.
-- Test the embed URL in a browser first to confirm it loads without a login wall.
-- If the source requires login: use a styled link button (`[Open timer →](url)`) instead of an embed.
+### 7. Fill gaps
 
-### 6. Verify `differentiation` checklist (Stage 04 only)
-
-For each item in `differentiation[]`: confirm it exists in the built product. Mark it verified or note what's missing. Do not close this step until every item is confirmed present.
-
-### 7. Fill `gaps` (Stage 04 only)
-
-Implement each feature in `gaps[]` after all `differentiation[]` items are verified complete.
+For each item in `gaps[]`: implement it after all differentiation items are confirmed. For `verify` depth — only fill gaps not already present.
 
 ### 8. Final page review
 
-Use `mcp__claude_ai_Notion__notion-fetch` on each top-level page to verify:
+Use `mcp__notion__notion-fetch` on each top-level page to verify:
 - No broken relations, empty formula outputs, or missing views
 - All views show data correctly with sample entries
-- Instructions page covers the final structure
+- Instructions page covers the final structure accurately
 - Style is consistent across all pages
 
-Use Playwright to take a **screenshot** of each major page/view.
+Take a Playwright **screenshot** of each major page/view.
+
+Return `verify_result` to the calling agent:
+- `passed[]` — items confirmed correct without changes
+- `fixed[]` — items that had issues and were fixed
+- `broken[]` — items that could not be fixed (should be empty)
 
 ---
 
 ## Depth guidance
 
-| Area | `rough` (Stage 03 POC) | `full` (Stage 04 polish) |
-|------|------------------------|--------------------------|
-| Properties | Core properties only | All properties, all types |
-| Views | 1–2 per database | Full view set per feature_spec |
-| Formulas | Working intent | Correct Notion formula syntax, tested |
-| Style | Icons + covers set | Fully consistent, layout polished |
-| Instructions page | Basic notes | Complete buyer-facing setup guide |
-| Relations/rollups | Core relations | All relations + rollups verified |
-| Differentiation | Build all items | Verify every item explicitly |
-| Gaps | Skip | Fill all after differentiation |
+| Area | `rough` (Stage 03 POC) | `verify` (Stage 04) |
+|------|------------------------|----------------------|
+| Pages / databases | Create if not exists | Check exists + correct; fix only if wrong |
+| Properties | Add core properties | Check all properties present and typed correctly |
+| Views | 1–2 per database | Check all views exist with correct filters/sorts |
+| Formulas | Implement and test | Test existing; only fix if broken or erroring |
+| Style | Apply icons + covers | Check consistency; fix deviating pages |
+| Known issues | Note, don't block | Fix before continuing |
+| Differentiation | Build all items | Verify every item present |
+| Gaps | Skip | Fill after verification passes |
 
 ---
 
 ## Notes
 
-- Notion MCP handles all data operations (fetch, create, update, delete). Playwright is used for screenshots only.
-- Notion formula syntax differs from spreadsheet formulas — test every formula with actual data before moving on.
-- If a relation or rollup can't be made to work on the first attempt, note it in `known_issues` and continue.
-- For `rough` depth: placeholder content is acceptable in non-critical pages. Document in `known_issues`.
+- Notion MCP handles all data operations. Playwright is used for screenshots only.
+- Notion formula syntax differs from spreadsheet formulas — test every formula with actual data.
+- For `verify` depth: if a relation or formula cannot be fixed after one retry, add it to `broken[]` and continue — do not loop indefinitely.
 - Page and database names must match `structure` exactly — buyers see these names.

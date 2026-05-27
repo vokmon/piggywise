@@ -1,8 +1,9 @@
 # build/google-sheets
 
-Build or polish a Google Sheets product by generating an XLSX file via Python (openpyxl). The agent writes a generation script, runs it to produce the file, then asks the human to upload it to Google Drive and share the link back.
+Called by Stage 03 (poc-agent — `depth: "rough"`) and Stage 04 (build-agent — `depth: "verify"`). Uses Python (openpyxl) to generate an XLSX file. `rough`: writes the script from scratch. `verify`: checks the POC output against spec and updates only what's broken.
 
-Called by both Stage 03 (poc-agent — rough prototype) and Stage 04 (build-agent — full polish).
+For `rough`: write the generation script from scratch and produce the initial XLSX.
+For `verify`: read the existing POC output, check it against spec, and update the script only for what fails.
 
 ---
 
@@ -10,55 +11,61 @@ Called by both Stage 03 (poc-agent — rough prototype) and Stage 04 (build-agen
 
 - `slug` — product slug (used for file naming and output path)
 - `keyword` — product keyword (used for Drive file naming)
-- `working_link` — optional; existing Google Sheets POC link for Stage 04 reference. Null for Stage 03.
-- `feature_spec` — array of features to implement
+- `working_link` — existing POC Google Sheets link (`verify` only; null for `rough`)
+- `feature_spec` — array of features to implement or verify
 - `structure` — planned tab names and data flows
 - `style` — confirmed palette, font, layout_style
-- `differentiation` — array of items that must exist in the finished product (Stage 04: treat as checklist)
-- `gaps` — features to implement after differentiation is complete (Stage 04 only)
-- `known_issues` — issues to address (Stage 04: must be fixed/improved in the new build)
-- `depth` — `rough` (Stage 03 POC) or `full` (Stage 04 polish)
+- `differentiation` — array of items that must exist in the finished product
+- `gaps` — deferred items to fill after all other checks pass
+- `known_issues` — issues flagged during POC
+- `depth` — `rough` (Stage 03 POC) or `verify` (Stage 04 verify-and-fix)
 
 ---
 
-## Build steps
+## Steps
 
-### 1. Review reference (Stage 04 only)
+### 1. Review existing output (`verify` only)
 
-If `depth` is `full` and `working_link` is set: use `mcp__claude_ai_Google_Drive__read_file_content` to read the existing POC. Note what was built, what `known_issues` describe, and what needs improvement. This informs the script written in Step 2.
+If `depth` is `verify`: use `mcp__claude_ai_Google_Drive__read_file_content` to read the existing POC file at `working_link`. Note the current structure, tab names, and formula locations. This informs what needs fixing vs what can be kept.
 
-### 2. Write the generation script
+Skip for `rough`.
 
-Write the Python script to:
-- Stage 03: `output/{slug}/03-poc/{slug}-build.py`
-- Stage 04: `products/{slug}/{slug}-build.py`
+### 2. Write or update the generation script
 
-The script uses `openpyxl`. Cover all of the following:
+Script path:
+- `rough`: `output/{slug}/03-poc/{slug}-build.py`
+- `verify`: `products/{slug}/{slug}-build.py`
 
-**Worksheets:**
-- Create tabs in the order specified by `structure.tabs`
-- First tab must always be `Instructions` — buyers see tab names, names must match `structure.tabs` exactly
+**For `rough`**: write the full script from scratch. The spec below describes everything to build.
 
-**Instructions tab:**
+**For `verify`**: start from the existing POC script at `output/{slug}/03-poc/{slug}-build.py`. Use the spec below only as a reference for what to check — do not rewrite sections that passed review in Step 1. Update only parts that failed or are listed in `known_issues`.
+
+The script uses `openpyxl`. The spec below is the **`rough` build spec**. For `verify`, use it only as a checklist of what should already exist — do not execute these as instructions.
+
+**Worksheets** (`rough`: create; `verify`: check tabs exist in correct order, first tab is `Instructions`)
+- Tabs in the order specified by `structure.tabs`
+- First tab must always be `Instructions`
+
+**Instructions tab** (`rough`: write content; `verify`: check content is complete and buyer-facing)
 - Product name as heading
 - What the product does (1–2 sentences)
 - Step-by-step setup guide: how to enter data, what each tab does, any formula notes
 
-**Data tabs:**
+**Data tabs** (`rough`: create headers + freeze + widths; `verify`: check all present and correct)
 - Row 1: headers, bold, background fill using `style.palette[0]`
 - Freeze row 1 (`ws.freeze_panes = "A2"`)
 - Column widths appropriate to data type
 
-**Dashboard/Summary tab:**
+**Dashboard/Summary tab** (`rough`: write cross-tab formulas + charts; `verify`: check formulas exist and reference correct ranges)
 - Cross-tab formulas referencing data tabs (e.g. `=SUM(Income!B2:B1000)`)
 - Charts where specified in `feature_spec`
 
-**Formulas:**
-- Write formula strings in Excel/Sheets syntax (e.g. `"=SUM(B2:B1000)"`)
-- Wrap all formulas that could break on empty data with IFERROR (e.g. `"=IFERROR(SUM(B2:B1000),0)"`)
-- Use defined names via `workbook.defined_names` for cross-tab references — Google Sheets recognises these when the XLSX is opened
+**Formulas** (`rough`: write with IFERROR + named ranges; `verify`: check IFERROR present, check named ranges, test outputs)
+- Formula strings in Excel/Sheets syntax (e.g. `"=SUM(B2:B1000)"`)
+- IFERROR wrapping on all formulas that could break on empty data
+- Defined names via `workbook.defined_names` for cross-tab references
 
-**Style:**
+**Style** (`rough`: apply palette + fonts + borders; `verify`: check palette, fonts, row heights are consistent)
 - Header fill: `PatternFill(fill_type="solid", fgColor=style.palette[0].lstrip("#"))`
 - Accent fill: `style.palette[1]`
 - Body background: `style.palette[2]`
@@ -67,7 +74,7 @@ The script uses `openpyxl`. Cover all of the following:
 - Thin borders on all data ranges
 - Hide gridlines on display-only tabs: `ws.sheet_view.showGridLines = False`
 
-**Data validation:**
+**Data validation** (`rough`: add dropdowns + date/number validation; `verify`: check dropdowns exist on correct columns)
 - `DataValidation` for dropdown fields (categories, status, type)
 - Validate date and numeric fields where appropriate
 
@@ -79,8 +86,8 @@ os.makedirs(os.path.dirname(output_path), exist_ok=True)
 ```
 
 Output file path:
-- Stage 03: `output/{slug}/03-poc/{slug}.xlsx`
-- Stage 04: `products/{slug}/delivery/{slug}.xlsx`
+- `rough`: `output/{slug}/03-poc/{slug}.xlsx`
+- `verify`: `products/{slug}/delivery/{slug}.xlsx`
 
 ### 3. Run the script
 
@@ -103,8 +110,8 @@ Confirm the XLSX was created. If the script errors: fix and re-run before contin
 Present to the human:
 
 > "XLSX generated at `{output_path}`. Please upload it to Google Drive:
-> - **Stage 03**: upload to `PiggyWise/POC/` folder, rename to `[poc] {keyword}`
-> - **Stage 04**: upload to `PiggyWise/Products/` folder, rename to `{keyword}`
+> - **`rough`**: upload to `PiggyWise/POC/` folder, rename to `[poc] {keyword}`
+> - **`verify`**: upload to `PiggyWise/Products/` folder, rename to `{keyword}`
 >
 > Once uploaded, share the editable Google Sheets link back."
 
@@ -112,43 +119,51 @@ Wait for the human to share the link. Set `working_link` to the received link.
 
 ### 5. Verify via MCP
 
-Use `mcp__claude_ai_Google_Drive__read_file_content` to read the uploaded file. Verify:
+Use `mcp__claude_ai_Google_Drive__read_file_content` to read the uploaded file. Check:
 - All tabs present and in correct order
 - Headers match `structure`
 - Key formulas appear in expected locations
+- Style matches `style` spec (palette, fonts, row heights)
 
-### 6. Verify `differentiation` checklist (Stage 04 only)
+For `verify` depth: compare against the known_issues list — confirm each one is now resolved.
 
-For each item in `differentiation[]`: confirm it is implemented. Mark verified or note what's missing. Do not close this step until every item is confirmed.
+### 6. Differentiation checklist
 
-### 7. Fill `gaps` (Stage 04 only)
+For each item in `differentiation[]`: confirm it is implemented. Note verified or missing.
 
-For any `gaps[]` items not yet implemented: update the script, re-run it, ask the human to re-upload (replace the existing file in Drive). Repeat until all gaps are filled.
+### 7. Fill gaps
 
-### 8. Return `working_link`
+For any items in `gaps[]` not yet implemented: update the script, re-run it, ask the human to re-upload (replace existing file). Repeat until all gaps are filled.
 
-Return the confirmed `working_link` to the calling agent. This is used in all subsequent stages.
+### 8. Return `working_link` and `verify_result`
+
+Return `working_link` to the calling agent.
+
+For `verify` depth, also return `verify_result`:
+- `passed[]` — items confirmed correct without changes
+- `fixed[]` — items updated in the script and re-uploaded
+- `broken[]` — items that could not be resolved (should be empty)
 
 ---
 
 ## Depth guidance
 
-| Area | `rough` (Stage 03 POC) | `full` (Stage 04 polish) |
-|------|------------------------|--------------------------|
-| Formulas | Working but simple | Named ranges, IFERROR, all edge cases |
-| Style | Palette applied, readable | Fully consistent, polished |
-| Instructions tab | Basic notes | Complete buyer-facing setup guide |
-| Data validation | Optional | Required for all input cells |
-| Error handling | Minimal | All edge cases handled |
-| Differentiation | Build all items | Verify every item explicitly |
-| Gaps | Skip | Fill all after differentiation |
+| Area | `rough` (Stage 03 POC) | `verify` (Stage 04) |
+|------|------------------------|----------------------|
+| Script | Write from scratch | Start from POC script; update only broken parts |
+| Formulas | Working, simple | Verify IFERROR + named ranges present; fix only what's missing |
+| Style | Palette applied, readable | Verify consistency across all tabs; fix only what deviates |
+| Instructions tab | Basic notes | Verify complete buyer-facing setup guide exists; fix if incomplete |
+| Data validation | Optional | Verify dropdowns + date/number validation present; add only what's missing |
+| Known issues | Note, don't block | Fix before re-uploading |
+| Differentiation | Build all items | Verify every item present |
+| Gaps | Skip | Fill after verification passes |
 
 ---
 
 ## Notes
 
 - If a fix is needed after upload: update the Python script, re-run, and ask the human to re-upload. Do not try to edit the Google Sheet directly.
-- Keep the generation script in the repo so the product can be regenerated if needed.
+- Keep the generation script in the repo — the product can be regenerated if needed.
 - Cross-tab references use standard Sheets notation: `SheetName!CellRef` (e.g. `=SUM(Income!B2:B1000)`).
-- `openpyxl` `defined_names` are recognised by Google Sheets when the XLSX is opened — use them for readability.
-- The calling agents (poc-agent, build-agent) must pass `slug` and `keyword` in addition to the standard build skill inputs.
+- `openpyxl` `defined_names` are recognised by Google Sheets when the XLSX is opened.

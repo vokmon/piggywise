@@ -1,6 +1,6 @@
 # build-agent
 
-Orchestrates Stage 04: polish the POC into a shippable product, self-test until clean, produce all product docs, and update `product.json`. Reads the poc-brief from Stage 03. Stage 05 is an independent sign-off — this agent must deliver a clean product before handing off.
+Orchestrates Stage 04: verify the POC is shippable, fix only what's broken, produce all product docs, and update `product.json`. The POC is trusted as the starting point — this stage does not rebuild from scratch. Stage 05 is an independent sign-off — this agent must hand off a clean product.
 
 ---
 
@@ -18,13 +18,13 @@ Read `poc_brief`.
 
 Extract and hold in memory:
 - `product_type`
-- `poc_result.link` — starting point for the build
-- `known_issues` — used in Step 2 verification
-- `feature_spec` — implement fully in Step 3
+- `poc_result.link` — the POC product link; copied to Products/ in Step 2
+- `known_issues` — issues flagged during POC; check if still present in Step 3
+- `feature_spec` — verified against the product in Step 3
 - `structure` — actual built structure from the POC (passed to the build skill)
 - `logic_map` — actual formulas/relations built in the POC (Notion only; null for other types)
 - `differentiation` — every item must exist in the finished product
-- `gaps` — fill after all differentiation items are delivered
+- `gaps` — deferred items from POC; fill after verification passes
 - `style` — confirmed palette/font/layout
 - `competitors[].buyer_complaints` — aggregate across all competitors into a single list (deduplicated)
 - `buyer_flow` — step-by-step buyer usage
@@ -33,62 +33,41 @@ Extract and hold in memory:
 
 Confirm `product_type` is recognised (see `skills/study/reverse-engineer.md` routing table for supported types). If unexpected value: stop and ask the human.
 
-### Step 2 — Verify POC against brief
+### Step 2 — Copy POC to Products folder
 
-Open `poc_result.link` on the **original POC** using the appropriate tool for `product_type`:
-- Notion: `mcp__claude_ai_Notion__notion-fetch`
-- Canva: `mcp__canva__get-design-pages`
-- Google Sheets: `mcp__claude_ai_Google_Drive__read_file_content`
-
-Cross-check the actual product state against poc-brief claims:
-
-- **Structure:** For each item in `structure` — does it actually exist in the product?
-- **Logic (Notion only):** For each item in `logic_map` — does it exist and produce a non-error value with a sample entry?
-- **Differentiation:** For each item in `differentiation[]` — is it verifiably present?
-- **Known issues:** For each item in `known_issues` — is it still present? (Some may have been fixed or partially fixed since the brief was written.)
-
-Produce a `verified_delta` and hold in memory:
-- `confirmed_done[]` — `structure` and `logic_map` items verified as correct in the actual product (Notion only)
-- `needs_fix[]` — `known_issues` still present + any `structure`/`logic_map` items that failed the check
-- `needs_build[]` — `gaps[]` + any `differentiation[]` items not yet present
-
-Copy the POC into the **Products folder**, named `{keyword}` (no prefix) — this preserves the POC as a fallback if the build goes wrong. See `pipeline/workspace-setup.md` for platform-specific copy and move steps.
+Copy the POC (`poc_result.link`) into the **Products folder**, named `{keyword}` (no prefix). See `pipeline/workspace-setup.md` for platform-specific copy steps.
 
 All subsequent steps work on this **Products/ copy**, not the original POC. Update `working_link` to the new Products/ link.
 
-### Step 3 — Build full polish
-
-Open the Products/ copy (`working_link`).
+### Step 3 — Verify and fix
 
 Run `skills/build/{product_type}.md` with:
-- `working_link` — updated link from Step 2 (Products/ copy)
+- `working_link` — Products/ copy link from Step 2
 - `feature_spec` — from poc-brief
-- `structure` — actual structure from poc-brief (the built POC structure)
+- `structure` — from poc-brief
 - `style` — from poc-brief
 - `differentiation` — from poc-brief
-- `gaps` — `needs_build[]` from `verified_delta`
-- `known_issues` — `needs_fix[]` from `verified_delta` (replaces raw poc-brief known_issues)
+- `known_issues` — from poc-brief
+- `gaps` — from poc-brief
 - `logic_map` — from poc-brief (Notion only; null for other types)
-- `confirmed_done` — `confirmed_done[]` from `verified_delta` (Notion only; null for other types)
-- `depth: "full"`
-- `slug` — from poc-brief (Google Sheets only — required for file naming)
-- `keyword` — from poc-brief (Google Sheets only — required for Drive file naming)
+- `depth: "verify"`
+- `slug` — from poc-brief (Google Sheets only)
+- `keyword` — from poc-brief (Google Sheets only)
 
-Build order within the skill:
-1. Fix all `known_issues` first
-2. Polish `feature_spec[]` to full quality
-3. Verify every `differentiation[]` item exists (checklist)
-4. Fill `gaps[]`
+The skill will verify the existing product against spec and fix only what fails. It returns a `verify_result` — hold in memory:
+- `passed[]` — items confirmed correct
+- `fixed[]` — items that had issues and were fixed
+- `broken[]` — items that could not be fixed
 
-Inline checks are required throughout — see `skills/build/{product_type}.md` for specifics.
+If `broken[]` is non-empty: stop, report to the human, and wait for instructions before continuing.
 
 ### Step 4 — Write formula-spec (Sheets and Notion only)
 
 **Skip this step for Canva** — set `formula_spec_path: null`.
 
-For Notion: start from `logic_map` in the poc-brief — it already documents what was built in the POC. Format each item per the template below, then add any formulas or relations introduced during Step 3 that were not in the original `logic_map`.
+For Notion: start from `logic_map` in the poc-brief — it already documents what was built in the POC. Format each item per the template below, then add any formulas or relations introduced during Step 3 (from `fixed[]`) that were not in the original `logic_map`.
 
-For Google Sheets: document all formulas from the generated script.
+For Google Sheets: document all formulas from the verified script.
 
 Write `products/{slug}/docs/formula-spec.md`:
 
@@ -111,7 +90,7 @@ Cover every non-trivial formula. Trivial formulas (e.g. `=A1+B1` as a one-off) c
 
 ### Step 5 — Write style-guide
 
-Write `products/{slug}/docs/style-guide.json` from poc-brief `style`, updated to reflect any adjustments made during the build:
+Write `products/{slug}/docs/style-guide.json` from poc-brief `style`, updated to reflect any fixes made during Step 3:
 
 ```json
 {
@@ -154,7 +133,7 @@ Output: `products/{slug}/docs/test-plan.json`
 
 ### Step 7 — Run all tests
 
-**Run every applicable test in `test-plan.json` against the built product. Skip any test whose `applies_to` value doesn't match `product_type` (e.g. skip `sheets-notion` tests for a Canva product).**
+**Run every applicable test in `test-plan.json` against the product. Skip any test whose `applies_to` value doesn't match `product_type` (e.g. skip `sheets-notion` tests for a Canva product).**
 
 For each applicable test:
 1. **Copy** — make a fresh test copy of the product, named `[test-{id}] {slug}`. See `pipeline/workspace-setup.md` for platform-specific copy steps.
@@ -196,6 +175,8 @@ Run `pipeline/04-build/skills/setup-guide.md` with:
 - `buyer_complaints` — aggregated buyer complaints from Step 1
 - `structure` — actual structure from poc-brief
 - `working_link`
+
+For Notion: before writing, fetch the existing Setup Guide page from `working_link` and verify it covers every step in `buyer_flow`. The `setup-guide.md` file should reflect the actual content in the template — if the in-template guide is complete and accurate, derive the file from it rather than rewriting from scratch.
 
 Output: `products/{slug}/docs/setup-guide.md`
 
@@ -280,6 +261,7 @@ find .playwright-mcp -delete
 
 ## Notes
 
+- The POC is trusted. Stage 04 verifies and fixes — it does not rebuild. If the POC was rough and needs significant rework, discuss with the human before proceeding.
 - The self-test loop in Step 7 is not optional — Stage 05 is independent verification, not a debugging session. Hand off a clean product.
 - Never skip the copy→test→delete pattern in Step 7. Test on a copy, not the production file.
 - If Step 7 reveals a systemic issue (not just one failing test): stop, fix the root cause in Step 3, re-run the full test suite.
