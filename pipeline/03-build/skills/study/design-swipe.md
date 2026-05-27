@@ -12,9 +12,9 @@ Router. Delegates to the correct type-specific skill based on `product_type`.
 
 | product_type    | skill                                        |
 |-----------------|----------------------------------------------|
-| `google-sheets` | `skills/study/design-swipe/google-sheets.md` |
-| `notion`        | `skills/study/design-swipe/notion.md`        |
-| `canva`         | `skills/study/design-swipe/canva.md`         |
+| `google-sheets` | `pipeline/03-build/skills/study/design-swipe/google-sheets.md` |
+| `notion`        | `pipeline/03-build/skills/study/design-swipe/notion.md`        |
+| `canva`         | `pipeline/03-build/skills/study/design-swipe/canva.md`         |
 
 Pass all input fields through to the type-specific skill unchanged.
 

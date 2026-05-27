@@ -1,6 +1,6 @@
 # design-swipe/notion
 
-Collect visual inspiration beyond the direct competitors already studied in reverse-engineer. Focus on surface aesthetics: colour palette, cover image style, icon usage, page layout, typography choices. This feeds the `visual_inspiration` field in poc-brief and informs the `style` synthesis.
+Collect visual inspiration beyond the direct competitors already studied in reverse-engineer. Focus on surface aesthetics: colour palette, cover image style, icon usage, page layout, typography choices. This feeds the `visual_inspiration` field in the brief and informs the `style` synthesis.
 
 Follows `skills/playwright.md` for screenshot/snapshot rules.
 

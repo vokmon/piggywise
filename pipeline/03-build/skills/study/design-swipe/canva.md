@@ -1,6 +1,6 @@
 # design-swipe/canva
 
-Collect visual inspiration beyond the direct competitors already studied in reverse-engineer. Focus on surface aesthetics: colour palette, typography pairing, layout structure, visual hierarchy, mood. This feeds the `visual_inspiration` field in poc-brief and informs the `style` synthesis.
+Collect visual inspiration beyond the direct competitors already studied in reverse-engineer. Focus on surface aesthetics: colour palette, typography pairing, layout structure, visual hierarchy, mood. This feeds the `visual_inspiration` field in the brief and informs the `style` synthesis.
 
 Follows `skills/playwright.md` for screenshot/snapshot rules.
 

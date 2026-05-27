@@ -1,6 +1,6 @@
 # template-hunt/canva
 
-Study free Canva template galleries to harvest structural and design patterns for the POC. Study up to `max_templates` candidates. Extract the best pattern(s) from each. Build fresh from these patterns — do not copy any single template wholesale.
+Study free Canva template galleries to harvest structural and design patterns for the build. Study up to `max_templates` candidates. Extract the best pattern(s) from each. Build fresh from these patterns — do not copy any single template wholesale.
 
 Follows `skills/playwright.md` for screenshot/snapshot rules.
 
