@@ -12,18 +12,27 @@ All working files live in dedicated folders — never mix study copies, POC buil
 |---|---|---|---|
 | Study copies (temp) | `PiggyWise/Study/` | `PiggyWise › Study` | `PiggyWise` project › `Study` folder |
 | POC builds | `PiggyWise/POC/` | `PiggyWise › POC` | `PiggyWise` project › `POC` folder |
+| QA copies (temp) | `PiggyWise/QA/` | `PiggyWise › QA` | `PiggyWise` project › `QA` folder |
 | Final products | `PiggyWise/Products/` | `PiggyWise › Products` | `PiggyWise` project › `Products` folder |
 
 **File naming:**
 - Study copies: `[study] {original title}` — deleted after each study session ends
-- POC builds: `[poc] {keyword}` — survives until the Stage 03 commit/abandon decision
+- POC builds: `[poc] {keyword}` — kept in POC folder permanently after commit
+- QA copies: `[qa] {keyword}` — deleted when QA passes
 - Test copies: `[test-{id}] {slug}` — deleted immediately after each test run
 - Final products: `{keyword}` — no prefix
 
-**Product index (how all final products are listed):**
-- **Google Drive** — the `PiggyWise/Products/` folder is the index. The Drive folder listing is sufficient.
-- **Notion** — a `Products` database inside `PiggyWise › Products`. One row per product with properties: `slug` (title), `product_type` (select), `status` (select), `page` (URL).
-- **Canva** — the `Products` folder inside the `PiggyWise` project is the index.
+**Notion databases (tracking across stages):**
+
+| Database | Location | Properties |
+|---|---|---|
+| POC | `PiggyWise › POC` | `slug` (title), `product_type` (select), `status` (select: `in-progress` / `committed`), `poc_page` (URL) |
+| Products | `PiggyWise › Products` | `slug` (title), `product_type` (select), `status` (select: `in-progress` / `complete` / `paused`), `page` (URL) |
+| QA | `PiggyWise › QA` | `slug` (title), `product_type` (select), `status` (select: `pending` / `in-progress` / `passed` / `failed`), `product_page` (URL), `qa_page` (URL) |
+
+- POC row created at Stage 03 commit. Abandoned POCs are deleted entirely — no row created.
+- Products row created at Stage 04 Step 10.
+- QA row created at Stage 05 start; `qa_page` cleared when QA passes; QA copy deleted.
 
 ---
 
@@ -123,23 +132,23 @@ Create the following before running any pipeline stage for the first time.
 PiggyWise/
   Study/
   POC/
+  QA/
   Products/
 ```
 
 ### Notion
 
 ```
-PiggyWise  (top-level page)
-  ├── Study  (page)
-  ├── POC    (page)
-  └── Products  (page containing a database)
+PiggyWise  (top-level page — hub with links to all four sections below)
+  ├── Study     (page)
+  ├── POC       (page — contains POC database + [poc] pages)
+  ├── QA        (page — contains QA database + [qa] pages)
+  └── Products  (page — contains Products database + {keyword} pages)
 ```
 
-`Products` database properties:
-- `slug` — Title
-- `product_type` — Select (`google-sheets`, `notion`, `canva`, ...)
-- `status` — Select (`in-progress`, `complete`, `paused`)
-- `page` — URL
+The `PiggyWise` top-level page serves as the hub. It should contain visible links (or a simple nav callout) to Study, POC, QA, and Products so you can navigate the workspace from one place.
+
+Database properties — see the **Notion databases** table in the Working folders section above.
 
 ### Canva
 
@@ -147,6 +156,7 @@ PiggyWise  (top-level page)
 PiggyWise  (project)
   ├── Study    (folder)
   ├── POC      (folder)
+  ├── QA       (folder)
   └── Products (folder)
 ```
 

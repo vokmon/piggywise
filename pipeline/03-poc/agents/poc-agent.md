@@ -245,7 +245,12 @@ If the human chooses **commit**:
      }
    }
    ```
-3. Confirm to human: "Committed. Proceed to Stage 04 with `pipeline/03-poc/output/{slug}-poc-brief.json`."
+3. Create a row in the **POC database** (`PiggyWise › POC`) with:
+   - `slug` — `{slug}`
+   - `product_type` — `{product_type}`
+   - `status` — `committed`
+   - `poc_page` — link to the `[poc] {keyword}` page in the POC folder
+4. Confirm to human: "Committed. Proceed to Stage 04 with `pipeline/03-poc/output/{slug}-poc-brief.json`."
 
 ### Step 15 — Abandon
 

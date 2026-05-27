@@ -193,7 +193,7 @@ For Google Sheets: verify the XLSX exists at `products/{slug}/delivery/{slug}.xl
 
 If any issue is found: fix it in the production product and re-check that page. Do not proceed until the product is visually complete.
 
-### Step 10 — Update product.json
+### Step 10 — Update product.json and Products database
 
 Update `products/{slug}/product.json`:
 
@@ -220,6 +220,12 @@ Update `products/{slug}/product.json`:
   "delivery_link": "{primary_link from delivery.json}"
 }
 ```
+
+Then create or update the row in the **Products database** (`PiggyWise › Products`) with:
+- `slug` — `{slug}`
+- `product_type` — `{product_type}`
+- `status` — `in-progress`
+- `page` — link to the `{keyword}` page in the Products folder
 
 ---
 

@@ -484,14 +484,15 @@ Simulate the buyer opening the product for the first time. Screenshot each step:
 
 **Agent flow:**
 1. Read `product.json` → get `product_type` and product link
-2. Read `products/{slug}/docs/test-plan.json` and `formula-spec.md`
-3. Playwright visual check → screenshot every tab/page as first-time buyer
-4. MCP functional check (copy → test → record → delete) per product type
-5. Run `formula-checker.md` (Sheets only) — audit every formula in `formula-spec.md`
-6. Run `qa-checklist.md` — 4-area quality rubric (see below)
-7. Write `products/{slug}/qa/results.json` with pass/fail per check + screenshot refs
-8. If all pass → update `product.json` status, proceed to Stage 06
-9. If any fail → list failures, block Stage 06, wait for fix then re-run
+2. Create a row in the **QA database** (`PiggyWise › QA`) with `status = in-progress`, `product_page` = product link. Create a `[qa] {keyword}` copy in the QA folder; set `qa_page` on the row to this copy's link.
+3. Read `products/{slug}/docs/test-plan.json` and `formula-spec.md`
+4. Playwright visual check → screenshot every tab/page as first-time buyer
+5. MCP functional check (copy → test → record → delete) per product type
+6. Run `formula-checker.md` (Sheets only) — audit every formula in `formula-spec.md`
+7. Run `qa-checklist.md` — 4-area quality rubric (see below)
+8. Write `products/{slug}/qa/results.json` with pass/fail per check + screenshot refs
+9. If all pass → delete the `[qa]` copy, clear `qa_page` on the QA database row, update QA row `status = passed`, update `product.json` status, proceed to Stage 06
+10. If any fail → list failures, update QA row `status = failed`, block Stage 06, wait for fix then re-run from step 4
 
 **`qa-checklist.md` covers 4 areas (all product types unless noted):**
 - **Visual quality**: style consistent across all tabs/pages, no placeholder text remaining, no clashing colours, no broken visual elements
