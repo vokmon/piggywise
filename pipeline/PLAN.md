@@ -21,15 +21,16 @@ These rules apply to every agent and skill across all stages:
 ## How It Works
 
 ```
-00-discover → 01-research → 02-validate → 03-poc → [human: commit?] → 04-build → 05-qa → 06-marketing → 07-launch → 08-iterate
+00-discover → 01-research → 02-validate → 03-build → [human: commit?] → 04-review → 05-marketing → 06-launch → 07-iterate
 ```
 
-- Stages 00–03: pipeline work, outputs saved to `output/_discover/` (Stage 00) or `output/{slug}/{stage}/` (Stages 01–03) — all gitignored
+- Stages 00–02: pipeline research, outputs saved to `output/_discover/` (Stage 00) or `output/{slug}/{stage}/` (Stages 01–02) — all gitignored
+- Stage 03: build, output saved to `output/{slug}/03-build/` — gitignored; on commit, creates `products/{slug}/`
 - Stages 04–07: product work, all assets saved to `products/{slug}/`
-- `product.json` inside each product folder tracks pipeline state across stages 04–08
+- `product.json` inside each product folder tracks pipeline state across stages 04–07
 - `/status "product-slug"` prints current stage at any time
-- `product_type` is determined at the start of Stage 03 — the agent infers it from validate output and suggests; human confirms or overrides. Can be changed by re-running `/poc "slug"` with a different type.
-- `pipeline/workspace-setup.md` — shared reference for all agents: working folder paths (Study/POC/Products per platform), file naming conventions, file operations (copy/create/move/delete per platform), delivery formats per product type, schema shapes per product type, new product type checklist. All agents reference this file instead of repeating per-type steps inline.
+- `product_type` is determined at the start of Stage 03 — the agent infers it from validate output and suggests; human confirms or overrides
+- `pipeline/workspace-setup.md` — shared reference for all agents: working folder paths, file naming conventions, file operations per platform, delivery formats per product type
 
 ---
 
@@ -51,23 +52,14 @@ Each product under `products/{slug}/` has a `product.json` tracking pipeline pro
 ```json
 {
   "slug": "budget-tracker-freelancer",
-  "name": "...",
-  "pipeline": {
-    "current_stage": "05-qa",
-    "stages": {
-      "04-build": { "status": "completed", "completed_at": "..." },
-      "05-qa": { "status": "in-progress", "started_at": "..." },
-      "06-marketing": { "status": "pending" },
-      "07-launch": { "status": "pending" },
-      "08-iterate": { "status": "pending" }
-    }
+  "product_type": "notion",
+  "keyword": "",
+  "pipeline_status": {
+    "stage": "03-build",
+    "status": "complete",
+    "brief": "output/{slug}/03-build/{slug}-brief.json"
   },
-  "product_type": "google-sheets",
-  "research_ref": "output/{slug}/01-research/...",
-  "validate_ref": "output/{slug}/02-validate/...",
-  "poc_ref": "output/{slug}/03-poc/{slug}-poc-brief.json",
   "pricing": {},
-  "delivery": {},
   "etsy": {}
 }
 ```
@@ -79,89 +71,90 @@ Each product under `products/{slug}/` has a `product.json` tracking pipeline pro
 ```
 products/{slug}/
   product.json              ← pipeline state tracker
-  docs/
-    formula-spec.md         ← [created: Build] what each formula/logic does, inputs/outputs — Sheets/Notion only
-    test-plan.json          ← [created: Build, consumed: QA] test cases with inputs and expected outputs
-    style-guide.json        ← [created: Build, consumed: Build + Marketing] palette, fonts, spacing
-    setup-guide.md          ← [created: Build, consumed: delivery] buyer instructions for using the product
-  screenshots/              ← [created: Build] full visual pass of finished product — fed into Marketing mockups
-  qa/
-    screenshots/            ← [created: QA] buyer simulation screenshots
-    results.json            ← [created: QA] pass/fail per check with screenshot refs — gates marketing
-  marketing/                ← [created: Marketing] cover image, mockups, listing.json, videos
-  delivery/                 ← [created: Build] final files prepared for buyer download
+  marketing/                ← [created: Marketing] cover, mockups, listing.json, videos
+  delivery/                 ← [created: Launch] final files prepared for buyer download
   iterate-log.json          ← [created/appended: Iterate] performance metrics and optimization history
 ```
 
-**Build/QA use product-specific docs** — every product has different formulas, test cases, and style, so these must be written per product during Stage 04 and consumed by Stage 05.
+---
 
-**Marketing/Launch/Iterate use generic skills** — same process for every product, fed with product data from upstream. No product-specific instruction docs needed.
+## Stage 05 — Marketing (pipeline/05-marketing/)
 
-## Stage 05 — Marketing (pipeline/06-marketing/)
-
-Create everything needed for the Etsy listing. Cover that makes people click. Generic process — same steps for every product, fed with product-specific data from upstream.
+Produces all Etsy marketing assets: cover image, preview images, video, and listing copy. Human provides raw screenshots and video footage; agent composes everything in Canva.
 
 **Stage structure:**
 
 ```
-pipeline/06-marketing/
+pipeline/05-marketing/
   agents/
     marketing-agent.md
-  skills/
-    cover-brief.md           ← research competitor covers, write visual brief
-    mockup-generator.md      ← generate 3–5 preview images from screenshots
+  styles/
+    laptop-mobile.md         ← style preset: dark premium, laptop + phone frames
 ```
 
-**Shared skills used:**
+**Styles system:**
 
-- `skills/etsy-listing.md` — Title, description, 13 tags (grounded in validate keyword data)
-- `skills/etsy-cover-image.md` — Cover format constraints (2000×1500px, safe zone)
-- `skills/canva-design.md` — Create cover using style-guide.json (primary)
-- `skills/generate-image.md` — Fallback if Canva output isn't strong
-- `skills/generate-video.md` — Demo slideshow video (5–15 sec)
-- `skills/record-video.md` — Screen-recorded walkthrough/tutorial video
-- `skills/playwright.md` — Research competitor covers
+Visual styles are defined as preset files in `pipeline/05-marketing/styles/`. Each preset holds Canva template IDs and layout rules. Selected at invoke via `--style`. New styles = new file, no agent changes needed.
 
-**Inputs from upstream:**
+- `laptop-mobile.md` — dark gradient background, laptop + phone on cover, laptop-only previews. **Template IDs TBD** — to be filled in after browsing Canva free templates.
 
-- `products/{slug}/docs/style-guide.json` → palette, fonts for visual consistency
-- `products/{slug}/screenshots/` → source material for mockups (from Build)
-- `output/{slug}/02-validate/` → best title keyword, buyer language for listing copy
-- `poc-brief.json` → `differentiation` and `feature_spec` for listing description
+**Skills used:**
+
+- `skills/generate-image.md` — fallback image generation if no suitable free Canva image found
+
+**Inputs:**
+
+- `output/{slug}/02-validate/{file}.json` → keywords, buyer language, tag keywords, competitor insights
+- Canva folder `marketing/{slug}/` → raw assets uploaded by human (named: `cover-desktop.*`, `cover-mobile.*`, `dashboard.png`, etc.)
+
+**Outputs (all in `products/{slug}/marketing/`):**
+
+- `cover.png` — laptop + phone side by side, dark background
+- `preview-01.png` … `preview-N.png` — one per screenshot provided (laptop frame, flexible count)
+- `demo.mp4` — video from footage with feature text overlays
+- `{slug}-listing.json` — Etsy title, description, 13 tags, price placeholder
+
+**Canva workspace:**
+
+- `marketing/{slug}/` — human uploads raw assets here
+- `marketing/{slug}/output/` — agent saves all built designs here
 
 **Agent flow:**
 
-1. Read `product.json`, `style-guide.json`, validate output, poc-brief
-2. Run `cover-brief.md` → research competitor covers via Playwright, write visual brief
-3. Run `canva-design.md` with style-guide + cover brief → create cover image
-4. Run `mockup-generator.md` → generate 3–5 preview images from `products/{slug}/screenshots/`
-5. Run `etsy-listing.md` → write title, description, 13 tags using validate keyword + poc-brief differentiation
-6. Run `generate-video.md` → create demo slideshow from screenshots
-7. Run `record-video.md` → screen-record product walkthrough tutorial
-8. Save all assets to `products/{slug}/marketing/`
-9. Update `product.json` pipeline status
+1. Load validate output → keyword, buyer language, tag keywords
+2. Load style preset → template IDs, layout rules
+3. Scan `marketing/{slug}/` in Canva → classify assets (cover shots, previews, video)
+4. **Confirm plan with human** — list assets found and what will be produced
+5. Build cover → copy template, swap in cover-desktop + cover-mobile, update text
+6. Build previews → one per screenshot, laptop frame, caption from filename
+7. Build video → copy template, place footage, add feature callouts
+8. Write listing copy → `{slug}-listing.json`
+9. **Pause for human review** in Canva at `marketing/{slug}/output/`
+10. On approval → export PNG + MP4 to `products/{slug}/marketing/`
+11. Update `product.json` status
+
+**Image sourcing:** search Canva free images first; if nothing suitable → `skills/generate-image.md`, human uploads result to Canva.
 
 **Agent:**
 
-- [ ] `agents/marketing-agent.md` — Orchestrates all steps above, saves all assets to `products/{slug}/marketing/`
+- [x] `agents/marketing-agent.md`
+- [ ] `styles/laptop-mobile.md` — template IDs not yet filled in
 
 ---
 
-## Stage 06 — Launch (pipeline/07-launch/)
+## Stage 06 — Launch (pipeline/06-launch/)
 
 Assemble everything from upstream and publish the Etsy listing. Generic process — same steps for every product.
 
 **Stage structure:**
 
 ```
-pipeline/07-launch/
+pipeline/06-launch/
   agents/
     launch-agent.md
   skills/
     listing-creator.md       ← assemble + publish listing via Etsy MCP
 ```
-
-**Shared skills used:** none — pure MCP operations
 
 **Credentials:**
 
@@ -171,40 +164,42 @@ pipeline/07-launch/
 
 - `products/{slug}/marketing/` → cover image, mockups, videos, listing copy
 - `products/{slug}/delivery/` → product files to upload for buyer download
-- `product.json` → pricing (from poc-brief), slug, product_type
+- `output/{slug}/03-build/{slug}-brief.json` → pricing
+- `product.json` → slug, product_type
 
 **Agent flow:**
 
-1. Read `product.json` → slug, pricing, product_type
-2. Read `products/{slug}/marketing/` → cover, mockups, videos, title, description, tags
-3. Read `products/{slug}/delivery/` → delivery files
-4. Run `listing-creator.md`:
+1. Read `product.json` → slug, product_type
+2. Read `output/{slug}/03-build/{slug}-brief.json` → pricing
+3. Read `products/{slug}/marketing/` → cover, mockups, videos, title, description, tags
+4. Read `products/{slug}/delivery/` → delivery files
+5. Run `listing-creator.md`:
    a. Upload delivery files via Etsy MCP
    b. Upload cover + mockup images
    c. Upload videos
-   d. Set price from `poc-brief.json` pricing
+   d. Set price from brief pricing
    e. Create and publish listing via `mcp__etsy__*`
-5. Save Etsy listing URL to `product.json`
-6. Update `product.json` status to launched
+6. Save Etsy listing URL to `product.json`
+7. Update `product.json` status to launched
 
 **Agent:**
 
-- [ ] `agents/launch-agent.md` — Orchestrates all steps above, saves listing URL to `product.json`
+- [ ] `agents/launch-agent.md`
 
 ---
 
-## Stage 07 — Iterate (pipeline/08-iterate/)
+## Stage 07 — Iterate (pipeline/07-iterate/)
 
 Ongoing optimization after launch. Run periodically — not a one-time step. Generic process — same for every product, fed with product-specific Etsy data.
 
 **Stage structure:**
 
 ```
-pipeline/08-iterate/
+pipeline/07-iterate/
   agents/
     iterate-agent.md
   skills/
-    performance-check.md     ← scrape Etsy shop: views, favorites, sales, reviews
+    performance-check.md     ← fetch our listing stats via Etsy API
     suggest-optimizations.md ← compare vs current top performers, recommend changes
 ```
 
@@ -212,22 +207,22 @@ pipeline/08-iterate/
 
 - `skills/playwright.md` — search Etsy for current top performers (competitive analysis only)
 
+**Credentials:**
+
+- `ETSY_KEYSTRING` + `ETSY_SECRETSTRING` — Etsy shop management API credentials. Use for all reads/writes on our own shop: listing stats, sales, reviews, listing updates. Cannot access other shops.
+
 **Inputs from upstream:**
 
 - `product.json` → Etsy listing ID, slug, keyword
 - `output/{slug}/02-validate/` → original keyword for competitive search
 - `products/{slug}/iterate-log.json` → previous performance history for trend comparison
 
-**Credentials:**
-
-- `ETSY_KEYSTRING` + `ETSY_SECRETSTRING` — Etsy shop management API credentials. Use for all reads/writes on our own shop: listing stats, sales, reviews, listing updates. Cannot access other shops.
-
 **Agent flow:**
 
 1. Read `product.json` → Etsy listing ID, keyword
-2. Run `performance-check.md` → fetch our listing stats via Etsy API (`ETSY_KEYSTRING` + `ETSY_SECRETSTRING`): views, favorites, sales, review score, recent review text
+2. Run `performance-check.md` → fetch our listing stats via Etsy API: views, favorites, sales, review score, recent review text
 3. Run `suggest-optimizations.md`:
-   a. Use Playwright to search Etsy for current top performers on the same keyword (public search)
+   a. Use Playwright to search Etsy for current top performers on the same keyword
    b. Compare our title/tags/cover/price against theirs
    c. Mine new reviews from step 2 for complaints and praise
    d. Recommend specific changes: listing (title, tags, cover, price) or product (feature/fix)
@@ -236,7 +231,7 @@ pipeline/08-iterate/
 
 **Agent:**
 
-- [ ] `agents/iterate-agent.md` — Orchestrates all steps above, appends to `products/{slug}/iterate-log.json`
+- [ ] `agents/iterate-agent.md`
 
 ---
 
@@ -244,14 +239,14 @@ pipeline/08-iterate/
 
 - [ ] `agents/status-agent.md` — `/status "slug"` reads `product.json`, prints readable pipeline dashboard
 - [ ] All `pipeline/*/output/` folders added to .gitignore (00 through 03)
-- [ ] Large files in `products/` added to .gitignore: `products/*/screenshots/`, `products/*/qa/screenshots/`, `products/*/marketing/`, `products/*/delivery/`
+- [ ] Large files in `products/` added to .gitignore: `products/*/marketing/`, `products/*/delivery/`
 - [ ] `products/` folder structure documented in README
 
 ---
 
 ## Progress
 
-- Stage 05 — Marketing: not started
+- Stage 05 — Marketing: agent written, style file in progress (template IDs TBD)
 - Stage 06 — Launch: not started
 - Stage 07 — Iterate: not started
 - Infrastructure: not started
