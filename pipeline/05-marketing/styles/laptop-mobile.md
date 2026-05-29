@@ -4,17 +4,15 @@ Dark premium aesthetic. Cover shows both laptop and phone frames side by side. A
 
 ---
 
-## Canva templates
+## Templates folder
 
-These are the exact Canva templates the agent uses. Open each link to inspect or replace.
+The agent browses these Canva folders and shows thumbnails so you can pick a template interactively. Add designs to the relevant folder to make them available.
 
-| Asset | Template ID | Template link |
-|---|---|---|
-| Cover | `TODO` | — |
-| Preview images | `TODO` | — |
-| Video | `TODO` | — |
-
-> **To set up:** find your preferred Canva templates, paste the design ID (from the Canva URL: `canva.com/design/{ID}`) into the table above. The agent uses these IDs directly — no searching.
+| Asset | Canva folder name |
+|---|---|
+| Cover | `templates/laptop phone mockup` |
+| Preview images | `templates/laptop phone mockup` |
+| Video | `templates/laptop phone mockup` |
 
 ---
 

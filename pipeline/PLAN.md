@@ -184,7 +184,9 @@ pipeline/06-launch/
 
 **Agent:**
 
-- [ ] `agents/launch-agent.md`
+- [x] `agents/launch-agent.md`
+- [x] `skills/listing-creator.md`
+- [x] `skills/etsy-connect.md` (root skills/)
 
 ---
 
@@ -247,6 +249,6 @@ pipeline/07-iterate/
 ## Progress
 
 - Stage 05 — Marketing: agent written, style file in progress (template IDs TBD)
-- Stage 06 — Launch: not started
+- Stage 06 — Launch: complete (launch-agent.md, listing-creator.md, shared/etsy-connect.md)
 - Stage 07 — Iterate: not started
 - Infrastructure: not started
