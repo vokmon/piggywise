@@ -3,10 +3,12 @@
 Orchestrates the full Stage 02 validation pipeline. Can validate a single product idea or all ideas from a 01-research output file. Reads the 01-research output, runs targeted Etsy search, mines competitor reviews, and checks pricing. Outputs a go/no-go recommendation for human decision.
 
 ## Input
+
 - `product_idea` — optional. If provided, validate only that idea. If omitted, validate all ideas in `gap_finder.product_ideas[]` from the research file, in ranked order.
 - `research_file` — optional. Path to the 01-research output JSON. If not provided, scan `output/*/01-research/` for the most recent file.
 
 ## Invoke with
+
 ```
 /validate "Minimal ADHD Notion Planner — The 5-Feature System"
 /validate "output/adhd-planner-notion-template/01-research/research-2026-05-24-adhd-planner-notion-template.json"
@@ -35,6 +37,7 @@ Find and read the relevant 01-research output file:
 4. If no file found: ask the user to specify which research file to use.
 
 **Determine run scope:**
+
 - If `product_idea` was provided → run Steps 1–5 once for that idea, then Step 6.
 - If `product_idea` was omitted → run Steps 1–5 for each idea in `gap_finder.product_ideas[]` in ranked order, then Step 6 once at the end.
 
@@ -42,25 +45,25 @@ Extract the following and hold in context for the entire run. The first block is
 
 **Constant across all ideas (load once):**
 
-| Variable | Source in research file |
-|---|---|
-| `seed` | `seed` |
-| `research_top_listings` | `etsy_scan.top_listings` |
-| `research_price_median` | `etsy_scan.price_median` |
-| `research_competition_level` | `etsy_scan.competition_level` |
-| `research_trend_direction` | `google_trends.trend_direction` |
-| `research_gaps` | `gap_finder.gaps_identified` |
+| Variable                               | Source in research file                                                                                                         |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `seed`                                 | `seed`                                                                                                                          |
+| `research_top_listings`                | `etsy_scan.top_listings`                                                                                                        |
+| `research_price_median`                | `etsy_scan.price_median`                                                                                                        |
+| `research_competition_level`           | `etsy_scan.competition_level`                                                                                                   |
+| `research_trend_direction`             | `google_trends.trend_direction`                                                                                                 |
+| `research_gaps`                        | `gap_finder.gaps_identified`                                                                                                    |
 | `dominant_competitor_review_threshold` | median of `etsy_scan.top_listings[].reviews` — a competitor is "dominant" if it has Star Seller status AND reviews ≥ this value |
-| `max_reviews_per_listing` | 20 (enough to identify repeating patterns; diminishing returns beyond this) |
-| `max_listings_per_query` | 10 |
-| `min_reviews_to_mine` | same as `dominant_competitor_review_threshold` |
+| `max_reviews_per_listing`              | 20 (enough to identify repeating patterns; diminishing returns beyond this)                                                     |
+| `max_listings_per_query`               | 10                                                                                                                              |
+| `min_reviews_to_mine`                  | same as `dominant_competitor_review_threshold`                                                                                  |
 
 **Re-derived per idea (before each iteration):**
 
-| Variable | Source |
-|---|---|
-| `product_idea_data` | matching entry in `gap_finder.product_ideas[]` for the current idea |
-| `positioning` | 1–2 word tag from `product_idea_data.differentiator` — take the most distinctive adjective or audience word (e.g. "minimalist", "student", "shame-free", "gamified") |
+| Variable            | Source                                                                                                                                                               |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `product_idea_data` | matching entry in `gap_finder.product_ideas[]` for the current idea                                                                                                  |
+| `positioning`       | 1–2 word tag from `product_idea_data.differentiator` — take the most distinctive adjective or audience word (e.g. "minimalist", "student", "shame-free", "gamified") |
 
 ---
 
@@ -78,6 +81,7 @@ etsy-deep-dive ──┬→ price-check ─┐
 ## Step 1 — Run etsy-deep-dive
 
 Run `etsy-deep-dive` with:
+
 - `product_idea` — from input
 - `seed_keyword` — `seed` from research context
 - `research_top_listings` — from research context
@@ -91,12 +95,14 @@ If `etsy-deep-dive` returns blocked: note it, continue with remaining skills usi
 ## Step 2 — Run price-check and review-miner in parallel
 
 **price-check** with:
+
 - `research_etsy_scan` — full `etsy_scan` block from research context
 - `deep_dive_results` — Step 1 output
 - `product_idea` — from input
 - `positioning` — from research context
 
 **review-miner** with:
+
 - `product_idea` — from input
 - `listings_to_mine` — direct competitors from `etsy-deep-dive.direct_competitors` if any found; otherwise `research_top_listings[0..1]` (top 2 by listing order)
 - `min_reviews_to_mine` — from research context
@@ -109,11 +115,13 @@ If `etsy-deep-dive` returns blocked: note it, continue with remaining skills usi
 Apply the gate conditions using values derived from research — not hard-coded thresholds:
 
 **NO-GO if ANY of the following:**
+
 - A direct competitor from `etsy-deep-dive` is dominant (Star Seller AND reviews ≥ `dominant_competitor_review_threshold`) AND matches the product idea's core differentiator exactly
 - `research_trend_direction` = `"declining"` AND `price-check` shows the majority of listings are in the budget band (race-to-bottom signal)
 - `review-miner` found no unmet needs — all reviews are generic positives with no complaints or missing-feature mentions
 
 **GO if ALL of the following:**
+
 - No dominant direct competitor for the specific angle (or existing competitors have clear weaknesses in reviews)
 - `review-miner.unmet_needs` contains at least one need the proposed product directly addresses
 - `price-check.recommendations.launch_price` ≥ `research_price_median` — the median is a more meaningful floor than the outlier minimum; going below it signals low quality
@@ -181,7 +189,7 @@ Print a readable summary so the human can make a go/no-go call. Replace all plac
 📁 Saved: output/{slug}/02-validate/validate-{date}-{slug}.json
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 {if GO}  Proceed to Stage 03?
-  /poc "{product_idea}"
+  /build "{product_idea}"
 {if NO-GO}  Consider these alternatives from research:
   /validate "{next highest-ranked idea from gap_finder.product_ideas[] not yet validated}"
 ```
